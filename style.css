@@ -1,55 +1,48 @@
-body {
-  margin: 0;
-  font-family: system-ui, sans-serif;
+.footer {
   background: #0f172a;
   color: #e5e7eb;
-}
-ECHO is on.
-.container {
-  max-width: 600px;
-  margin: auto;
   padding: 40px 20px;
+  margin-top: 60px;
+}
+
+.footer-container {
+  max-width: 900px;
+  margin: auto;
   text-align: center;
 }
-ECHO is on.
-h1 {
-  font-size: 2rem;
-  margin-bottom: 10px;
+
+.footer h3 {
+  margin-bottom: 15px;
+  font-size: 20px;
 }
-ECHO is on.
-.cred {
-  color: #94a3b8;
-  margin-bottom: 30px;
-}
-ECHO is on.
-section {
-  margin-bottom: 30px;
-}
-ECHO is on.
-h2 {
-  color: #cbd5f5;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-}
-ECHO is on.
-.btn {
-  display: block;
-  background: #2563eb;
-  color: white;
-  padding: 14px;
-  border-radius: 8px;
+
+.social-links a {
+  margin: 0 10px;
+  color: #38bdf8;
   text-decoration: none;
   font-weight: 600;
-  margin: 0 auto 10px;
-  width: 80%%;
 }
-ECHO is on.
-.btn:hover {
-  background: #1d4ed8;
+
+.social-links a:hover {
+  text-decoration: underline;
 }
-ECHO is on.
-.disclaimer {
-  font-size: 0.8rem;
-  color: #64748b;
-  margin-top: 40px;
+
+.contact p {
+  margin: 6px 0;
+  font-size: 14px;
+}
+
+.contact a {
+  color: #22c55e;
+  text-decoration: none;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  margin-top: 25px;
+  font-size: 13px;
+  color: #9ca3af;
 }
