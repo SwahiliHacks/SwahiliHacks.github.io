@@ -1,10 +1,87 @@
-.footer {
-  background: #ffffff;
+/* Global Styles */
+body {
+  font-family: 'Inter', sans-serif;
   color: #231F20;
+  background: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  color: #231F20;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  background-color: #1C75BC;  /* Brand primary */
+  color: #ffffff;
+  padding: 10px 18px;
+  margin: 8px 0;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: transform 0.25s ease, background-color 0.25s ease;
+}
+
+.btn:hover {
+  background-color: #145a8a;
+  transform: translateY(-2px);
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: auto;
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.cred {
+  font-size: 16px;
+  color: #231F20;
+  margin-bottom: 30px;
+}
+
+.disclaimer {
+  font-size: 14px;
+  color: #D1D3D4;
+  margin-top: 20px;
+}
+
+/* Profile Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.profile-header img {
+  width: 72px;
+  height: 72px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #1C75BC; /* Brand blue */
+  flex-shrink: 0;
+}
+
+.profile-header p {
+  font-family: 'Inter', sans-serif;
+  color: #231F20;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Footer */
+.footer {
+  background: #0f172a;
+  color: #e5e7eb;
   padding: 40px 20px;
   margin-top: 60px;
-  border-top: 1px solid #D1D3D4;
-  font-family: 'Inter', sans-serif;
 }
 
 .footer-container {
@@ -16,11 +93,8 @@
 .footer h3 {
   margin-bottom: 15px;
   font-size: 20px;
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  color: #231F20;
 }
 
-/* Social icons */
 .social-icons {
   display: flex;
   justify-content: center;
@@ -29,17 +103,16 @@
 }
 
 .social-icons a {
-  color: #1C75BC;
+  color: #1C75BC; /* Brand primary */
   font-size: 26px;
   transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .social-icons a:hover {
-  color: #231F20;
+  color: #22c55e;
   transform: translateY(-4px);
 }
 
-/* Contact section */
 .contact {
   margin-top: 20px;
   font-size: 14px;
@@ -55,11 +128,11 @@
 
 .contact i {
   font-size: 16px;
-  color: #1C75BC;
+  color: #1C75BC; /* Brand primary */
 }
 
 .contact a {
-  color: #231F20;
+  color: #e5e7eb;
   text-decoration: none;
 }
 
@@ -67,65 +140,8 @@
   text-decoration: underline;
 }
 
-/* Copyright */
 .copyright {
   margin-top: 25px;
   font-size: 13px;
   color: #D1D3D4;
-}
-
-.profile-card {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding: 20px;
-  border: 1px solid #D1D3D4;
-  border-radius: 14px;
-  margin-bottom: 30px;
-  background: #ffffff;
-}
-
-.profile-img {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #1C75BC;
-}
-
-.profile-text h1 {
-  font-family: 'Plus Jakarta Sans', sans-serif;
-  font-size: 22px;
-  margin: 0;
-  color: #231F20;
-}
-
-.profile-text .title {
-  font-size: 14px;
-  font-weight: 600;
-  color: #1C75BC;
-  margin: 4px 0;
-}
-
-.profile-text .trust {
-  font-size: 13px;
-  color: #231F20;
-  opacity: 0.85;
-}
-
-.profile-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  margin-bottom: 40px;
-}
-
-.profile-header img {
-  width: 72px;
-  height: 72px;
-  min-width: 72px;
-  object-fit: cover;
-  border-radius: 50%;
-  border: 3px solid #1C75BC;
 }
