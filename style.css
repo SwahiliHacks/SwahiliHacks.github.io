@@ -93,8 +93,7 @@ h1, h2, h3, h4 {
 .footer h3 {
   margin-bottom: 15px;
   font-size: 20px;
-  color: #1C75BC;  /* Brand blue */
-  text-shadow: 0 0 2px #ffffff;  /* Small white glow to stand out */
+  color: #ffffff;  /* Full white for visibility */
 }
 
 .social-icons {
