@@ -112,3 +112,20 @@
   color: #231F20;
   opacity: 0.85;
 }
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.profile-header img {
+  width: 72px;
+  height: 72px;
+  min-width: 72px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #1C75BC;
+}
