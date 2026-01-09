@@ -79,7 +79,7 @@ h1, h2, h3, h4 {
 /* Footer */
 .footer {
   background: #0f172a;
-  color: #ffffff;
+  color: #e5e7eb;
   padding: 40px 20px;
   margin-top: 60px;
 }
@@ -93,6 +93,7 @@ h1, h2, h3, h4 {
 .footer h3 {
   margin-bottom: 15px;
   font-size: 20px;
+  color: #1C75BC;
 }
 
 .social-icons {
