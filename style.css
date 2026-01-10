@@ -249,3 +249,72 @@ h1, h2, h3, h4 {
   font-size: 14px;
   padding: 8px 16px;
 }
+
+/* Tools Grid */
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Desktop 3x4 */
+  gap: 24px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.tool-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  padding: 20px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: #231F20; /* ensures text is readable */
+  background-size: cover;
+  background-position: center;
+}
+
+/* Overlay for readability */
+.tool-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(255,255,255,0.35); /* semi-transparent white overlay */
+  /* Optionally, add a slight dark layer for contrast: rgba(0,0,0,0.1) */
+  z-index: 0;
+  pointer-events: none;
+}
+
+.tool-card h3,
+.tool-card p,
+.tool-card .btn {
+  position: relative;
+  z-index: 1;
+}
+
+/* Hover effect */
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+
+/* Buttons inside cards */
+.tool-card .btn {
+  margin-top: 12px;
+}
+
+/* --- Responsive --- */
+
+/* Tablets: 2 columns × 6 rows */
+@media (max-width: 992px) {
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Phones: 1 column × 12 rows */
+@media (max-width: 600px) {
+  .tools-grid {
+    grid-template-columns: 1fr;
+  }
+  .tool-card {
+    padding: 18px;
+  }
+}
