@@ -50,23 +50,16 @@ h1, h2, h3, h4 {
   margin-top: 20px;
 }
 
-/* Profile Header */
+/* Profile Header - Fixed spacing */
 .profile-header {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 14px;
-  margin-bottom: 40px;
   text-align: center;
-}
-
-.profile-header img {
-  width: 216px;   /* Size doubled: 108 × 2 = 216 */
-  height: 216px;  /* Size doubled: 108 × 2 = 216 */
-  object-fit: cover;
-  border-radius: 50%;
-  border: 4px solid #1C75BC; /* Slightly thicker border */
+  margin: 40px auto;
+  max-width: 900px;
+  padding: 0 20px;
 }
 
 .profile-header p {
@@ -74,7 +67,16 @@ h1, h2, h3, h4 {
   color: #231F20;
   font-size: 16px;
   line-height: 1.4;
-  margin: 0;
+  margin: 20px 0; /* Equal spacing above and below */
+}
+
+.profile-header img {
+  width: 216px;
+  height: 216px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #1C75BC;
+  margin: 20px 0; /* Equal spacing above and below */
 }
 
 /* Footer */
