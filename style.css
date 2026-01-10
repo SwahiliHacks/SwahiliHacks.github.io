@@ -53,11 +53,11 @@ h1, h2, h3, h4 {
 /* Profile Header */
 .profile-header {
   display: flex;
-  flex-direction: column;   /* stack text then image */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 14px;
-  margin-bottom: 40px;
+  margin-bottom: 16px;
   text-align: center;
 }
 
