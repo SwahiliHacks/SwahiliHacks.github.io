@@ -557,3 +557,74 @@ html {
     max-height: 80px;
   }
 }
+
+/* Fix footer structure */
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+/* SH4 Image Container - Full width */
+.sh4-image-container.wide-image {
+  width: 100%;
+  margin: 2rem auto 0;
+  text-align: center;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sh4-image {
+  max-width: 90%;
+  height: auto;
+  max-height: 150px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+/* Footer Bottom - Center copyright */
+.footer-bottom {
+  width: 100%;
+  text-align: center;
+  padding: 2rem 0 1rem;
+  background: var(--dark);
+}
+
+.copyright {
+  color: var(--gray);
+  font-size: 0.9rem;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .sh4-image {
+    max-width: 95%;
+    max-height: 120px;
+  }
+  
+  .sh4-image-container.wide-image {
+    margin: 1.5rem auto 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .sh4-image {
+    max-height: 100px;
+  }
+}
