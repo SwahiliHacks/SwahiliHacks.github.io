@@ -1,0 +1,274 @@
+type: platform
+title: Content Creation Tools - Swahili Hacks
+nav_label: Content Creation
+icon: fas fa-video
+card_teaser: Professional creator tools
+card_bullets:
+- Video editing software
+- Graphic design tools
+- Content planning systems
+card_cta_text: Create Content
+card_bg_image: /images/tool8.jpg
+trust_tag: Professional content creation tools for maximum impact
+stats:
+- number: 15+
+  label: Tools
+- number: 10x
+  label: Creation Speed
+- number: Pro
+  label: Quality Output
+h1: Content Creation Tools
+intro: As an engineer, I've analyzed these content creation tools for efficiency, output quality, and professional results. Whether you're creating videos, graphics, or written content, these tools will elevate your production quality.
+warning: 'Pro Tip: Master 2-3 core tools thoroughly rather than using many tools poorly.'
+platforms:
+- icon: fas fa-film
+  title: Adobe Premiere Pro
+  tag: Industry Standard
+  description: Professional video editing software used by filmmakers, YouTubers, and content creators worldwide.
+  features:
+  - Multi-cam editing
+  - Color grading tools
+  - Audio mixing
+  - Motion graphics templates
+  - 4K/8K support
+  links:
+  - url: https://www.adobe.com/products/premiere.html
+    icon: fas fa-external-link-alt
+    name: Free Trial
+    desc: 7-day free trial
+  - url: https://www.adobe.com/creativecloud/plans.html
+    icon: fas fa-crown
+    name: Creative Cloud
+    desc: $20.99/month
+  - url: https://helpx.adobe.com/premiere-pro/tutorials.html
+    icon: fas fa-graduation-cap
+    name: Tutorials
+    desc: Learning resources
+  rating_stars: 4
+  rating_text: 4.8/5 Rating
+  cta_text: Free Trial
+  cta_url: https://www.adobe.com/products/premiere/free-trial-download.html
+- icon: fas fa-palette
+  title: Canva Pro
+  tag: Graphic Design
+  description: Web-based design platform with thousands of templates for social media, presentations, and marketing materials.
+  features:
+  - 100M+ stock assets
+  - Brand kit management
+  - Background remover
+  - Magic resize tool
+  - Team collaboration
+  links:
+  - url: https://www.canva.com
+    icon: fas fa-paint-brush
+    name: Canva Free
+    desc: Basic design tools
+  - url: https://www.canva.com/pro/
+    icon: fas fa-crown
+    name: Canva Pro
+    desc: $12.99/month
+  - url: https://www.canva.com/templates/
+    icon: fas fa-layer-group
+    name: Templates
+    desc: 250,000+ designs
+  rating_stars: 5
+  rating_text: 4.9/5 Rating
+  cta_text: Start Free
+  cta_url: https://www.canva.com
+- icon: fas fa-podcast
+  title: Descript
+  tag: Podcast & Video
+  description: All-in-one audio and video editing platform that edits media by editing text.
+  features:
+  - Text-based editing
+  - AI voice cloning
+  - Screen recording
+  - Overdub feature
+  - Filler word removal
+  links:
+  - url: https://www.descript.com
+    icon: fas fa-external-link-alt
+    name: Free Plan
+    desc: 3 hours of transcription
+  - url: https://www.descript.com/pricing
+    icon: fas fa-crown
+    name: Creator Plan
+    desc: $15/month
+  - url: https://www.descript.com/overdub
+    icon: fas fa-microphone-alt
+    name: Overdub
+    desc: AI voice feature
+  rating_stars: 4
+  rating_text: 4.4/5 Rating
+  cta_text: Try Free
+  cta_url: https://www.descript.com
+- icon: fas fa-camera
+  title: Lightroom + Photoshop
+  tag: Photo Editing
+  description: Industry-standard photo editing and management tools for photographers and visual creators.
+  features:
+  - Professional RAW editing
+  - Cloud storage sync
+  - AI-powered selections
+  - Presets library
+  - Batch processing
+  links:
+  - url: https://lightroom.adobe.com
+    icon: fas fa-cloud
+    name: Lightroom Web
+    desc: Free web version
+  - url: https://www.adobe.com/products/photoshop.html
+    icon: fas fa-magic
+    name: Photoshop
+    desc: $20.99/month
+  - url: https://www.adobe.com/creativecloud/photography.html
+    icon: fas fa-camera-retro
+    name: Photography Plan
+    desc: $9.99/month bundle
+  rating_stars: 5
+  rating_text: 5/5 Rating
+  cta_text: Free Trial
+  cta_url: https://www.adobe.com/creativecloud/photography/free-trial-download.html
+- icon: fas fa-chart-bar
+  title: Content Planning Tools
+  tag: Strategy
+  description: Tools for planning, scheduling, and analyzing content performance across multiple platforms.
+  features:
+  - Multi-platform scheduling
+  - Content calendar
+  - Analytics dashboard
+  - Team collaboration
+  - Hashtag suggestions
+  links:
+  - url: https://later.com
+    icon: fas fa-calendar-alt
+    name: Later
+    desc: Instagram scheduling
+  - url: https://buffer.com
+    icon: fas fa-share-alt
+    name: Buffer
+    desc: Multi-platform
+  - url: https://www.notion.so/templates/content-calendar
+    icon: fas fa-tasks
+    name: Notion Templates
+    desc: Free content calendars
+  rating_stars: 4
+  rating_text: 4.6/5 Rating
+  cta_text: Try Later
+  cta_url: https://later.com
+- icon: fas fa-microphone
+  title: Audio Production
+  tag: Sound Quality
+  description: Professional audio recording, editing, and enhancement tools for podcasts and videos.
+  features:
+  - Noise reduction
+  - Audio effects library
+  - Multi-track editing
+  - Voice enhancement
+  - Royalty-free music
+  links:
+  - url: https://www.audacityteam.org
+    icon: fas fa-music
+    name: Audacity
+    desc: Free audio editor
+  - url: https://www.adobe.com/products/audition.html
+    icon: fas fa-wave-square
+    name: Adobe Audition
+    desc: Professional audio
+  - url: https://www.epidemicsound.com
+    icon: fas fa-headphones
+    name: Epidemic Sound
+    desc: Royalty-free music
+  rating_stars: 4
+  rating_text: 4.3/5 Rating
+  cta_text: Download Audacity
+  cta_url: https://www.audacityteam.org/download/
+comparison:
+  title: Content Creation Tools Comparison
+  headers:
+  - Tool
+  - Best For
+  - Free Option
+  - Pro Plan Cost
+  - Learning Curve
+  - Output Quality
+  rows:
+  - - text: Premiere Pro
+      highlight: false
+    - text: Professional video editing
+      highlight: false
+    - text: Trial only
+      highlight: false
+    - text: $20.99/month
+      highlight: false
+    - text: Steep
+      highlight: false
+    - text: Industry Standard
+      highlight: true
+  - - text: Canva Pro
+      highlight: false
+    - text: Graphic design
+      highlight: false
+    - text: 'Yes'
+      highlight: true
+    - text: $12.99/month
+      highlight: false
+    - text: Easy
+      highlight: false
+    - text: Excellent
+      highlight: true
+  - - text: Descript
+      highlight: false
+    - text: Podcast/video editing
+      highlight: false
+    - text: Yes (limited)
+      highlight: true
+    - text: $15/month
+      highlight: false
+    - text: Easy
+      highlight: false
+    - text: Very Good
+      highlight: false
+  - - text: Lightroom
+      highlight: false
+    - text: Photo editing
+      highlight: false
+    - text: Web version free
+      highlight: true
+    - text: $9.99/month
+      highlight: false
+    - text: Medium
+      highlight: false
+    - text: Professional
+      highlight: true
+  - - text: Audacity
+      highlight: false
+    - text: Audio editing
+      highlight: false
+    - text: Completely free
+      highlight: true
+    - text: N/A
+      highlight: false
+    - text: Medium
+      highlight: false
+    - text: Good
+      highlight: false
+education:
+  title: Content Creation Resources
+  resources:
+  - icon: fas fa-graduation-cap
+    title: YouTube Mastery
+    description: Learn professional video creation, editing, and YouTube channel growth strategies.
+    link_text: Watch Course
+    link_url: https://www.youtube.com/watch?v=youtube-mastery
+  - icon: fas fa-pen-nib
+    title: Graphic Design Basics
+    description: Master Canva and Adobe tools for professional graphic design without a design degree.
+    link_text: Learn Design
+    link_url: https://www.youtube.com/watch?v=graphic-design
+  - icon: fas fa-chart-line
+    title: Content Strategy
+    description: Develop a winning content strategy that grows your audience and engagement.
+    link_text: Strategy Guide
+    link_url: https://www.youtube.com/watch?v=content-strategy
+disclaimer: 'Important: Quality content requires both good tools and creative skills. Invest time in learning your tools thoroughly. Many tools offer educational discounts.'

@@ -1,0 +1,48 @@
+---
+// ToolCard.astro
+//
+// Purpose: one card in the homepage's 12-card grid. Reads its content
+// straight from a category's YAML frontmatter, so the homepage grid and the
+// category page it links to can never drift out of sync (e.g. you can't
+// forget to update the homepage teaser when you rename a category).
+//
+// What happens if removed: the homepage grid renders nothing.
+
+interface Props {
+  slug: string;
+  icon: string;
+  title: string;
+  teaser: string;
+  bullets: string[];
+  bgImage: string;
+  ctaText: string;
+}
+
+const { slug, icon, title, teaser, bullets, bgImage, ctaText } = Astro.props;
+---
+
+<div
+  class="tool-card professional-card"
+  style={`background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('${bgImage}');`}
+>
+  <div class="card-icon">
+    <i class={icon}></i>
+  </div>
+  <h3>{title}</h3>
+  <p>{teaser}</p>
+  <div class="tool-details">
+    {
+      bullets.map((bullet) => (
+        <div class="detail-item">
+          <i class="fas fa-check" />
+          <span>{bullet}</span>
+        </div>
+      ))
+    }
+  </div>
+  <div class="card-footer">
+    <a class="btn professional-btn" href={`/${slug}/`}>
+      <i class="fas fa-external-link-alt"></i> {ctaText}
+    </a>
+  </div>
+</div>

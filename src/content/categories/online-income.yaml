@@ -1,0 +1,103 @@
+type: simple
+title: Online Income Platforms - Swahili Hacks
+nav_label: Online Income
+icon: fas fa-money-bill-wave
+card_teaser: Legitimate ways to earn online
+card_bullets:
+- Freelance platforms
+- Remote job boards
+- Passive income systems
+card_cta_text: Start Earning
+card_bg_image: /images/tool3.jpg
+trust_tag: Legitimate ways to earn sustainable online income
+stats:
+- number: 20+
+  label: Platforms
+- number: 100%
+  label: Verified
+- number: $100-$10K
+  label: Earning Range
+h1: Online Income Platforms
+intro: As an engineer, I've analyzed these platforms for legitimacy, earning potential, and sustainability. Each platform offers real opportunities to earn money online.
+groups:
+- icon: fas fa-laptop-code
+  title: Freelancing
+  description: Offer your skills and services to clients worldwide.
+  links:
+  - url: https://www.upwork.com
+    icon: fas fa-external-link-alt
+    name: Upwork
+    desc: Global freelancing platform
+  - url: https://www.fiverr.com
+    icon: fas fa-external-link-alt
+    name: Fiverr
+    desc: Micro-services marketplace
+  - url: https://www.toptal.com
+    icon: fas fa-external-link-alt
+    name: Toptal
+    desc: Elite freelancers network
+- icon: fas fa-briefcase
+  title: Remote Jobs
+  description: Find legitimate remote employment opportunities.
+  links:
+  - url: https://remote.co
+    icon: fas fa-external-link-alt
+    name: Remote.co
+    desc: Remote job listings
+  - url: https://weworkremotely.com
+    icon: fas fa-external-link-alt
+    name: We Work Remotely
+    desc: Remote work board
+  - url: https://flexjobs.com
+    icon: fas fa-external-link-alt
+    name: FlexJobs
+    desc: Curated remote jobs
+- icon: fas fa-chart-line
+  title: Passive Income
+  description: Create income streams that work while you sleep.
+  links:
+  - url: https://www.amazon.com/kdp
+    icon: fas fa-external-link-alt
+    name: Amazon KDP
+    desc: Self-publishing books
+  - url: https://www.udemy.com
+    icon: fas fa-external-link-alt
+    name: Udemy
+    desc: Create & sell courses
+  - url: https://www.printful.com
+    icon: fas fa-external-link-alt
+    name: Printful
+    desc: Print-on-demand
+- icon: fas fa-shopping-cart
+  title: E-commerce
+  description: Sell products online through various platforms.
+  links:
+  - url: https://www.shopify.com
+    icon: fas fa-external-link-alt
+    name: Shopify
+    desc: E-commerce platform
+  - url: https://www.etsy.com
+    icon: fas fa-external-link-alt
+    name: Etsy
+    desc: Handmade & vintage
+  - url: https://www.ebay.com
+    icon: fas fa-external-link-alt
+    name: eBay
+    desc: Auction marketplace
+- icon: fas fa-video
+  title: Content Creation
+  description: Monetize your creativity and content.
+  links:
+  - url: https://www.youtube.com/creators
+    icon: fas fa-external-link-alt
+    name: YouTube Partner
+    desc: Video monetization
+  - url: https://www.patreon.com
+    icon: fas fa-external-link-alt
+    name: Patreon
+    desc: Subscription content
+  - url: https://www.twitch.tv
+    icon: fas fa-external-link-alt
+    name: Twitch
+    desc: Live streaming
+disclaimer: 'Note: These are affiliate links. You pay nothing extra, but we earn a small commission that supports our work.'

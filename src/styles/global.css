@@ -1,0 +1,13 @@
+/*
+  Global stylesheet entry point.
+
+  Design decision (see docs/ARCHITECTURE.md "Why not a full Tailwind rewrite"):
+  the visual design of Swahili Hacks was already good and fully worked out in
+  legacy.css (migrated 1:1 from the old static site). Rewriting ~1,500 lines
+  of hand-tuned CSS into Tailwind utility classes would be pure risk for zero
+  visual benefit. So: legacy.css stays as the source of truth for the design
+  system (colors, cards, header, footer, grids, etc.), and Tailwind is wired
+  up and ready for any *new* components you build going forward.
+*/
+@import "tailwindcss";
+@import "./legacy.css";

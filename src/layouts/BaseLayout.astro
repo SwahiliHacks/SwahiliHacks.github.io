@@ -1,0 +1,72 @@
+---
+// BaseLayout.astro
+//
+// Purpose: the single place that defines <head> — meta tags, fonts, SEO tags,
+// and the global stylesheet. Every page on the site renders through this.
+//
+// Why it exists: previously every one of the 14 HTML files repeated this
+// entire <head> block by hand. Update the font or add a meta tag once, here,
+// and it applies everywhere.
+//
+// What happens if you remove it: pages lose <head> entirely — no styling,
+// no fonts, no SEO tags, no favicon.
+//
+// How to modify safely: add new <meta>/<link> tags inside <head> below. Don't
+// remove the `<slot />` in <body> — that's where each page's own content goes.
+
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  /** Relative path used to build the canonical + OG image URL, e.g. "trading" */
+  path?: string;
+  ogImage?: string;
+}
+
+const {
+  title,
+  description,
+  path = '',
+  ogImage = '/images/sh4.jpg',
+} = Astro.props;
+
+const canonicalURL = new URL(path, Astro.site);
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:site_name" content="Swahili Hacks" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+
+    <link rel="icon" type="image/png" href="/images/favicon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

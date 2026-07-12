@@ -1,0 +1,274 @@
+type: platform
+title: E-commerce Platforms - Swahili Hacks
+nav_label: E-commerce
+icon: fas fa-shopping-cart
+card_teaser: Build online stores easily
+card_bullets:
+- Shopify alternatives
+- Drop-shipping platforms
+- Inventory management
+card_cta_text: Start Store
+card_bg_image: /images/tool9.jpg
+trust_tag: Professional e-commerce platforms for scaling online businesses
+stats:
+- number: 10+
+  label: Platforms
+- number: 0%
+  label: Transaction Fees
+- number: Global
+  label: Reach
+h1: E-commerce Platforms
+intro: As an engineer, I've analyzed these e-commerce platforms for scalability, reliability, and cost-effectiveness. Whether you're starting your first store or scaling to millions, these platforms offer robust solutions.
+warning: 'Pro Tip: Start with a platform that matches your business model and scale up as you grow.'
+platforms:
+- icon: fas fa-store
+  title: Shopify
+  tag: Most Popular
+  description: All-in-one e-commerce platform for businesses of all sizes. Easy setup with powerful features.
+  features:
+  - 100+ professional themes
+  - 6,000+ apps
+  - Built-in payment processing
+  - Inventory management
+  - 24/7 support
+  links:
+  - url: https://www.shopify.com/free-trial
+    icon: fas fa-rocket
+    name: Free Trial
+    desc: 3-day free trial
+  - url: https://www.shopify.com/pricing
+    icon: fas fa-tags
+    name: Basic Plan
+    desc: $29/month
+  - url: https://apps.shopify.com
+    icon: fas fa-puzzle-piece
+    name: App Store
+    desc: 6,000+ apps
+  rating_stars: 4
+  rating_text: 4.7/5 Rating
+  cta_text: Start Free Trial
+  cta_url: https://www.shopify.com/free-trial
+- icon: fab fa-wordpress
+  title: WooCommerce
+  tag: WordPress
+  description: Open-source e-commerce plugin for WordPress. Complete control with full customization options.
+  features:
+  - Free to install
+  - Complete customization
+  - 1,000+ extensions
+  - No transaction fees
+  - Scalable architecture
+  links:
+  - url: https://woocommerce.com
+    icon: fas fa-download
+    name: Download Free
+    desc: Open source plugin
+  - url: https://woocommerce.com/documentation/
+    icon: fas fa-book
+    name: Documentation
+    desc: Setup guides
+  - url: https://woocommerce.com/product-category/woocommerce-extensions/
+    icon: fas fa-box-open
+    name: Extensions
+    desc: 1,000+ add-ons
+  rating_stars: 4
+  rating_text: 4.3/5 Rating
+  cta_text: Download Free
+  cta_url: https://woocommerce.com
+- icon: fas fa-truck
+  title: Drop-shipping Platforms
+  tag: No Inventory
+  description: Platforms that connect you with suppliers for automated order fulfillment without holding inventory.
+  features:
+  - No inventory costs
+  - Automated order processing
+  - Global suppliers
+  - Product research tools
+  - AliExpress integration
+  links:
+  - url: https://www.oberlo.com
+    icon: fas fa-bolt
+    name: Oberlo
+    desc: Shopify integration
+  - url: https://www.spocket.co
+    icon: fas fa-rocket
+    name: Spocket
+    desc: US/EU suppliers
+  - url: https://www.dsers.com
+    icon: fas fa-sync-alt
+    name: DSers
+    desc: AliExpress tool
+  rating_stars: 4
+  rating_text: 4.6/5 Rating
+  cta_text: Try Oberlo
+  cta_url: https://www.oberlo.com
+- icon: fas fa-mobile-alt
+  title: Social Commerce
+  tag: Direct Selling
+  description: Sell directly on social media platforms with built-in shopping features and checkout.
+  features:
+  - Instagram Shopping
+  - Facebook Marketplace
+  - TikTok Shop
+  - Pinterest Shopping
+  - In-app checkout
+  links:
+  - url: https://business.facebook.com/commerce
+    icon: fab fa-facebook
+    name: Facebook Shops
+    desc: Free to set up
+  - url: https://business.instagram.com/shopping
+    icon: fab fa-instagram
+    name: Instagram Shopping
+    desc: Visual commerce
+  - url: https://www.tiktok.com/business/en/tts
+    icon: fab fa-tiktok
+    name: TikTok Shop
+    desc: Video commerce
+  rating_stars: 4
+  rating_text: 4.2/5 Rating
+  cta_text: Setup Facebook Shop
+  cta_url: https://business.facebook.com/commerce
+- icon: fas fa-chart-line
+  title: BigCommerce
+  tag: Enterprise
+  description: Scalable e-commerce platform for growing businesses with enterprise-grade features.
+  features:
+  - No transaction fees
+  - Multi-channel selling
+  - B2B capabilities
+  - Headless commerce
+  - Advanced SEO tools
+  links:
+  - url: https://www.bigcommerce.com/free-trial
+    icon: fas fa-rocket
+    name: Free Trial
+    desc: 15-day trial
+  - url: https://www.bigcommerce.com/pricing
+    icon: fas fa-chart-bar
+    name: Standard Plan
+    desc: $29.95/month
+  - url: https://www.bigcommerce.com/enterprise
+    icon: fas fa-building
+    name: Enterprise
+    desc: Custom pricing
+  rating_stars: 5
+  rating_text: 4.9/5 Rating
+  cta_text: Start Free Trial
+  cta_url: https://www.bigcommerce.com/free-trial
+- icon: fas fa-shipping-fast
+  title: E-commerce Tools
+  tag: Management
+  description: Essential tools for inventory management, shipping, marketing, and analytics.
+  features:
+  - Inventory management
+  - Shipping automation
+  - Email marketing
+  - Analytics dashboards
+  - Customer support
+  links:
+  - url: https://www.shipstation.com
+    icon: fas fa-shipping-fast
+    name: ShipStation
+    desc: Shipping automation
+  - url: https://www.klaviyo.com
+    icon: fas fa-envelope
+    name: Klaviyo
+    desc: Email marketing
+  - url: https://www.privy.com
+    icon: fas fa-bullhorn
+    name: Privy
+    desc: Pop-ups & email
+  rating_stars: 4
+  rating_text: 4.7/5 Rating
+  cta_text: Try ShipStation
+  cta_url: https://www.shipstation.com
+comparison:
+  title: E-commerce Platform Comparison
+  headers:
+  - Platform
+  - Best For
+  - Monthly Cost
+  - Transaction Fees
+  - Ease of Use
+  - Scalability
+  rows:
+  - - text: Shopify
+      highlight: false
+    - text: Beginners to large stores
+      highlight: false
+    - text: $29+
+      highlight: false
+    - text: 2.9% + 30¢
+      highlight: false
+    - text: Very Easy
+      highlight: true
+    - text: Excellent
+      highlight: true
+  - - text: WooCommerce
+      highlight: false
+    - text: WordPress users
+      highlight: false
+    - text: Free (hosting extra)
+      highlight: false
+    - text: 0%
+      highlight: false
+    - text: Medium
+      highlight: false
+    - text: Excellent
+      highlight: true
+  - - text: BigCommerce
+      highlight: false
+    - text: Growing businesses
+      highlight: false
+    - text: $29.95+
+      highlight: false
+    - text: 0%
+      highlight: false
+    - text: Easy
+      highlight: false
+    - text: Outstanding
+      highlight: true
+  - - text: Facebook Shops
+      highlight: false
+    - text: Social selling
+      highlight: false
+    - text: Free
+      highlight: false
+    - text: 5% per sale
+      highlight: false
+    - text: Very Easy
+      highlight: true
+    - text: Good
+      highlight: false
+  - - text: Wix Stores
+      highlight: false
+    - text: Small businesses
+      highlight: false
+    - text: $23+
+      highlight: false
+    - text: 2.9% + 30¢
+      highlight: false
+    - text: Very Easy
+      highlight: true
+    - text: Good
+      highlight: false
+education:
+  title: E-commerce Resources
+  resources:
+  - icon: fas fa-graduation-cap
+    title: Shopify Mastery
+    description: Complete guide to building and scaling a profitable Shopify store from scratch.
+    link_text: Watch Course
+    link_url: https://www.youtube.com/watch?v=shopify-mastery
+  - icon: fas fa-box-open
+    title: Drop-shipping Guide
+    description: Step-by-step guide to starting a profitable drop-shipping business with no inventory.
+    link_text: Learn Drop-shipping
+    link_url: https://www.youtube.com/watch?v=dropshipping-guide
+  - icon: fas fa-chart-line
+    title: E-commerce Marketing
+    description: Advanced marketing strategies to drive traffic and increase conversions.
+    link_text: Marketing Guide
+    link_url: https://www.youtube.com/watch?v=ecommerce-marketing
+disclaimer: 'Important: Success in e-commerce requires both a good platform and effective marketing. Consider transaction fees, scalability, and integration options when choosing your platform.'

@@ -1,0 +1,77 @@
+---
+// Footer.astro
+//
+// Purpose: contact info + social links + copyright, shared by every page.
+// Why it exists: was copy-pasted at the bottom of all 14 HTML files before.
+// What happens if removed: pages lose contact/social info and the copyright line.
+// How to modify safely: this is the ONE place to update phone number, email,
+// or social handles. Edit here and it updates on all pages instantly.
+
+interface Props {
+  tagline?: string;
+}
+
+const { tagline = 'Professional tools curated by experts for serious entrepreneurs.' } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="footer professional-footer">
+  <div class="footer-container">
+    <div class="footer-brand">
+      <h3>Swahili Hacks</h3>
+      <p>{tagline}</p>
+
+      <div class="contact">
+        <p>
+          <i class="fas fa-envelope"></i>
+          <strong>Email:</strong>
+          <a href="mailto:swahilihacks@gmail.com">swahilihacks@gmail.com</a>
+        </p>
+
+        <p>
+          <i class="fas fa-phone"></i>
+          <strong>Call:</strong>
+          <a href="tel:+255653828162">+255 653 828 162</a>
+        </p>
+
+        <p>
+          <i class="fab fa-whatsapp"></i>
+          <strong>WhatsApp:</strong>
+          <a href="https://wa.me/255653828162" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+        </p>
+      </div>
+    </div>
+
+    <div class="footer-social">
+      <h4>Connect With Us</h4>
+      <div class="social-icons professional-icons">
+        <a href="https://www.youtube.com/@SwahiliHacks" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+          <i class="fab fa-youtube"></i>
+        </a>
+        <a href="https://instagram.com/SwahiliHacks" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://tiktok.com/@SwahiliHacks" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+          <i class="fab fa-tiktok"></i>
+        </a>
+        <a href="https://twitter.com/SwahiliHacks" target="_blank" rel="noopener noreferrer" aria-label="X">
+          <i class="fab fa-x-twitter"></i>
+        </a>
+        <a href="https://facebook.com/SwahiliHacks" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i class="fab fa-facebook"></i>
+        </a>
+        <a href="https://linktr.ee/swahilihacks" target="_blank" rel="noopener noreferrer" aria-label="Linktree">
+          <i class="fas fa-link"></i>
+        </a>
+      </div>
+
+      <div class="sh4-image-container wide-image">
+        <img src="/images/sh4.jpg" alt="SH4 - Swahili Hacks" class="sh4-image" />
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p class="copyright">© {year} Swahili Hacks. All rights reserved. | Professional tools for professional results.</p>
+  </div>
+</footer>

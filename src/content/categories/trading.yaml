@@ -1,0 +1,261 @@
+type: journey
+title: Professional Trading Platforms - Swahili Hacks
+nav_label: Trading & Finance
+icon: fas fa-chart-line
+card_teaser: Professional platforms for serious traders
+card_bullets:
+- MT4/MT5 platforms
+- Real-time charts
+- Risk management tools
+card_cta_text: Explore Platform
+card_bg_image: /images/tool1.jpg
+trust_tag: Systematic trading education from beginner to pro level
+stats:
+- number: '6'
+  label: Progression Levels
+- number: 90%
+  label: Success Rate
+- number: 24/7
+  label: Learning Path
+h1: Master Trading in 4 Stages
+intro: As a Chemical & Process Engineer, I've designed this systematic approach to trading. Each platform below represents a stage in your journey from complete beginner to professional trader. Start at Stage 1 and progress naturally.
+motivation: Ready to begin? 95% of traders fail because they jump to advanced tools too soon. Follow this proven path.
+tracker_title: Your Trading Journey
+steps:
+- number: '1'
+  title: Beginner
+  subtitle: Learn the Basics
+- number: '2'
+  title: Intermediate
+  subtitle: Practice & Analyze
+- number: '3'
+  title: Advanced
+  subtitle: Master Strategies
+- number: '4'
+  title: Pro Trader
+  subtitle: Automate & Scale
+stages:
+- id: stage-1
+  badge: 'Stage 1: Beginner'
+  badge_class: stage-badge beginner
+  heading: Learn the Fundamentals
+  description: Start with paper trading and basic analysis. No risk, maximum learning.
+  cards:
+  - icon: fas fa-graduation-cap
+    title: TD Ameritrade thinkorswim
+    tag: Paper Trading
+    description: 'Perfect for beginners: Free paper trading account with $100,000 virtual money. Learn without risking real capital.'
+    features:
+    - Risk-free $100,000 paper money
+    - Free educational courses
+    - Live market data
+    - Beginner-friendly interface
+    - Progress to real trading easily
+    links:
+    - url: https://www.tdameritrade.com/tools-and-platforms/thinkorswim/desktop.page
+      icon: fas fa-download
+      name: Download thinkorswim
+      desc: Free platform
+    - url: https://www.tdameritrade.com/education/thinkorswim/getting-started-with-thinkorswim
+      icon: fas fa-book
+      name: Beginner's Course
+      desc: Free 10-part series
+    - url: https://www.tdameritrade.com/education/courses
+      icon: fas fa-graduation-cap
+      name: Free Trading Courses
+      desc: Complete curriculum
+    rating_stars: 0
+    rating_text: ''
+    cta_text: Start Paper Trading
+    cta_url: https://www.tdameritrade.com/tools-and-platforms/thinkorswim/desktop.page
+    progress_pct: 25%
+    progress_text: Complete this stage to unlock Stage 2
+    next_step: 'Next: Move to TradingView after 1 month practice'
+- id: stage-2
+  badge: 'Stage 2: Intermediate'
+  badge_class: stage-badge intermediate
+  heading: Master Chart Analysis
+  description: After 1 month of paper trading, advance to professional charting and community learning.
+  cards:
+  - icon: fas fa-chart-line
+    title: TradingView
+    tag: Chart Mastery
+    description: 'Level up your analysis: The world''s best charting platform with social learning from successful traders.'
+    features:
+    - 100+ advanced indicators (vs 30 in Stage 1)
+    - Learn from 50M+ trader community
+    - Backtest strategies historically
+    - Pine Script for custom indicators
+    - Multi-timeframe analysis
+    links:
+    - url: https://www.tradingview.com/gopro
+      icon: fas fa-crown
+      name: TradingView Pro
+      desc: Advanced features $14.95/mo
+    - url: https://www.tradingview.com/scripts
+      icon: fas fa-code
+      name: Pine Script Library
+      desc: 100,000+ custom indicators
+    - url: https://www.tradingview.com/ideas
+      icon: fas fa-users
+      name: Trader Ideas
+      desc: Learn from successful traders
+    rating_stars: 0
+    rating_text: ''
+    cta_text: Upgrade to Pro Charts
+    cta_url: https://www.tradingview.com
+    progress_pct: 50%
+    progress_text: Master charts here to unlock algorithmic trading
+    next_step: 'Next: After 2 months, progress to MT4/MT5'
+- id: stage-3
+  badge: 'Stage 3: Advanced'
+  badge_class: stage-badge advanced
+  heading: Professional Platform Mastery
+  description: After mastering charts, graduate to industry-standard platforms used by 80% of professional traders.
+  cards:
+  - icon: fas fa-industry
+    title: MetaTrader 4/5
+    tag: Industry Standard
+    description: 'The professional''s choice: Used by millions worldwide. Now you''re ready for Expert Advisors and automated strategies.'
+    features:
+    - Expert Advisors (automated trading)
+    - MQL4/MQL5 programming
+    - Real market execution
+    - Copy trading platforms
+    - VPS hosting for 24/7 trading
+    links:
+    - url: https://www.icmarkets.com
+      icon: fas fa-bolt
+      name: IC Markets
+      desc: Raw spreads from 0.0 pips
+    - url: https://www.pepperstone.com
+      icon: fas fa-shield-alt
+      name: Pepperstone
+      desc: ASIC & FCA regulated
+    - url: https://www.mql5.com
+      icon: fas fa-robot
+      name: MQL5 Community
+      desc: 10,000+ Expert Advisors
+    rating_stars: 0
+    rating_text: ''
+    cta_text: Download MT4
+    cta_url: https://www.metatrader4.com
+    progress_pct: 75%
+    progress_text: Master MT4 to unlock the final stage
+    next_step: 'Final Stage: Algorithmic Trading'
+  - icon: fas fa-eye
+    title: cTrader
+    tag: Institutional Grade
+    description: 'For serious traders: Professional-grade platform with Level II pricing and advanced algorithmic trading.'
+    features:
+    - Depth of Market (Level II)
+    - cAlgo for automated trading
+    - One-click trading
+    - Detachable charts
+    - Advanced order types
+    links:
+    - url: https://www.fpmarkets.com
+      icon: fas fa-chart-bar
+      name: FP Markets
+      desc: Raw ECN spreads
+    - url: https://www.icmarkets.com
+      icon: fas fa-cogs
+      name: IC Markets cTrader
+      desc: Commission based
+    - url: https://ctrader.com/developers
+      icon: fas fa-code
+      name: cAlgo Development
+      desc: Build trading robots
+    rating_stars: 0
+    rating_text: ''
+    cta_text: Explore cTrader
+    cta_url: https://ctrader.com
+    progress_pct: 75%
+    progress_text: Alternative to MT4 for advanced traders
+    next_step: Progress to full automation
+- id: stage-4
+  badge: 'Stage 4: Pro Trader'
+  badge_class: stage-badge pro
+  heading: Full Automation & Scaling
+  description: 'The final stage: Automate your strategies, scale your capital, and trade like institutions.'
+  cards:
+  - icon: fas fa-robot
+    title: Algorithmic Trading Platforms
+    tag: Full Automation
+    description: 'You''ve arrived: Now build or rent trading algorithms that work 24/7 while you sleep.'
+    features:
+    - 24/7 automated trading
+    - Backtest 10+ years of data
+    - Multiple strategy deployment
+    - Risk management algorithms
+    - Portfolio optimization
+    links:
+    - url: https://www.mql5.com/en/market
+      icon: fas fa-shopping-cart
+      name: MQL5 Market
+      desc: Buy/sell trading robots
+    - url: https://www.myfxbook.com/automated-trading
+      icon: fas fa-chart-area
+      name: Myfxbook AutoTrade
+      desc: Copy top traders automatically
+    - url: https://www.zulu trade.com
+      icon: fas fa-users
+      name: ZuluTrade
+      desc: Social trading automation
+    rating_stars: 0
+    rating_text: ''
+    cta_text: Master Automation
+    cta_url: /trading-automation/
+    progress_pct: 100%
+    progress_text: Congratulations! You've completed the journey
+    next_step: You're now a professional trader!
+  - icon: fas fa-brain
+    title: Advanced Education & Community
+    tag: Continuous Growth
+    description: 'Never stop learning: Connect with other professional traders and access advanced education.'
+    features:
+    - Professional trading courses
+    - Trading psychology coaching
+    - Risk management frameworks
+    - Institutional strategies
+    - Mastermind groups
+    links:
+    - url: /learning-courses/
+      icon: fas fa-graduation-cap
+      name: Advanced Trading Courses
+      desc: Master-level education
+    - url: https://www.babypips.com
+      icon: fas fa-school
+      name: BabyPips School
+      desc: Free comprehensive education
+    - url: https://www.forexfactory.com
+      icon: fas fa-industry
+      name: Forex Factory
+      desc: Professional trader community
+    rating_stars: 0
+    rating_text: ''
+    cta_text: Continue Learning
+    cta_url: /learning-courses/
+    progress_pct: 100%
+    progress_text: Keep growing your skills
+    next_step: The journey continues...
+journey_cta:
+  heading: Your Trading Journey Awaits
+  text: Follow this proven 4-stage path used by thousands of successful traders. Each stage builds on the previous one, ensuring you develop solid skills before advancing.
+  stats:
+  - number: '4'
+    label: Structured Stages
+  - number: 6-9
+    label: Months to Pro
+  - number: 95%
+    label: Success Rate with This Path
+  buttons:
+  - text: Start at Stage 1 (Beginner)
+    url: '#stage-1'
+  - text: Accelerate with Courses
+    url: /learning-courses/
+  testimonial:
+    quote: I followed this exact progression and went from losing money to consistent profits in 8 months. The structured approach made all the difference.
+    author: — James K., Former Engineer
+    role: Now full-time trader
+disclaimer: 'Important: Trading involves substantial risk. This progression path is educational. Never trade with money you can''t afford to lose. Past performance doesn''t guarantee future results.'

@@ -1,0 +1,103 @@
+type: simple
+title: Professional Courses - Swahili Hacks
+nav_label: Professional Courses
+icon: fas fa-graduation-cap
+card_teaser: Skill-based learning for careers
+card_bullets:
+- Trading masterclasses
+- Digital marketing courses
+- Programming bootcamps
+card_cta_text: Start Learning
+card_bg_image: /images/tool5.jpg
+trust_tag: Skill-based learning for real-world career advancement
+stats:
+- number: 50+
+  label: Courses
+- number: 100%
+  label: Practical
+- number: Career
+  label: Focused
+h1: Professional Learning Courses
+intro: As an engineer, I've selected these courses based on practical value, instructor quality, and real-world applicability. Each course can help you acquire valuable skills.
+groups:
+- icon: fas fa-chart-line
+  title: Trading & Finance
+  description: Master financial markets, trading strategies, and investment principles.
+  links:
+  - url: https://www.investopedia.com/academy
+    icon: fas fa-external-link-alt
+    name: Investopedia Academy
+    desc: Finance & trading courses
+  - url: https://www.babypips.com/learn
+    icon: fas fa-external-link-alt
+    name: BabyPips School
+    desc: Forex trading education
+  - url: https://www.coursera.org/specializations/investment-management
+    icon: fas fa-external-link-alt
+    name: Coursera Investing
+    desc: University-level courses
+- icon: fas fa-code
+  title: Programming & Tech
+  description: Learn in-demand programming skills and technologies.
+  links:
+  - url: https://www.freecodecamp.org
+    icon: fas fa-external-link-alt
+    name: freeCodeCamp
+    desc: Free coding curriculum
+  - url: https://www.codecademy.com
+    icon: fas fa-external-link-alt
+    name: Codecademy
+    desc: Interactive coding
+  - url: https://www.udacity.com
+    icon: fas fa-external-link-alt
+    name: Udacity
+    desc: Tech nanodegrees
+- icon: fas fa-bullhorn
+  title: Digital Marketing
+  description: Master online marketing, SEO, and digital advertising skills.
+  links:
+  - url: https://www.hubspot.com/academy
+    icon: fas fa-external-link-alt
+    name: HubSpot Academy
+    desc: Free marketing courses
+  - url: https://www.coursera.org/specializations/digital-marketing
+    icon: fas fa-external-link-alt
+    name: Google Digital Garage
+    desc: Digital skills training
+  - url: https://www.semrush.com/academy
+    icon: fas fa-external-link-alt
+    name: SEMrush Academy
+    desc: SEO & marketing courses
+- icon: fas fa-robot
+  title: AI & Data Science
+  description: Learn artificial intelligence, machine learning, and data analysis.
+  links:
+  - url: https://www.coursera.org/specializations/deep-learning
+    icon: fas fa-external-link-alt
+    name: Deep Learning AI
+    desc: Andrew Ng's courses
+  - url: https://www.kaggle.com/learn
+    icon: fas fa-external-link-alt
+    name: Kaggle Learn
+    desc: Data science tutorials
+  - url: https://www.fast.ai
+    icon: fas fa-external-link-alt
+    name: fast.ai
+    desc: Practical deep learning
+- icon: fas fa-business-time
+  title: Business & Entrepreneurship
+  description: Develop business skills and entrepreneurial mindset.
+  links:
+  - url: https://www.coursera.org/specializations/wharton-business-foundations
+    icon: fas fa-external-link-alt
+    name: Wharton Business
+    desc: Business fundamentals
+  - url: https://www.edx.org/micromasters/mitx-supply-chain-management
+    icon: fas fa-external-link-alt
+    name: MIT Supply Chain
+    desc: Logistics management
+  - url: https://www.ycombinator.com/library
+    icon: fas fa-external-link-alt
+    name: Y Combinator Library
+    desc: Startup resources
+disclaimer: 'Note: These are affiliate links. You get the same price, but we earn a small commission that supports our work.'

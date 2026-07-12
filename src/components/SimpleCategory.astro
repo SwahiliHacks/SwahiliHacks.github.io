@@ -1,0 +1,61 @@
+---
+// SimpleCategory.astro
+//
+// Renders the "simple" category type: an intro + several groups of
+// affiliate links. Used by categories like Professional Courses, Online
+// Income, Productivity, Trading Automation.
+//
+// What happens if removed: any category with type: simple in its YAML file
+// will fail to render (the [category].astro router will error).
+
+import type { CollectionEntry } from 'astro:content';
+
+type Props = { entry: Extract<CollectionEntry<'categories'>['data'], { type: 'simple' }> };
+const { entry } = Astro.props;
+---
+
+<section class="category-intro">
+  <h1>{entry.h1}</h1>
+  <p>{entry.intro}</p>
+  {
+    entry.warning && (
+      <div class="warning-note">
+        <i class="fas fa-exclamation-triangle" />
+        <strong>Warning:</strong> {entry.warning}
+      </div>
+    )
+  }
+</section>
+
+<section class="affiliate-links">
+  {
+    entry.groups.map((group) => (
+      <div class="affiliate-card">
+        <div class="affiliate-header">
+          <h3>
+            <i class={group.icon} /> {group.title}
+          </h3>
+        </div>
+        <div class="affiliate-content">
+          {group.description && <p>{group.description}</p>}
+          <div class="link-list">
+            {group.links.map((link) => (
+              <a href={link.url} target="_blank" rel="noopener noreferrer sponsored" class="affiliate-link">
+                <i class={link.icon || 'fas fa-external-link-alt'} />
+                <div>
+                  <strong>{link.name}</strong>
+                  {link.desc && <span>{link.desc}</span>}
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</section>
+
+<div class="disclaimer professional-disclaimer">
+  <i class="fas fa-info-circle"></i>
+  {entry.disclaimer}
+</div>

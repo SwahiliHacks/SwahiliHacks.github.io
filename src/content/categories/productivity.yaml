@@ -1,0 +1,103 @@
+type: simple
+title: Productivity Tools - Swahili Hacks
+nav_label: Productivity Suite
+icon: fas fa-bolt
+card_teaser: Tools to 3x your daily output
+card_bullets:
+- Task automation
+- Time tracking
+- Team collaboration
+card_cta_text: Boost Productivity
+card_bg_image: /images/tool2.jpg
+trust_tag: Productivity tools to 3x your daily output
+stats:
+- number: 15+
+  label: Tools
+- number: 100%
+  label: Tested
+- number: 40%
+  label: Time Saved
+h1: Productivity Tools Suite
+intro: As an engineer, I've tested these tools for efficiency, reliability, and actual time savings. Each tool below can help you work smarter, not harder.
+groups:
+- icon: fas fa-tasks
+  title: Task Management
+  description: Tools to organize, prioritize, and track your tasks efficiently.
+  links:
+  - url: https://www.notion.so
+    icon: fas fa-external-link-alt
+    name: Notion
+    desc: All-in-one workspace
+  - url: https://trello.com
+    icon: fas fa-external-link-alt
+    name: Trello
+    desc: Kanban boards
+  - url: https://asana.com
+    icon: fas fa-external-link-alt
+    name: Asana
+    desc: Team project management
+- icon: fas fa-clock
+  title: Time Tracking
+  description: Track where your time goes and optimize your workflow.
+  links:
+  - url: https://toggl.com
+    icon: fas fa-external-link-alt
+    name: Toggl Track
+    desc: Simple time tracking
+  - url: https://clockify.me
+    icon: fas fa-external-link-alt
+    name: Clockify
+    desc: Free time tracker
+  - url: https://www.rescuetime.com
+    icon: fas fa-external-link-alt
+    name: RescueTime
+    desc: Automatic time tracking
+- icon: fas fa-robot
+  title: Automation
+  description: Automate repetitive tasks and save hours every week.
+  links:
+  - url: https://zapier.com
+    icon: fas fa-external-link-alt
+    name: Zapier
+    desc: Connect apps & automate
+  - url: https://ifttt.com
+    icon: fas fa-external-link-alt
+    name: IFTTT
+    desc: Simple automations
+  - url: https://www.make.com
+    icon: fas fa-external-link-alt
+    name: Make (Integromat)
+    desc: Visual automation
+- icon: fas fa-file-alt
+  title: Document & Note Taking
+  description: Capture ideas, take notes, and manage documents efficiently.
+  links:
+  - url: https://evernote.com
+    icon: fas fa-external-link-alt
+    name: Evernote
+    desc: Note taking app
+  - url: https://obsidian.md
+    icon: fas fa-external-link-alt
+    name: Obsidian
+    desc: Knowledge base
+  - url: https://www.google.com/docs
+    icon: fas fa-external-link-alt
+    name: Google Docs
+    desc: Collaborative editing
+- icon: fas fa-video
+  title: Communication
+  description: Tools for effective team communication and collaboration.
+  links:
+  - url: https://slack.com
+    icon: fas fa-external-link-alt
+    name: Slack
+    desc: Team messaging
+  - url: https://zoom.us
+    icon: fas fa-external-link-alt
+    name: Zoom
+    desc: Video conferencing
+  - url: https://www.microsoft.com/microsoft-teams
+    icon: fas fa-external-link-alt
+    name: Microsoft Teams
+    desc: Enterprise collaboration
+disclaimer: 'Note: These are affiliate links. You pay nothing extra, but we earn a small commission that supports our work.'

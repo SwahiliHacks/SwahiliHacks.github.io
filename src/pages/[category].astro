@@ -1,0 +1,50 @@
+---
+// [category].astro
+//
+// Purpose: ONE template that generates every category page (/trading,
+// /productivity, /ai-tools, etc.) by reading src/content/categories/*.yaml.
+// This single file replaces what used to be 12 separate, hand-duplicated
+// HTML files.
+//
+// Why it exists: adding a 13th category should mean "add one YAML file",
+// not "copy an HTML file and hand-edit the header, footer, and nav in six
+// places." getStaticPaths() below tells Astro to pre-render one HTML page
+// per YAML file at build time — the output is still 100% static HTML.
+//
+// What happens if removed: none of the category pages exist; only the
+// homepage (index.astro) would build.
+//
+// How to modify safely: to change a category's PAGE STRUCTURE, edit
+// SimpleCategory.astro / PlatformCategory.astro / JourneyCategory.astro.
+// To change a category's CONTENT (links, copy, stats), edit its YAML file
+// in src/content/categories/ instead — you should rarely need to touch this file.
+
+import { getCollection, render } from 'astro:content';
+import CategoryLayout from '../layouts/CategoryLayout.astro';
+import SimpleCategory from '../components/SimpleCategory.astro';
+import PlatformCategory from '../components/PlatformCategory.astro';
+import JourneyCategory from '../components/JourneyCategory.astro';
+
+export async function getStaticPaths() {
+  const categories = await getCollection('categories');
+  return categories.map((entry) => ({
+    params: { category: entry.id },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const data = entry.data;
+---
+
+<CategoryLayout
+  title={data.title}
+  description={data.intro}
+  path={`/${entry.id}/`}
+  trustTag={data.trust_tag}
+  stats={data.stats}
+>
+  {data.type === 'simple' && <SimpleCategory entry={data} />}
+  {data.type === 'platform' && <PlatformCategory entry={data} />}
+  {data.type === 'journey' && <JourneyCategory entry={data} />}
+</CategoryLayout>

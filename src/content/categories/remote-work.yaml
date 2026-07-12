@@ -1,0 +1,274 @@
+type: platform
+title: Remote Work Platforms - Swahili Hacks
+nav_label: Remote Work
+icon: fas fa-laptop-house
+card_teaser: Global remote job platforms
+card_bullets:
+- Remote job boards
+- Freelance marketplaces
+- Virtual office tools
+card_cta_text: Find Remote Jobs
+card_bg_image: /images/tool11.jpg
+trust_tag: Professional remote work platforms and tools for location independence
+stats:
+- number: 15+
+  label: Platforms
+- number: $50k+
+  label: Potential Salary
+- number: Global
+  label: Opportunities
+h1: Remote Work Platforms & Tools
+intro: As an engineer who has worked remotely, I've tested these platforms for legitimate opportunities, fair compensation, and professional environments. These tools connect you with global opportunities and provide the infrastructure for successful remote work.
+warning: 'Pro Tip: Build a strong profile on 2-3 platforms rather than spreading yourself too thin across many.'
+platforms:
+- icon: fas fa-briefcase
+  title: Upwork
+  tag: Freelance Hub
+  description: Largest global freelancing platform connecting businesses with independent professionals across all fields.
+  features:
+  - 12,000+ skill categories
+  - Hourly & fixed-price projects
+  - Upwork Payment Protection
+  - Time tracking software
+  - Client verification
+  links:
+  - url: https://www.upwork.com
+    icon: fas fa-external-link-alt
+    name: Sign Up Free
+    desc: Freelancer account
+  - url: https://www.upwork.com/resources/how-to-become-freelancer-upwork
+    icon: fas fa-graduation-cap
+    name: Beginner's Guide
+    desc: Step-by-step tutorial
+  - url: https://www.upwork.com/categories
+    icon: fas fa-tags
+    name: Skill Categories
+    desc: 12,000+ options
+  rating_stars: 4
+  rating_text: 4.5/5 Rating
+  cta_text: Join Free
+  cta_url: https://www.upwork.com
+- icon: fas fa-code
+  title: Toptal
+  tag: Elite Talent
+  description: Exclusive network connecting top freelance software developers, designers, and finance experts with clients.
+  features:
+  - Top 3% talent only
+  - High hourly rates ($60-200+)
+  - Rigorous screening process
+  - No-questions-asked trial
+  - Dedicated matching
+  links:
+  - url: https://www.toptal.com
+    icon: fas fa-external-link-alt
+    name: Apply as Talent
+    desc: Rigorous screening
+  - url: https://www.toptal.com/developers
+    icon: fas fa-laptop-code
+    name: Developers
+    desc: Software engineers
+  - url: https://www.toptal.com/designers
+    icon: fas fa-paint-brush
+    name: Designers
+    desc: UI/UX designers
+  rating_stars: 5
+  rating_text: 4.9/5 Rating
+  cta_text: Apply Now
+  cta_url: https://www.toptal.com
+- icon: fas fa-search
+  title: Remote Job Boards
+  tag: Full-Time Roles
+  description: Specialized job boards listing only remote positions with companies worldwide.
+  features:
+  - 100% remote positions
+  - Salaried roles
+  - Company benefits
+  - Career growth
+  - Global companies
+  links:
+  - url: https://remote.co
+    icon: fas fa-globe
+    name: Remote.co
+    desc: Curated remote jobs
+  - url: https://weworkremotely.com
+    icon: fas fa-building
+    name: We Work Remotely
+    desc: Largest remote board
+  - url: https://flexjobs.com
+    icon: fas fa-user-check
+    name: FlexJobs
+    desc: Vetted opportunities
+  rating_stars: 4
+  rating_text: 4.3/5 Rating
+  cta_text: Browse Jobs
+  cta_url: https://remote.co
+- icon: fas fa-users
+  title: Fiverr
+  tag: Gig Economy
+  description: Marketplace for digital services where freelancers offer "gigs" starting at $5 with scalable pricing.
+  features:
+  - Gig-based system
+  - 500+ categories
+  - Fiverr Pro (vetted experts)
+  - Seller levels system
+  - Mobile app management
+  links:
+  - url: https://www.fiverr.com
+    icon: fas fa-external-link-alt
+    name: Become a Seller
+    desc: Free to join
+  - url: https://www.fiverr.com/support/articles/360010451297-How-to-Start-Selling-on-Fiverr
+    icon: fas fa-book
+    name: Seller Guide
+    desc: Complete tutorial
+  - url: https://www.fiverr.com/pro
+    icon: fas fa-crown
+    name: Fiverr Pro
+    desc: Premium tier
+  rating_stars: 4
+  rating_text: 4.2/5 Rating
+  cta_text: Start Selling
+  cta_url: https://www.fiverr.com
+- icon: fas fa-tools
+  title: Remote Work Tools
+  tag: Productivity
+  description: Essential software and tools for communication, collaboration, and productivity in remote teams.
+  features:
+  - Video conferencing
+  - Project management
+  - Team messaging
+  - Time tracking
+  - File sharing
+  links:
+  - url: https://slack.com
+    icon: fab fa-slack
+    name: Slack
+    desc: Team communication
+  - url: https://zoom.us
+    icon: fas fa-video
+    name: Zoom
+    desc: Video meetings
+  - url: https://trello.com
+    icon: fas fa-tasks
+    name: Trello
+    desc: Project management
+  rating_stars: 4
+  rating_text: 4.7/5 Rating
+  cta_text: Try Slack
+  cta_url: https://slack.com
+- icon: fas fa-graduation-cap
+  title: Remote Skills Training
+  tag: Career Development
+  description: Platforms for learning in-demand remote work skills and certifications to increase earning potential.
+  features:
+  - Digital marketing courses
+  - Programming bootcamps
+  - Design certifications
+  - Writing & content creation
+  - Virtual assistant training
+  links:
+  - url: https://www.coursera.org
+    icon: fas fa-university
+    name: Coursera
+    desc: University courses
+  - url: https://www.udemy.com
+    icon: fas fa-chalkboard-teacher
+    name: Udemy
+    desc: Skill-based courses
+  - url: https://www.linkedin.com/learning
+    icon: fab fa-linkedin
+    name: LinkedIn Learning
+    desc: Professional skills
+  rating_stars: 4
+  rating_text: 4.6/5 Rating
+  cta_text: Start Learning
+  cta_url: https://www.coursera.org
+comparison:
+  title: Remote Work Platforms Comparison
+  headers:
+  - Platform
+  - Best For
+  - Cost to Join
+  - Commission Fees
+  - Earning Potential
+  - Skill Level
+  rows:
+  - - text: Upwork
+      highlight: false
+    - text: General freelancing
+      highlight: false
+    - text: Free
+      highlight: true
+    - text: 10-20%
+      highlight: false
+    - text: $20-150/hr
+      highlight: false
+    - text: All levels
+      highlight: false
+  - - text: Toptal
+      highlight: false
+    - text: Elite professionals
+      highlight: false
+    - text: Free (rigorous screening)
+      highlight: false
+    - text: Varies
+      highlight: false
+    - text: $60-200+/hr
+      highlight: false
+    - text: Expert
+      highlight: true
+  - - text: Fiverr
+      highlight: false
+    - text: Gig-based services
+      highlight: false
+    - text: Free
+      highlight: true
+    - text: 20%
+      highlight: false
+    - text: $5-10,000+/project
+      highlight: false
+    - text: All levels
+      highlight: false
+  - - text: Remote.co
+      highlight: false
+    - text: Full-time remote jobs
+      highlight: false
+    - text: Free
+      highlight: true
+    - text: 0%
+      highlight: false
+    - text: $40-150k/year
+      highlight: false
+    - text: Mid to Senior
+      highlight: false
+  - - text: FlexJobs
+      highlight: false
+    - text: Vetted opportunities
+      highlight: false
+    - text: $6.95-14.95/month
+      highlight: false
+    - text: 0%
+      highlight: false
+    - text: $30-120k/year
+      highlight: false
+    - text: All levels
+      highlight: false
+education:
+  title: Remote Work Resources
+  resources:
+  - icon: fas fa-graduation-cap
+    title: Freelance Success
+    description: Complete guide to building a profitable freelance business on Upwork and other platforms.
+    link_text: Watch Course
+    link_url: https://www.youtube.com/watch?v=freelance-success
+  - icon: fas fa-file-alt
+    title: Remote Resume Guide
+    description: Learn how to create a remote-friendly resume that gets noticed by hiring managers worldwide.
+    link_text: Resume Guide
+    link_url: https://www.youtube.com/watch?v=remote-resume
+  - icon: fas fa-comments-dollar
+    title: Negotiation Skills
+    description: Master the art of negotiating higher rates and better terms as a remote worker.
+    link_text: Learn Negotiation
+    link_url: https://www.youtube.com/watch?v=remote-negotiation
+disclaimer: 'Important: Building a successful remote career takes time and consistent effort. Focus on building your skills, creating a strong portfolio, and delivering excellent work. Beware of scams - never pay to apply for jobs.'

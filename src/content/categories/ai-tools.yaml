@@ -1,0 +1,274 @@
+type: platform
+title: AI Tools - Swahili Hacks
+nav_label: AI Tools
+icon: fas fa-brain
+card_teaser: AI-powered productivity boosters
+card_bullets:
+- AI content generators
+- AI trading assistants
+- Automated research tools
+card_cta_text: Use AI Tools
+card_bg_image: /images/tool7.jpg
+trust_tag: AI-powered tools tested for productivity and results
+stats:
+- number: 20+
+  label: AI Tools
+- number: 10x
+  label: Productivity
+- number: 24/7
+  label: AI Assistant
+h1: AI Tools & Automation
+intro: As an engineer, I've tested these AI tools for accuracy, reliability, and practical application. These tools can automate complex tasks, generate content, analyze data, and boost productivity across multiple domains.
+warning: 'Pro Tip: Start with 2-3 core AI tools and master them before expanding your toolkit.'
+platforms:
+- icon: fas fa-comment-alt
+  title: ChatGPT Plus
+  tag: Most Popular
+  description: Advanced AI assistant with GPT-4 capabilities. Ideal for writing, coding, analysis, and creative tasks.
+  features:
+  - GPT-4 Turbo access
+  - File upload capability
+  - Web browsing (with plugin)
+  - Custom instructions
+  - Advanced data analysis
+  links:
+  - url: https://chat.openai.com/chat
+    icon: fas fa-external-link-alt
+    name: ChatGPT Free
+    desc: GPT-3.5 access
+  - url: https://openai.com/chatgpt/plus
+    icon: fas fa-crown
+    name: ChatGPT Plus
+    desc: $20/month - GPT-4
+  - url: https://openai.com/chatgpt/team
+    icon: fas fa-users
+    name: ChatGPT Team
+    desc: Business plans
+  rating_stars: 4
+  rating_text: 4.7/5 Rating
+  cta_text: Try Free
+  cta_url: https://chat.openai.com
+- icon: fas fa-pen-nib
+  title: Jasper AI
+  tag: Content Creation
+  description: AI writing assistant specifically designed for marketers, bloggers, and businesses.
+  features:
+  - 50+ content templates
+  - Brand voice customization
+  - SEO optimization
+  - Plagiarism checker
+  - Grammar checker
+  links:
+  - url: https://www.jasper.ai/templates
+    icon: fas fa-layer-group
+    name: Content Templates
+    desc: 50+ ready templates
+  - url: https://www.jasper.ai/brand-voice
+    icon: fas fa-microphone
+    name: Brand Voice
+    desc: Custom tone training
+  - url: https://www.jasper.ai/boss-mode
+    icon: fas fa-chess-king
+    name: Boss Mode
+    desc: Advanced writing
+  rating_stars: 4
+  rating_text: 4.4/5 Rating
+  cta_text: Start Free Trial
+  cta_url: https://www.jasper.ai
+- icon: fas fa-image
+  title: Midjourney
+  tag: AI Art
+  description: Advanced AI image generation tool for creating stunning artwork, illustrations, and designs.
+  features:
+  - High-quality image generation
+  - Custom style parameters
+  - Upscaling capabilities
+  - Community gallery
+  - Discord integration
+  links:
+  - url: https://www.midjourney.com
+    icon: fab fa-discord
+    name: Discord Access
+    desc: Required for use
+  - url: https://www.midjourney.com/docs/quick-start
+    icon: fas fa-book
+    name: Quick Start Guide
+    desc: Beginner's tutorial
+  - url: https://www.midjourney.com/account
+    icon: fas fa-credit-card
+    name: Subscription
+    desc: $10-60/month plans
+  rating_stars: 5
+  rating_text: 4.9/5 Rating
+  cta_text: Join Discord
+  cta_url: https://www.midjourney.com
+- icon: fas fa-chart-bar
+  title: AI Trading Assistants
+  tag: Finance AI
+  description: AI-powered tools for market analysis, trading signals, and investment research.
+  features:
+  - Market sentiment analysis
+  - Automated trading signals
+  - Risk assessment algorithms
+  - Portfolio optimization
+  - Real-time alerts
+  links:
+  - url: https://www.tradingview.com
+    icon: fas fa-chart-line
+    name: TradingView AI
+    desc: Pattern recognition
+  - url: https://www.trendspider.com
+    icon: fas fa-spider
+    name: TrendSpider
+    desc: Automated analysis
+  - url: https://www.chaos.trade
+    icon: fas fa-bolt
+    name: Chaos AI
+    desc: Trading signals
+  rating_stars: 4
+  rating_text: 4.6/5 Rating
+  cta_text: Try TradingView
+  cta_url: https://www.tradingview.com
+- icon: fas fa-video
+  title: AI Video Tools
+  tag: Video Creation
+  description: AI-powered video creation, editing, and enhancement tools for content creators.
+  features:
+  - Text-to-video generation
+  - Auto-editing capabilities
+  - Voice synthesis
+  - Background removal
+  - Auto-captioning
+  links:
+  - url: https://www.descript.com
+    icon: fas fa-film
+    name: Descript
+    desc: AI video editing
+  - url: https://www.runwayml.com
+    icon: fas fa-magic
+    name: Runway ML
+    desc: Video generation
+  - url: https://www.synthesia.io
+    icon: fas fa-user-tie
+    name: Synthesia
+    desc: AI avatars
+  rating_stars: 4
+  rating_text: 4.3/5 Rating
+  cta_text: Try Descript
+  cta_url: https://www.descript.com
+- icon: fas fa-music
+  title: AI Audio Tools
+  tag: Audio Production
+  description: AI tools for audio enhancement, voice generation, and music production.
+  features:
+  - Text-to-speech synthesis
+  - Audio enhancement
+  - Music generation
+  - Podcast editing
+  - Noise removal
+  links:
+  - url: https://www.murf.ai
+    icon: fas fa-microphone-alt
+    name: Murf AI
+    desc: AI voiceovers
+  - url: https://www.boomy.com
+    icon: fas fa-headphones
+    name: Boomy
+    desc: AI music creation
+  - url: https://www.adobe.com/products/podcast.html
+    icon: fas fa-podcast
+    name: Adobe Podcast AI
+    desc: Audio enhancement
+  rating_stars: 4
+  rating_text: 4.5/5 Rating
+  cta_text: Try Murf AI
+  cta_url: https://www.murf.ai
+comparison:
+  title: AI Tools Comparison
+  headers:
+  - AI Tool
+  - Best For
+  - Free Tier
+  - Paid Plans Start
+  - Learning Curve
+  - Output Quality
+  rows:
+  - - text: ChatGPT Plus
+      highlight: false
+    - text: Writing, coding, analysis
+      highlight: false
+    - text: Yes (GPT-3.5)
+      highlight: true
+    - text: $20/month
+      highlight: false
+    - text: Easy
+      highlight: false
+    - text: Excellent
+      highlight: true
+  - - text: Jasper AI
+      highlight: false
+    - text: Marketing content
+      highlight: false
+    - text: Trial only
+      highlight: false
+    - text: $49/month
+      highlight: false
+    - text: Easy
+      highlight: false
+    - text: Excellent
+      highlight: true
+  - - text: Midjourney
+      highlight: false
+    - text: AI art generation
+      highlight: false
+    - text: Limited free
+      highlight: false
+    - text: $10/month
+      highlight: false
+    - text: Medium
+      highlight: false
+    - text: Outstanding
+      highlight: true
+  - - text: Descript
+      highlight: false
+    - text: Video editing
+      highlight: false
+    - text: 'Yes'
+      highlight: true
+    - text: $15/month
+      highlight: false
+    - text: Easy
+      highlight: false
+    - text: Very Good
+      highlight: false
+  - - text: Murf AI
+      highlight: false
+    - text: Voice generation
+      highlight: false
+    - text: Yes (limited)
+      highlight: true
+    - text: $19/month
+      highlight: false
+    - text: Easy
+      highlight: false
+    - text: Excellent
+      highlight: true
+education:
+  title: AI Learning Resources
+  resources:
+  - icon: fas fa-graduation-cap
+    title: AI Basics Course
+    description: Learn how to effectively use AI tools for business and personal productivity.
+    link_text: Start Learning
+    link_url: https://www.youtube.com/watch?v=ai-basics
+  - icon: fas fa-lightbulb
+    title: Prompt Engineering
+    description: Master the art of writing effective prompts for better AI results.
+    link_text: Learn Prompts
+    link_url: https://www.youtube.com/watch?v=prompt-engineering
+  - icon: fas fa-chart-line
+    title: AI Business Tools
+    description: Implement AI tools in your business workflow for maximum efficiency.
+    link_text: Business Guide
+    link_url: https://www.youtube.com/watch?v=ai-business
+disclaimer: 'Important: AI tools are assistants, not replacements for human judgment. Always verify AI-generated content before use. Prices and features may change.'

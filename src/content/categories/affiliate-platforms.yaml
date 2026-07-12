@@ -1,0 +1,274 @@
+type: platform
+title: Affiliate Platforms - Swahili Hacks
+nav_label: Affiliate Platforms
+icon: fas fa-handshake
+card_teaser: High-commission programs
+card_bullets:
+- High-ticket affiliate programs
+- Recurring commission systems
+- Affiliate marketing tools
+card_cta_text: Join Programs
+card_bg_image: /images/tool6.jpg
+trust_tag: High-commission affiliate programs tested for reliability
+stats:
+- number: 15+
+  label: Programs
+- number: 40%
+  label: Avg. Commission
+- number: $1k+
+  label: Potential/Month
+h1: Affiliate Platforms & Programs
+intro: As an engineer, I've analyzed these affiliate programs for commission structures, payment reliability, and conversion rates. These platforms offer some of the highest commissions in their industries.
+warning: 'Note: Earnings depend on your marketing efforts. Start with 1-2 programs and scale gradually.'
+platforms:
+- icon: fas fa-cube
+  title: ClickBank
+  tag: Digital Products
+  description: Largest digital marketplace for affiliate marketing. Specializes in digital products with high commissions (up to 75%).
+  features:
+  - Up to 75% commissions
+  - Recurring commissions
+  - 2-tier referral system
+  - Weekly payments
+  - 30-day cookie duration
+  links:
+  - url: https://www.clickbank.com/marketplace/health-fitness
+    icon: fas fa-heartbeat
+    name: Health & Fitness
+    desc: Highest converting
+  - url: https://www.clickbank.com/marketplace/make-money-online
+    icon: fas fa-chart-line
+    name: Make Money Online
+    desc: Digital courses
+  - url: https://www.clickbank.com/marketplace/self-help
+    icon: fas fa-brain
+    name: Self Help
+    desc: Ebooks & courses
+  rating_stars: 4
+  rating_text: 4.6/5 Rating
+  cta_text: Join Free
+  cta_url: https://www.clickbank.com
+- icon: fab fa-amazon
+  title: Amazon Associates
+  tag: Physical Products
+  description: World's largest retail affiliate program. Trusted brand with millions of products to promote.
+  features:
+  - 1-10% commission rates
+  - 24-hour cookie
+  - Trusted brand recognition
+  - Billions of products
+  - Easy site integration
+  links:
+  - url: https://affiliate-program.amazon.com
+    icon: fas fa-external-link-alt
+    name: Amazon Associates
+    desc: Official program
+  - url: https://affiliate-program.amazon.com/help/node/topic/GRXPHT8U84RAYDXU
+    icon: fas fa-percentage
+    name: Commission Rates
+    desc: Category breakdown
+  - url: https://affiliate-program.amazon.com/builder
+    icon: fas fa-tools
+    name: Affiliate Tools
+    desc: Links & widgets
+  rating_stars: 4
+  rating_text: 4.2/5 Rating
+  cta_text: Sign Up Free
+  cta_url: https://affiliate-program.amazon.com
+- icon: fas fa-shopping-bag
+  title: ShareASale
+  tag: Diverse Merchants
+  description: Large network with 4,900+ merchants across all categories. Known for reliable payments and good support.
+  features:
+  - 4,900+ merchants
+  - 20-50% commissions
+  - Real-time reporting
+  - Monthly payments
+  - Dedicated support
+  links:
+  - url: https://www.shareasale.com/info/merchants/
+    icon: fas fa-store
+    name: All Merchants
+    desc: Browse 4,900+ programs
+  - url: https://www.shareasale.com/info/affiliate-benefits/
+    icon: fas fa-award
+    name: Affiliate Benefits
+    desc: Program features
+  - url: https://www.shareasale.com/info/affiliate-resources/
+    icon: fas fa-graduation-cap
+    name: Resources
+    desc: Training & guides
+  rating_stars: 5
+  rating_text: 4.9/5 Rating
+  cta_text: Join Network
+  cta_url: https://www.shareasale.com
+- icon: fas fa-robot
+  title: PartnerStack
+  tag: SaaS & Software
+  description: Premium affiliate network specializing in SaaS, software, and high-ticket tech products with recurring commissions.
+  features:
+  - SaaS & software focus
+  - Recurring commissions
+  - $100+ average commission
+  - Dedicated manager
+  - Advanced tracking
+  links:
+  - url: https://www.partnerstack.com/affiliates
+    icon: fas fa-external-link-alt
+    name: Affiliate Programs
+    desc: Browse software offers
+  - url: https://www.partnerstack.com/blog
+    icon: fas fa-book
+    name: Resources
+    desc: Affiliate guides
+  - url: https://www.partnerstack.com/success-stories
+    icon: fas fa-chart-line
+    name: Success Stories
+    desc: Case studies
+  rating_stars: 4
+  rating_text: 4.7/5 Rating
+  cta_text: Apply Now
+  cta_url: https://www.partnerstack.com
+- icon: fas fa-plane
+  title: Travel Affiliate Programs
+  tag: High Ticket
+  description: Luxury travel affiliate programs with high commissions. Perfect for travel bloggers and influencers.
+  features:
+  - $50-500+ commissions
+  - 'Booking.com: up to 40%'
+  - 'Expedia: 4-8% commission'
+  - 'TripAdvisor: CPA model'
+  - Luxury travel programs
+  links:
+  - url: https://www.booking.com/affiliate-program
+    icon: fas fa-hotel
+    name: Booking.com
+    desc: Up to 40% commission
+  - url: https://www.expedia.com/p/affiliate
+    icon: fas fa-plane-departure
+    name: Expedia
+    desc: 4-8% on bookings
+  - url: https://www.tripadvisor.com/Affiliates
+    icon: fas fa-map-marked-alt
+    name: TripAdvisor
+    desc: CPA commissions
+  rating_stars: 4
+  rating_text: 4.3/5 Rating
+  cta_text: Join Booking.com
+  cta_url: https://www.booking.com/affiliate-program
+- icon: fas fa-tools
+  title: Affiliate Tools
+  tag: Management
+  description: Essential tools for managing multiple affiliate programs, tracking performance, and optimizing conversions.
+  features:
+  - Link tracking & cloaking
+  - Performance analytics
+  - Commission tracking
+  - Landing page builders
+  - Email marketing integration
+  links:
+  - url: https://www.thirstyaffiliates.com
+    icon: fas fa-link
+    name: ThirstyAffiliates
+    desc: Link management
+  - url: https://www.prettylinks.com
+    icon: fas fa-magic
+    name: Pretty Links
+    desc: Link cloaking
+  - url: https://affiliatetracking.com
+    icon: fas fa-chart-bar
+    name: Affiliate Tracking
+    desc: Performance analytics
+  rating_stars: 4
+  rating_text: 4.8/5 Rating
+  cta_text: Get Tools
+  cta_url: https://www.thirstyaffiliates.com
+comparison:
+  title: Affiliate Program Comparison
+  headers:
+  - Platform
+  - Avg. Commission
+  - Cookie Duration
+  - Payment Frequency
+  - Minimum Payout
+  - Best For
+  rows:
+  - - text: ClickBank
+      highlight: false
+    - text: Up to 75%
+      highlight: true
+    - text: 30 days
+      highlight: false
+    - text: Weekly
+      highlight: false
+    - text: $100
+      highlight: false
+    - text: Digital products
+      highlight: false
+  - - text: Amazon
+      highlight: false
+    - text: 1-10%
+      highlight: false
+    - text: 24 hours
+      highlight: false
+    - text: Monthly
+      highlight: false
+    - text: $10
+      highlight: false
+    - text: General blogs
+      highlight: false
+  - - text: ShareASale
+      highlight: false
+    - text: 20-50%
+      highlight: true
+    - text: Varies
+      highlight: false
+    - text: Monthly
+      highlight: false
+    - text: $50
+      highlight: false
+    - text: Niche websites
+      highlight: false
+  - - text: PartnerStack
+      highlight: false
+    - text: $100+ per sale
+      highlight: true
+    - text: Varies
+      highlight: false
+    - text: Monthly
+      highlight: false
+    - text: $100
+      highlight: false
+    - text: Tech/SaaS sites
+      highlight: false
+  - - text: Booking.com
+      highlight: false
+    - text: Up to 40%
+      highlight: true
+    - text: 7-30 days
+      highlight: false
+    - text: Monthly
+      highlight: false
+    - text: $50
+      highlight: false
+    - text: Travel sites
+      highlight: false
+education:
+  title: Affiliate Marketing Resources
+  resources:
+  - icon: fas fa-graduation-cap
+    title: Beginner's Guide
+    description: Complete step-by-step guide to starting affiliate marketing from scratch.
+    link_text: Watch Tutorial
+    link_url: https://www.youtube.com/watch?v=affiliate-basics
+  - icon: fas fa-chart-line
+    title: Advanced Strategies
+    description: Scale your affiliate income with advanced marketing techniques.
+    link_text: Learn More
+    link_url: https://www.youtube.com/watch?v=advanced-affiliate
+  - icon: fas fa-tools
+    title: Tool Stack
+    description: Essential tools every affiliate marketer needs for success.
+    link_text: Get Tools
+    link_url: https://www.youtube.com/watch?v=affiliate-tools
+disclaimer: 'Important: Affiliate income requires consistent effort. These are my tested recommendations. Results vary based on your marketing efforts and audience.'

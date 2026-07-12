@@ -1,0 +1,154 @@
+---
+// PlatformCategory.astro
+//
+// Renders the "platform" category type: intro + rich platform cards (with
+// feature lists, ratings, and CTA buttons) + an optional comparison table +
+// an optional "education resources" grid. Used by Finance Management, AI
+// Tools, Content Creation, Digital Services, E-commerce, Remote Work,
+// Affiliate Platforms.
+
+import type { CollectionEntry } from 'astro:content';
+
+type Props = { entry: Extract<CollectionEntry<'categories'>['data'], { type: 'platform' }> };
+const { entry } = Astro.props;
+---
+
+<section class="category-intro">
+  <h1>{entry.h1}</h1>
+  <p>{entry.intro}</p>
+  {
+    entry.warning && (
+      <div class="warning-note">
+        <i class="fas fa-exclamation-triangle" />
+        <strong>Warning:</strong> {entry.warning}
+      </div>
+    )
+  }
+</section>
+
+<div class="platforms-grid">
+  {
+    entry.platforms.map((platform) => (
+      <div class="platform-card">
+        <div class="platform-header">
+          <div class="platform-icon">
+            <i class={platform.icon} />
+          </div>
+          <div class="platform-title">
+            <h3>{platform.title}</h3>
+            {platform.tag && <span class="platform-tag">{platform.tag}</span>}
+          </div>
+        </div>
+
+        <div class="platform-content">
+          {platform.description && <p class="platform-description">{platform.description}</p>}
+
+          {platform.features.length > 0 && (
+            <div class="platform-features">
+              <h4>Key Features:</h4>
+              <ul>
+                {platform.features.map((feature) => (
+                  <li>
+                    <i class="fas fa-check" /> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {platform.links.length > 0 && (
+            <div class="platform-links">
+              <h4>Platform Access:</h4>
+              <div class="link-grid">
+                {platform.links.map((link) => (
+                  <a href={link.url} target="_blank" rel="noopener noreferrer sponsored" class="platform-link">
+                    <i class={link.icon || 'fas fa-external-link-alt'} />
+                    <div>
+                      <strong>{link.name}</strong>
+                      {link.desc && <span>{link.desc}</span>}
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <div class="platform-footer">
+            {platform.rating_stars !== undefined && (
+              <div class="rating">
+                <span class="stars">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <i class={i < (platform.rating_stars ?? 0) ? 'fas fa-star' : 'far fa-star'} />
+                  ))}
+                </span>
+                {platform.rating_text && <span class="rating-text">{platform.rating_text}</span>}
+              </div>
+            )}
+            {platform.cta_url && (
+              <a href={platform.cta_url} target="_blank" rel="noopener noreferrer sponsored" class="btn primary-btn">
+                {platform.cta_text} <i class="fas fa-rocket" />
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    ))
+  }
+</div>
+
+{
+  entry.comparison && (
+    <section class="comparison-section">
+      <h2>{entry.comparison.title}</h2>
+      <div class="comparison-table">
+        <table>
+          <thead>
+            <tr>
+              {entry.comparison.headers.map((h) => (
+                <th>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {entry.comparison.rows.map((row) => (
+              <tr>
+                {row.map((cell, i) => (
+                  i === 0
+                    ? <td><strong>{cell.text}</strong></td>
+                    : <td class={cell.highlight ? 'green' : undefined}>{cell.text}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  )
+}
+
+{
+  entry.education && (
+    <section class="education-section">
+      <h2>{entry.education.title}</h2>
+      <div class="resource-grid">
+        {entry.education.resources.map((resource) => (
+          <div class="resource-card">
+            <i class={resource.icon} />
+            <h3>{resource.title}</h3>
+            {resource.description && <p>{resource.description}</p>}
+            {resource.link_url && (
+              <a href={resource.link_url} target="_blank" rel="noopener noreferrer" class="resource-link">
+                {resource.link_text} <i class="fas fa-play-circle" />
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
+<div class="disclaimer professional-disclaimer">
+  <i class="fas fa-info-circle"></i>
+  {entry.disclaimer}
+</div>

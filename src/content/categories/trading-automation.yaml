@@ -1,0 +1,104 @@
+type: simple
+title: Trading Automation - Swahili Hacks
+nav_label: Trading Automation
+icon: fas fa-robot
+card_teaser: Smart bots for 24/7 trading
+card_bullets:
+- Algorithmic trading bots
+- Signal providers
+- Backtesting tools
+card_cta_text: Automate Trading
+card_bg_image: /images/tool4.jpg
+trust_tag: Smart trading automation for 24/7 market opportunities
+stats:
+- number: 10+
+  label: Bots/Systems
+- number: 100%
+  label: Backtested
+- number: 24/7
+  label: Trading
+h1: Trading Automation Systems
+intro: As an engineer, I've tested these automation tools for reliability, performance, and risk management. Each system offers disciplined, emotion-free trading.
+warning: Automated trading involves significant risk. Only trade with capital you can afford to lose.
+groups:
+- icon: fas fa-robot
+  title: Algorithmic Trading Bots
+  description: Automated trading systems that execute trades based on algorithms.
+  links:
+  - url: https://www.mql5.com
+    icon: fas fa-external-link-alt
+    name: MQL5 Marketplace
+    desc: Expert Advisors for MT4/5
+  - url: https://www.cryptohopper.com
+    icon: fas fa-external-link-alt
+    name: Cryptohopper
+    desc: Crypto trading bot
+  - url: https://www.3commas.io
+    icon: fas fa-external-link-alt
+    name: 3Commas
+    desc: Trading bots & signals
+- icon: fas fa-bell
+  title: Signal Providers
+  description: Receive trading signals that can be automated for execution.
+  links:
+  - url: https://www.tradingview.com/scripts
+    icon: fas fa-external-link-alt
+    name: TradingView Signals
+    desc: Community trading ideas
+  - url: https://www.mql5.com/en/signals
+    icon: fas fa-external-link-alt
+    name: MQL5 Signals
+    desc: Copy trading service
+  - url: https://www.duplitrade.com
+    icon: fas fa-external-link-alt
+    name: DupliTrade
+    desc: Professional signal copying
+- icon: fas fa-chart-bar
+  title: Backtesting Platforms
+  description: Test your trading strategies on historical data before going live.
+  links:
+  - url: https://www.quantconnect.com
+    icon: fas fa-external-link-alt
+    name: QuantConnect
+    desc: Algorithmic trading platform
+  - url: https://www.metatrader4.com/enu/trading-platform/features/strategy-tester
+    icon: fas fa-external-link-alt
+    name: MT4 Strategy Tester
+    desc: Built-in backtesting
+  - url: https://www.tradingview.com/chart
+    icon: fas fa-external-link-alt
+    name: TradingView Backtesting
+    desc: Strategy testing tools
+- icon: fas fa-cogs
+  title: Trading Infrastructure
+  description: Infrastructure and tools for running automated trading systems.
+  links:
+  - url: https://www.aws.amazon.com
+    icon: fas fa-external-link-alt
+    name: AWS EC2
+    desc: Cloud VPS for bots
+  - url: https://www.digitalocean.com
+    icon: fas fa-external-link-alt
+    name: DigitalOcean
+    desc: Affordable VPS hosting
+  - url: https://www.vultr.com
+    icon: fas fa-external-link-alt
+    name: Vultr
+    desc: High-performance VPS
+- icon: fas fa-code
+  title: Development Tools
+  description: Tools for developing and optimizing your own trading algorithms.
+  links:
+  - url: https://www.metatrader5.com/en/terminal/help/develop
+    icon: fas fa-external-link-alt
+    name: MQL5 Documentation
+    desc: Programming guide
+  - url: https://www.pinecoders.com
+    icon: fas fa-external-link-alt
+    name: Pine Script
+    desc: TradingView scripting
+  - url: https://www.backtrader.com
+    icon: fas fa-external-link-alt
+    name: Backtrader
+    desc: Python backtesting
+disclaimer: 'Important: These are affiliate links. Trading automation carries high risk. Past performance doesn''t guarantee future results.'

@@ -1,0 +1,215 @@
+---
+// JourneyCategory.astro
+//
+// Renders the "journey" category type: a staged, scroll-tracked progression
+// (currently only used by Trading & Finance — Stage 1 Beginner through
+// Stage 4 Pro). Includes a client-side script (see the <script> at the
+// bottom) that highlights the active stage as the user scrolls; this is the
+// one page on the site with real interactivity, which is why it's its own
+// template rather than a variant of PlatformCategory.
+
+import type { CollectionEntry } from 'astro:content';
+
+type Props = { entry: Extract<CollectionEntry<'categories'>['data'], { type: 'journey' }> };
+const { entry } = Astro.props;
+---
+
+<section class="progress-tracker">
+  <h2>{entry.tracker_title}</h2>
+  <div class="progress-steps">
+    {
+      entry.steps.map((step, i) => (
+        <div class="step" class:list={[{ active: i === 0 }]} data-step={step.number}>
+          <div class="step-number">{step.number}</div>
+          <div class="step-content">
+            <h4>{step.title}</h4>
+            <p>{step.subtitle}</p>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<section class="category-intro">
+  <h1>{entry.h1}</h1>
+  <p>{entry.intro}</p>
+  {
+    entry.motivation && (
+      <div class="motivation-note">
+        <i class="fas fa-rocket" />
+        <strong>Ready to begin?</strong> {entry.motivation.replace(/^Ready to begin\?\s*/, '')}
+      </div>
+    )
+  }
+</section>
+
+{
+  entry.stages.map((stage, index) => (
+    <section class="stage-section" id={stage.id || `stage-${index + 1}`}>
+      <div class="stage-header">
+        <div class={`stage-badge ${stage.badge_class}`.trim()}>{stage.badge}</div>
+        <h2>{stage.heading}</h2>
+        {stage.description && <p>{stage.description}</p>}
+      </div>
+
+      <div class="platforms-grid">
+        {stage.cards.map((card) => (
+          <div class="platform-card">
+            <div class="platform-header">
+              <div class="platform-icon">
+                <i class={card.icon} />
+              </div>
+              <div class="platform-title">
+                <h3>{card.title}</h3>
+                {card.tag && <span class="platform-tag">{card.tag}</span>}
+              </div>
+            </div>
+
+            <div class="platform-content">
+              {card.description && <p class="platform-description">{card.description}</p>}
+
+              {card.features.length > 0 && (
+                <div class="platform-features">
+                  <h4>Why This Stage:</h4>
+                  <ul>
+                    {card.features.map((feature) => (
+                      <li>
+                        <i class="fas fa-check" /> {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
+              {card.progress_pct && (
+                <div class="learning-progress">
+                  <div class="progress-bar">
+                    <div class="progress-fill" style={`width: ${card.progress_pct}`} />
+                  </div>
+                  {card.progress_text && <p class="progress-text">{card.progress_text}</p>}
+                </div>
+              )}
+
+              {card.links.length > 0 && (
+                <div class="platform-links">
+                  <h4>Get Started:</h4>
+                  <div class="link-grid">
+                    {card.links.map((link) => (
+                      <a href={link.url} target="_blank" rel="noopener noreferrer sponsored" class="platform-link">
+                        <i class={link.icon || 'fas fa-external-link-alt'} />
+                        <div>
+                          <strong>{link.name}</strong>
+                          {link.desc && <span>{link.desc}</span>}
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )}
+
+              <div class="platform-footer">
+                {card.next_step && (
+                  <div class="next-step">
+                    <i class="fas fa-arrow-right" />
+                    <span>{card.next_step}</span>
+                  </div>
+                )}
+                {card.cta_url && (
+                  <a href={card.cta_url} target="_blank" rel="noopener noreferrer sponsored" class="btn primary-btn">
+                    {card.cta_text} <i class="fas fa-play-circle" />
+                  </a>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  ))
+}
+
+{
+  entry.journey_cta && (
+    <section class="journey-cta">
+      <div class="cta-content">
+        <h2>
+          <i class="fas fa-trophy" /> {entry.journey_cta.heading}
+        </h2>
+        {entry.journey_cta.text && <p>{entry.journey_cta.text}</p>}
+
+        {entry.journey_cta.stats.length > 0 && (
+          <div class="cta-stats">
+            {entry.journey_cta.stats.map((stat) => (
+              <div class="cta-stat">
+                <div class="cta-stat-number">{stat.number}</div>
+                <div class="cta-stat-label">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        )}
+
+        {entry.journey_cta.buttons.length > 0 && (
+          <div class="cta-buttons">
+            {entry.journey_cta.buttons.map((button, i) => (
+              <a href={button.url} class={i === 0 ? 'btn primary-btn large-btn' : 'btn secondary-btn'}>
+                {button.text}
+              </a>
+            ))}
+          </div>
+        )}
+
+        {entry.journey_cta.testimonial && (
+          <div class="social-proof">
+            <p>
+              <i class="fas fa-quote-left" /> {entry.journey_cta.testimonial.quote} <i class="fas fa-quote-right" />
+            </p>
+            <div class="testimonial-author">
+              {entry.journey_cta.testimonial.author && <strong>— {entry.journey_cta.testimonial.author}</strong>}
+              {entry.journey_cta.testimonial.role && <span>{entry.journey_cta.testimonial.role}</span>}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}
+
+<div class="disclaimer professional-disclaimer">
+  <i class="fas fa-info-circle"></i>
+  {entry.disclaimer}
+</div>
+
+<script>
+  // Interactive Progress Tracker
+  // Highlights the current stage in the tracker as the user scrolls, and
+  // lets clicking a step jump to that stage. Runs client-side only on
+  // "journey" type pages (currently just /trading).
+  document.addEventListener('DOMContentLoaded', () => {
+    const steps = document.querySelectorAll<HTMLElement>('.progress-tracker .step');
+    const stageSections = document.querySelectorAll<HTMLElement>('.stage-section');
+
+    function updateProgress() {
+      let currentStage = 1;
+      stageSections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+        if (rect.top <= window.innerHeight / 2) {
+          currentStage = index + 1;
+        }
+      });
+      steps.forEach((step, index) => {
+        step.classList.toggle('active', index + 1 <= currentStage);
+      });
+    }
+
+    steps.forEach((step, index) => {
+      step.addEventListener('click', () => {
+        const section = stageSections[index];
+        section?.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+
+    window.addEventListener('scroll', updateProgress);
+    updateProgress();
+  });
+</script>

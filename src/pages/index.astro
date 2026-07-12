@@ -1,0 +1,71 @@
+---
+// index.astro — the homepage.
+//
+// Purpose: renders the "Recommended Professional Tools" grid by reading
+// every entry in the categories content collection. Previously this grid
+// was 12 hand-written <div class="tool-card"> blocks; now it's a loop, so
+// adding a 13th category YAML file automatically adds a 13th card here too.
+
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import ToolCard from '../components/ToolCard.astro';
+
+const categories = await getCollection('categories');
+
+// Preserve the original homepage ordering (matches the old index.html row order).
+const ORDER = [
+  'trading', 'productivity', 'online-income',
+  'trading-automation', 'learning-courses', 'affiliate-platforms',
+  'ai-tools', 'content-creation', 'ecommerce',
+  'finance-management', 'remote-work', 'digital-services',
+];
+const orderedCategories = ORDER
+  .map((slug) => categories.find((c) => c.id === slug))
+  .filter((c): c is NonNullable<typeof c> => Boolean(c));
+---
+
+<BaseLayout
+  title="Swahili Hacks - Professional Tools & Resources"
+  description="Reliable, professional tools for serious results — curated by a Chemical & Process Engineer."
+  path="/"
+>
+  <Header
+    trustTag="Reliable, professional tools for serious results"
+    stats={[
+      { number: '12+', label: 'Tool Categories' },
+      { number: '100%', label: 'Verified' },
+      { number: '24/7', label: 'Support' },
+    ]}
+  />
+
+  <main class="container">
+    <div class="section-header">
+      <h2>Recommended Professional Tools</h2>
+      <p class="section-subtitle">Handpicked by an engineer for maximum efficiency and results</p>
+    </div>
+
+    <section class="tools-grid">
+      {
+        orderedCategories.map((category) => (
+          <ToolCard
+            slug={category.id}
+            icon={category.data.icon}
+            title={category.data.nav_label}
+            teaser={category.data.card_teaser}
+            bullets={category.data.card_bullets}
+            bgImage={category.data.card_bg_image}
+            ctaText={category.data.card_cta_text}
+          />
+        ))
+      }
+    </section>
+
+    <p class="disclaimer professional-disclaimer">
+      <i class="fas fa-info-circle"></i> Some links are affiliate links. You pay nothing extra, but you support our work.
+    </p>
+  </main>
+
+  <Footer />
+</BaseLayout>

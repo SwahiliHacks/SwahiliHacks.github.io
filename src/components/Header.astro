@@ -1,0 +1,47 @@
+---
+// Header.astro
+//
+// Purpose: the profile block + stats bar at the top of every page.
+// Why it exists: was copy-pasted at the top of all 14 HTML files before.
+// What happens if removed: pages lose the brand header entirely.
+// How to modify safely: change props per-page (trustTag, stats) rather than
+// editing this file, unless you're changing something for the whole site
+// (e.g. the profile photo or name).
+
+interface Stat {
+  number: string;
+  label: string;
+}
+
+interface Props {
+  trustTag: string;
+  stats: Stat[];
+}
+
+const { trustTag, stats } = Astro.props;
+---
+
+<header class="professional-header">
+  <div class="header-content">
+    <div class="brand-info">
+      <div class="profile-section">
+        <img src="/images/profile.jpg.png" alt="Chemical and Process Engineer" class="profile-img" />
+        <div class="profile-text">
+          <h2><a href="/" style="color: inherit; text-decoration: none;">Swahili Hacks</a></h2>
+          <p class="expert-tag">Curated by a <strong>Chemical & Process Engineer</strong></p>
+          <p class="trust-tag">{trustTag}</p>
+        </div>
+      </div>
+      <div class="header-stats">
+        {
+          stats.map((stat) => (
+            <div class="stat">
+              <span class="stat-number">{stat.number}</span>
+              <span class="stat-label">{stat.label}</span>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</header>
