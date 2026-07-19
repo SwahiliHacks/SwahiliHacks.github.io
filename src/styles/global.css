@@ -16,7 +16,10 @@
   4. Profile text sizes increased (name: 2rem→2.5rem, expert: 1rem→1.2rem)
   5. Added hover effects to profile image with scale and rotation
   6. Enhanced shadow effects for profile section
-  7. All changes maintain responsive design for mobile/tablet
+  7. Added decorative rotating ring around profile image
+  8. Added pulse glow animation for profile
+  9. Enhanced stats cards with hover effects and background blur
+  10. All changes maintain responsive design for mobile/tablet
 */
 @import "tailwindcss";
 @import "./legacy.css";
@@ -31,7 +34,15 @@
   display: none !important;
 }
 
-/* Enhanced profile image fallback support */
+/* ===== ENHANCED PROFILE SECTION ===== */
+
+/* Profile image wrapper for ring effect */
+.profile-image-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Enhanced profile image */
 .profile-img {
   width: 180px !important;
   height: 180px !important;
@@ -40,6 +51,9 @@
   object-fit: cover !important;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 2 !important;
 }
 
 .profile-img:hover {
@@ -48,81 +62,142 @@
   box-shadow: 0 15px 45px rgba(28, 117, 188, 0.4) !important;
 }
 
+/* Decorative rotating ring around profile */
+.profile-ring {
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border-radius: 50%;
+  border: 3px solid rgba(28, 117, 188, 0.15);
+  animation: ringSpin 20s linear infinite;
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes ringSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Pulse glow animation for profile */
+@keyframes profileGlow {
+  0%, 100% { 
+    box-shadow: 0 0 20px rgba(28, 117, 188, 0.15);
+  }
+  50% { 
+    box-shadow: 0 0 40px rgba(28, 117, 188, 0.3);
+  }
+}
+
+.profile-image-wrapper {
+  animation: profileGlow 4s ease-in-out infinite;
+}
+
 /* Enhanced profile text sizes */
 .profile-text h2 {
   font-size: 2.5rem !important;
   font-weight: 700 !important;
   letter-spacing: -0.5px !important;
+  transition: color 0.3s ease !important;
+}
+
+.profile-text h2:hover {
+  color: #22c55e !important;
+}
+
+.profile-text h2 a {
+  transition: color 0.3s ease !important;
+}
+
+.profile-text h2 a:hover {
+  color: #22c55e !important;
 }
 
 .expert-tag {
   font-size: 1.2rem !important;
   font-weight: 500 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
+}
+
+.expert-tag .emoji-badge {
+  font-size: 1.3rem !important;
+}
+
+.expert-tag strong {
+  color: white !important;
+  font-weight: 600 !important;
 }
 
 .trust-tag {
   font-size: 1rem !important;
   opacity: 0.9 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.5rem !important;
 }
 
-/* Responsive overrides for profile */
-@media (max-width: 768px) {
-  .profile-img {
-    width: 150px !important;
-    height: 150px !important;
-    border-width: 5px !important;
-  }
-  
-  .profile-text h2 {
-    font-size: 2rem !important;
-  }
-  
-  .expert-tag {
-    font-size: 1rem !important;
-  }
-  
-  .trust-tag {
-    font-size: 0.95rem !important;
-  }
-  
-  .profile-section {
-    gap: 1.5rem !important;
-  }
+.trust-tag .trust-icon {
+  font-size: 1.1rem !important;
 }
 
-@media (max-width: 480px) {
-  .profile-img {
-    width: 130px !important;
-    height: 130px !important;
-    border-width: 4px !important;
-  }
-  
-  .profile-text h2 {
-    font-size: 1.8rem !important;
-  }
-  
-  .expert-tag {
-    font-size: 0.95rem !important;
-  }
-  
-  .trust-tag {
-    font-size: 0.85rem !important;
-  }
+/* ===== ENHANCED STATS CARDS ===== */
+
+/* Stats container */
+.header-stats {
+  display: flex !important;
+  gap: 3rem !important;
+  align-items: center !important;
 }
 
-/* ===== ADDITIONAL STYLES FOR CONSISTENCY ===== */
+/* Individual stat cards */
+.header-stats .stat {
+  text-align: center !important;
+  padding: 0.5rem 1rem !important;
+  border-radius: 12px !important;
+  background: rgba(255, 255, 255, 0.05) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  transition: all 0.3s ease !important;
+  min-width: 80px !important;
+}
 
-/* Ensure header stats are properly aligned */
+.header-stats .stat:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+  transform: translateY(-3px) !important;
+  border-color: rgba(28, 117, 188, 0.3) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+}
+
 .header-stats .stat-number {
   font-size: 2.2rem !important;
   font-weight: 700 !important;
+  color: #22c55e !important;
+  font-family: 'Poppins', sans-serif !important;
+  line-height: 1.2 !important;
+  transition: transform 0.3s ease !important;
+  display: block !important;
+}
+
+.header-stats .stat:hover .stat-number {
+  transform: scale(1.05) !important;
 }
 
 .header-stats .stat-label {
   font-size: 0.9rem !important;
   text-transform: uppercase !important;
   letter-spacing: 1px !important;
+  color: #e2e8f0 !important;
+  font-weight: 400 !important;
+  opacity: 0.8 !important;
+  display: block !important;
 }
+
+/* ===== SMOOTH TRANSITIONS ===== */
 
 /* Smooth transitions for all interactive elements */
 * {
@@ -136,11 +211,199 @@
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%) !important;
 }
 
-/* Additional safety: hide any affiliate-related content */
+/* ===== RESPONSIVE DESIGN ===== */
+
+/* Tablet (768px) */
+@media (max-width: 768px) {
+  /* Profile image */
+  .profile-img {
+    width: 150px !important;
+    height: 150px !important;
+    border-width: 5px !important;
+  }
+
+  .profile-ring {
+    top: -6px !important;
+    left: -6px !important;
+    right: -6px !important;
+    bottom: -6px !important;
+    border-width: 2px !important;
+  }
+
+  /* Profile text */
+  .profile-text h2 {
+    font-size: 2rem !important;
+  }
+  
+  .expert-tag {
+    font-size: 1rem !important;
+    justify-content: center !important;
+  }
+  
+  .trust-tag {
+    font-size: 0.95rem !important;
+    justify-content: center !important;
+  }
+  
+  .profile-section {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 1.5rem !important;
+  }
+
+  /* Stats */
+  .header-stats {
+    justify-content: center !important;
+    gap: 1.5rem !important;
+    flex-wrap: wrap !important;
+  }
+
+  .header-stats .stat {
+    min-width: 60px !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  .header-stats .stat-number {
+    font-size: 1.5rem !important;
+  }
+
+  .header-stats .stat-label {
+    font-size: 0.8rem !important;
+  }
+
+  /* Brand info */
+  .brand-info {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 2rem !important;
+  }
+
+  /* Adjust glow animation for mobile */
+  @keyframes profileGlow {
+    0%, 100% { 
+      box-shadow: 0 0 15px rgba(28, 117, 188, 0.1);
+    }
+    50% { 
+      box-shadow: 0 0 25px rgba(28, 117, 188, 0.2);
+    }
+  }
+}
+
+/* Mobile (480px) */
+@media (max-width: 480px) {
+  /* Profile image */
+  .profile-img {
+    width: 130px !important;
+    height: 130px !important;
+    border-width: 4px !important;
+  }
+
+  .profile-ring {
+    top: -5px !important;
+    left: -5px !important;
+    right: -5px !important;
+    bottom: -5px !important;
+    border-width: 2px !important;
+    animation-duration: 30s !important;
+  }
+  
+  .profile-text h2 {
+    font-size: 1.8rem !important;
+  }
+  
+  .expert-tag {
+    font-size: 0.95rem !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+  }
+  
+  .trust-tag {
+    font-size: 0.85rem !important;
+  }
+
+  /* Stats */
+  .header-stats {
+    gap: 1rem !important;
+  }
+
+  .header-stats .stat {
+    min-width: 50px !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+
+  .header-stats .stat-number {
+    font-size: 1.3rem !important;
+  }
+
+  .header-stats .stat-label {
+    font-size: 0.7rem !important;
+  }
+
+  .expert-tag .emoji-badge {
+    font-size: 1rem !important;
+  }
+  
+  .trust-tag .trust-icon {
+    font-size: 0.9rem !important;
+  }
+}
+
+/* ===== ADDITIONAL SAFETY ===== */
+
+/* Hide any affiliate-related content */
 [data-affiliate="true"],
 [class*="affiliate-link"],
-.affiliate-badge {
+.affiliate-badge,
+[class*="affiliate-"] {
   display: none !important;
+}
+
+/* Ensure footer brand tagline is styled */
+.footer-brand .tagline {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-size: 1.05rem !important;
+  line-height: 1.6 !important;
+  margin-bottom: 2rem !important;
+  font-weight: 300 !important;
+}
+
+/* Contact links hover effect */
+.contact a {
+  transition: all 0.3s ease !important;
+}
+
+.contact a:hover {
+  color: #1C75BC !important;
+  transform: translateX(5px) !important;
+}
+
+/* Social icons enhancement */
+.social-icons.professional-icons a {
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.social-icons.professional-icons a::before {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background: #1C75BC !important;
+  border-radius: 50% !important;
+  transform: scale(0) !important;
+  transition: transform 0.3s ease !important;
+  z-index: -1 !important;
+}
+
+.social-icons.professional-icons a:hover::before {
+  transform: scale(1) !important;
+}
+
+.social-icons.professional-icons a:hover {
+  transform: translateY(-5px) scale(1.1) !important;
+  box-shadow: 0 10px 25px rgba(28, 117, 188, 0.3) !important;
 }
 
 /* ===== END OF GLOBAL OVERRIDES ===== */
