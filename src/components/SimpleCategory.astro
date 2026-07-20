@@ -20,8 +20,8 @@ const { entry } = Astro.props;
   {
     entry.warning && (
       <div class="warning-note">
-        <i class="fas fa-exclamation-triangle" />
-        <strong>Warning:</strong> {entry.warning}
+        <i class="fas fa-exclamation-triangle" style="color: #f59e0b;"></i>
+        <strong>Note:</strong> {entry.warning}
       </div>
     )
   }
@@ -40,7 +40,7 @@ const { entry } = Astro.props;
           {group.description && <p>{group.description}</p>}
           <div class="link-list">
             {group.links.map((link) => (
-              <a href={link.url} target="_blank" rel="noopener noreferrer sponsored" class="affiliate-link">
+              <a href={link.url} target="_blank" rel="noopener noreferrer" class="affiliate-link">
                 <i class={link.icon || 'fas fa-external-link-alt'} />
                 <div>
                   <strong>{link.name}</strong>
@@ -55,7 +55,166 @@ const { entry } = Astro.props;
   }
 </section>
 
-<div class="disclaimer professional-disclaimer">
-  <i class="fas fa-info-circle"></i>
-  {entry.disclaimer}
-</div>
+<style>
+  .warning-note {
+    background: #fef9e7;
+    border-left: 4px solid #f59e0b;
+    padding: 1rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .warning-note i {
+    margin-top: 0.2rem;
+  }
+
+  .warning-note strong {
+    color: #92400e;
+  }
+
+  .affiliate-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .affiliate-card:hover {
+    border-color: #1C75BC;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  }
+
+  .affiliate-header {
+    background: #f8fafc;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .affiliate-header h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .affiliate-header h3 i {
+    color: #1C75BC;
+    font-size: 1.3rem;
+    width: 1.8rem;
+  }
+
+  .affiliate-content {
+    padding: 1.5rem;
+  }
+
+  .affiliate-content p {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+  }
+
+  .link-list {
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .affiliate-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    background: #f8fafc;
+    border-radius: 6px;
+    text-decoration: none;
+    color: #0f172a;
+    border: 1px solid transparent;
+    transition: all 0.3s ease;
+  }
+
+  .affiliate-link:hover {
+    background: #eef2ff;
+    border-color: #1C75BC;
+    transform: translateX(4px);
+  }
+
+  .affiliate-link i {
+    color: #1C75BC;
+    font-size: 1.1rem;
+    width: 1.5rem;
+    text-align: center;
+  }
+
+  .affiliate-link strong {
+    display: block;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+
+  .affiliate-link span {
+    display: block;
+    font-size: 0.85rem;
+    color: #64748b;
+  }
+
+  .category-intro {
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: #f8fafc;
+    border-radius: 8px;
+  }
+
+  .category-intro h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+  }
+
+  .category-intro p {
+    color: #475569;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .affiliate-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem 0;
+  }
+
+  @media (max-width: 768px) {
+    .category-intro h1 {
+      font-size: 2rem;
+    }
+
+    .affiliate-links {
+      grid-template-columns: 1fr;
+    }
+
+    .affiliate-link {
+      padding: 0.6rem 0.75rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .category-intro {
+      padding: 1.5rem;
+    }
+
+    .category-intro h1 {
+      font-size: 1.6rem;
+    }
+
+    .affiliate-content {
+      padding: 1rem;
+    }
+  }
+</style>
