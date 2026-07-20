@@ -12,7 +12,7 @@
 // 1. Removed all emojis (👨‍🔬, ✨, ⚡)
 // 2. Replaced green (#22c55e) with primary blue (#1C75BC)
 // 3. Professional clean design
-// 4. Fixed header alignment for tablet and desktop
+// 4. Fixed header alignment for desktop, tablet and mobile - all centered
 
 interface Stat {
   number: string;
@@ -101,22 +101,27 @@ const displayTrustTag = trustTag || defaultTrustTag;
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative;
+    z-index: 1;
   }
 
-  /* ===== BRAND INFO ===== */
+  /* ===== BRAND INFO - CENTERED ON ALL SCREENS ===== */
   .brand-info {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    flex-wrap: wrap;
+    text-align: center;
     gap: 2rem;
   }
 
-  /* ===== PROFILE SECTION ===== */
+  /* ===== PROFILE SECTION - CENTERED ===== */
   .profile-section {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 2rem;
+    text-align: center;
+    gap: 1.5rem;
   }
 
   .profile-image-wrapper {
@@ -203,7 +208,9 @@ const displayTrustTag = trustTag || defaultTrustTag;
     font-weight: 500;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+    flex-wrap: wrap;
   }
 
   .expert-tag strong {
@@ -217,15 +224,21 @@ const displayTrustTag = trustTag || defaultTrustTag;
     opacity: 0.9;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
+    flex-wrap: wrap;
   }
 
-  /* ===== STATS SECTION ===== */
+  /* ===== STATS SECTION - CENTERED ===== */
   .header-stats {
     display: flex;
-    gap: 2.5rem;
+    justify-content: center;
     align-items: center;
-    flex-shrink: 0;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
   }
 
   .stat {
@@ -237,6 +250,8 @@ const displayTrustTag = trustTag || defaultTrustTag;
     border: 1px solid rgba(255, 255, 255, 0.05);
     transition: all 0.3s ease;
     min-width: 80px;
+    flex: 1 0 auto;
+    max-width: 150px;
   }
 
   .stat:hover {
@@ -269,76 +284,8 @@ const displayTrustTag = trustTag || defaultTrustTag;
     opacity: 0.8;
   }
 
-  /* ===== DESKTOP (1025px+) - Already working ===== */
-  /* No changes needed for desktop */
-
-  /* ===== TABLET (769px - 1024px) - FIXED ===== */
-  @media (max-width: 1024px) and (min-width: 769px) {
-    .brand-info {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      gap: 2rem;
-    }
-
-    .profile-section {
-      flex-direction: column;
-      text-align: center;
-      gap: 1.5rem;
-    }
-
-    .profile-text h2 {
-      font-size: 2.2rem !important;
-    }
-
-    .expert-tag {
-      justify-content: center;
-      font-size: 1.1rem !important;
-    }
-
-    .trust-tag {
-      justify-content: center;
-      font-size: 0.95rem !important;
-    }
-
-    .header-stats {
-      justify-content: center;
-      gap: 2rem;
-      flex-wrap: wrap;
-      width: 100%;
-    }
-
-    .stat {
-      min-width: 80px;
-      padding: 0.75rem 1.25rem;
-      flex: 1 0 auto;
-      max-width: 150px;
-    }
-
-    .stat-number {
-      font-size: 1.8rem !important;
-    }
-
-    .stat-label {
-      font-size: 0.8rem !important;
-    }
-  }
-
-  /* ===== MOBILE (768px and below) ===== */
+  /* ===== RESPONSIVE: TABLET & MOBILE ===== */
   @media (max-width: 768px) {
-    .brand-info {
-      flex-direction: column;
-      text-align: center;
-      gap: 2rem;
-    }
-
-    .profile-section {
-      flex-direction: column;
-      text-align: center;
-      gap: 1.5rem;
-    }
-
     .profile-img {
       width: 150px !important;
       height: 150px !important;
@@ -359,26 +306,20 @@ const displayTrustTag = trustTag || defaultTrustTag;
 
     .expert-tag {
       font-size: 1rem !important;
-      justify-content: center;
     }
 
     .trust-tag {
       font-size: 0.95rem !important;
-      justify-content: center;
     }
 
     .header-stats {
-      justify-content: center;
       gap: 1.5rem;
-      flex-wrap: wrap;
-      width: 100%;
     }
 
     .stat {
       min-width: 60px;
       padding: 0.75rem 1rem;
-      flex: 1 0 auto;
-      max-width: 130px;
+      max-width: 120px;
     }
 
     .stat-number {
@@ -399,7 +340,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
     }
   }
 
-  /* ===== SMALL MOBILE (480px and below) ===== */
   @media (max-width: 480px) {
     .profile-img {
       width: 130px !important;
@@ -422,8 +362,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
 
     .expert-tag {
       font-size: 0.95rem !important;
-      flex-wrap: wrap;
-      justify-content: center;
     }
 
     .trust-tag {
