@@ -1,0 +1,413 @@
+---
+// src/pages/bookshelf.astro
+// Purpose: Curated bookshelf with books and affiliate links
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+
+// Books data - includes affiliate links to trusted sources
+const books = [
+  {
+    id: 1,
+    title: 'Atomic Habits',
+    author: 'James Clear',
+    description: 'An Easy & Proven Way to Build Good Habits & Break Bad Ones.',
+    category: 'Personal Development',
+    price: '$14.99',
+    cover: '/images/books/atomic-habits.jpg',
+    affiliateUrl: 'https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299',
+    rating: 4.9,
+    featured: true
+  },
+  {
+    id: 2,
+    title: 'The Psychology of Money',
+    author: 'Morgan Housel',
+    description: 'Timeless lessons on wealth, greed, and happiness.',
+    category: 'Finance & Investing',
+    price: '$12.99',
+    cover: '/images/books/psychology-money.jpg',
+    affiliateUrl: 'https://www.amazon.com/Psychology-Money-Timeless-Lessons-Happiness/dp/0857197681',
+    rating: 4.8,
+    featured: true
+  },
+  {
+    id: 3,
+    title: 'Technical Analysis of the Financial Markets',
+    author: 'John J. Murphy',
+    description: 'A Comprehensive Guide to Trading Methods and Applications.',
+    category: 'Trading Education',
+    price: '$29.99',
+    cover: '/images/books/technical-analysis.jpg',
+    affiliateUrl: 'https://www.amazon.com/Technical-Analysis-Financial-Markets-Comprehensive/dp/0735200661',
+    rating: 4.6,
+    featured: false
+  },
+  {
+    id: 4,
+    title: 'Deep Work',
+    author: 'Cal Newport',
+    description: 'Rules for Focused Success in a Distracted World.',
+    category: 'Productivity',
+    price: '$11.99',
+    cover: '/images/books/deep-work.jpg',
+    affiliateUrl: 'https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692',
+    rating: 4.7,
+    featured: false
+  },
+  {
+    id: 5,
+    title: 'The 4-Hour Work Week',
+    author: 'Tim Ferriss',
+    description: 'Escape 9-5, Live Anywhere, and Join the New Rich.',
+    category: 'Entrepreneurship',
+    price: '$12.99',
+    cover: '/images/books/4-hour-workweek.jpg',
+    affiliateUrl: 'https://www.amazon.com/4-Hour-Work-Week-Escape-Live-Anywhere/dp/0307465357',
+    rating: 4.4,
+    featured: false
+  },
+  {
+    id: 6,
+    title: 'Rich Dad Poor Dad',
+    author: 'Robert T. Kiyosaki',
+    description: 'What the Rich Teach Their Kids About Money That the Poor and Middle Class Do Not!',
+    category: 'Finance & Investing',
+    price: '$9.99',
+    cover: '/images/books/rich-dad-poor-dad.jpg',
+    affiliateUrl: 'https://www.amazon.com/Rich-Dad-Poor-Dad-Teach/dp/1612680194',
+    rating: 4.5,
+    featured: false
+  },
+  {
+    id: 7,
+    title: 'The Art of Social Media',
+    author: 'Guy Kawasaki',
+    description: 'Power Tips for Power Users.',
+    category: 'Digital Marketing',
+    price: '$13.99',
+    cover: '/images/books/art-social-media.jpg',
+    affiliateUrl: 'https://www.amazon.com/Art-Social-Media-Power-Users/dp/1591848078',
+    rating: 4.3,
+    featured: false
+  },
+  {
+    id: 8,
+    title: 'Data Science for Business',
+    author: 'Foster Provost',
+    description: 'What You Need to Know about Data Mining and Data-Analytic Thinking.',
+    category: 'Data Science',
+    price: '$24.99',
+    cover: '/images/books/data-science-business.jpg',
+    affiliateUrl: 'https://www.amazon.com/Data-Science-Business-Data-Analytic-Thinking/dp/1449361323',
+    rating: 4.4,
+    featured: false
+  }
+];
+---
+
+<BaseLayout
+  title="Bookshelf - Swahili Hacks"
+  description="Curated books from trusted sources. Find the best books on trading, productivity, finance, and personal development."
+  path="/bookshelf/"
+>
+  <main>
+    <!-- Bookshelf Hero -->
+    <section class="bookshelf-hero">
+      <div class="container">
+        <h1>📚 Swahili Hacks Bookshelf</h1>
+        <p>Curated books from trusted sources. Every book is handpicked for value and quality.</p>
+      </div>
+    </section>
+
+    <!-- Featured Books -->
+    <section class="bookshelf-section">
+      <div class="container">
+        <h2>Featured Books</h2>
+        <div class="book-grid">
+          {books.filter(b => b.featured).map(book => (
+            <div class="book-card featured">
+              <div class="book-badge">⭐ Featured</div>
+              <div class="book-cover">
+                <img src={book.cover} alt={book.title} />
+              </div>
+              <div class="book-content">
+                <span class="book-category">{book.category}</span>
+                <h3>{book.title}</h3>
+                <p class="book-author">by {book.author}</p>
+                <p class="book-description">{book.description}</p>
+                <div class="book-meta">
+                  <span class="book-price">{book.price}</span>
+                  <span class="book-rating">⭐ {book.rating}</span>
+                </div>
+                <a href={book.affiliateUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">
+                  View Book <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- All Books -->
+    <section class="bookshelf-section">
+      <div class="container">
+        <h2>All Books</h2>
+        <div class="book-grid">
+          {books.map(book => (
+            <div class="book-card">
+              <div class="book-cover">
+                <img src={book.cover} alt={book.title} />
+              </div>
+              <div class="book-content">
+                <span class="book-category">{book.category}</span>
+                <h3>{book.title}</h3>
+                <p class="book-author">by {book.author}</p>
+                <p class="book-description">{book.description}</p>
+                <div class="book-meta">
+                  <span class="book-price">{book.price}</span>
+                  <span class="book-rating">⭐ {book.rating}</span>
+                </div>
+                <a href={book.affiliateUrl} target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm">
+                  Buy Now <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Upload Your Book Section -->
+    <section class="upload-section">
+      <div class="container">
+        <div class="upload-content">
+          <h2>📝 Have a Book to Share?</h2>
+          <p>We welcome book recommendations from our community. If you have a book you'd like to feature on our bookshelf, reach out to us!</p>
+          <div class="upload-actions">
+            <a href="mailto:swahilihacks@gmail.com?subject=Book%20Recommendation" class="btn-primary">
+              <i class="fas fa-envelope"></i> Suggest a Book
+            </a>
+            <a href="https://www.amazon.com/kindle-store" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+              <i class="fas fa-external-link-alt"></i> Browse Kindle Store
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .bookshelf-hero {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .bookshelf-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .bookshelf-hero p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+  }
+
+  .bookshelf-section {
+    padding: 4rem 0;
+  }
+
+  .bookshelf-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 2rem;
+  }
+
+  .book-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+  }
+
+  .book-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .book-card:hover {
+    border-color: #1C75BC;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    transform: translateY(-4px);
+  }
+
+  .book-card.featured {
+    border-color: #f59e0b;
+    grid-column: span 2;
+  }
+
+  .book-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #f59e0b;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 1;
+  }
+
+  .book-cover {
+    height: 220px;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .book-cover img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .book-content {
+    padding: 1.5rem;
+  }
+
+  .book-category {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    background: #eef2ff;
+    color: #1C75BC;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .book-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+  }
+
+  .book-author {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+  }
+
+  .book-description {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .book-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .book-price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1C75BC;
+  }
+
+  .book-rating {
+    font-size: 0.9rem;
+    color: #f59e0b;
+  }
+
+  .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  .btn-secondary {
+    display: inline-block;
+    padding: 0.7rem 1.5rem;
+    background: transparent;
+    color: #1C75BC;
+    border: 2px solid #1C75BC;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .btn-secondary:hover {
+    background: #1C75BC;
+    color: white;
+  }
+
+  .upload-section {
+    padding: 4rem 0;
+    background: #f8fafc;
+  }
+
+  .upload-content {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .upload-content h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+  }
+
+  .upload-content p {
+    color: #64748b;
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+  }
+
+  .upload-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 768px) {
+    .book-card.featured {
+      grid-column: span 1;
+    }
+
+    .upload-actions {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn-secondary {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
