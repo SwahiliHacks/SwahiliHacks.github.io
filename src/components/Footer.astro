@@ -7,11 +7,9 @@
 // How to modify safely: this is the ONE place to update phone number, email,
 // or social handles. Edit here and it updates on all pages instantly.
 
-// UPDATES MADE (2026-07-19):
-// 1. Removed any affiliate disclaimer references
-// 2. Enhanced footer with professional styling
-// 3. Added hover animations for social icons
-// 4. Improved accessibility with aria labels
+// UPDATES MADE (2026-07-20):
+// 1. Removed emoji (🚀) from brand name
+// 2. Clean professional design
 
 interface Props {
   tagline?: string;
@@ -25,7 +23,7 @@ const year = new Date().getFullYear();
   <div class="footer-container">
     <!-- Brand Section -->
     <div class="footer-brand">
-      <h3>🚀 Swahili Hacks</h3>
+      <h3>Swahili Hacks</h3>
       <p class="tagline">{tagline}</p>
 
       <div class="contact">
@@ -96,7 +94,7 @@ const year = new Date().getFullYear();
   <!-- Footer Bottom -->
   <div class="footer-bottom">
     <p class="copyright">
-      © {year} <strong>Swahili Hacks</strong>. All rights reserved. 
+      &copy; {year} <strong>Swahili Hacks</strong>. All rights reserved. 
       <span class="separator">|</span> 
       Empowering entrepreneurs worldwide.
     </p>
@@ -132,7 +130,7 @@ const year = new Date().getFullYear();
   }
 
   .contact a:hover {
-    color: var(--primary) !important;
+    color: #1C75BC !important;
     transform: translateX(5px);
   }
 
@@ -149,7 +147,7 @@ const year = new Date().getFullYear();
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--primary);
+    background: #1C75BC;
     border-radius: 50%;
     transform: scale(0);
     transition: transform 0.3s ease;
@@ -167,7 +165,7 @@ const year = new Date().getFullYear();
 
   /* Separator in copyright */
   .separator {
-    color: var(--gray);
+    color: #64748b;
     margin: 0 0.5rem;
   }
 
