@@ -2,7 +2,7 @@
 // CategoryLayout.astro
 //
 // Purpose: wraps a single category page's content with BaseLayout + Header +
-// "Back to All Tools" link + Footer. This is what used to be duplicated by
+// "Back to Categories" link + Footer. This is what used to be duplicated by
 // hand at the top and bottom of every category .html file.
 //
 // What happens if removed: category pages lose their header/footer chrome.
@@ -36,7 +36,7 @@ const { title, description, path, trustTag, stats } = Astro.props;
   <div class="container">
     <div class="back-home">
       <a href="/" class="back-btn">
-        <i class="fas fa-arrow-left"></i> Back to All Tools
+        <i class="fas fa-arrow-left"></i> Back to All Categories
       </a>
     </div>
 
