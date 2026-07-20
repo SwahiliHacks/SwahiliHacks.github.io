@@ -248,50 +248,18 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     border-radius: 2px;
   }
 
-  .empty-state {
-    grid-column: 1 / -1;
-    text-align: center;
-    padding: 3rem 1rem;
-    color: #64748b;
-  }
-
-  .empty-state i {
-    font-size: 3rem;
-    display: block;
-    margin-bottom: 1rem;
-    color: #cbd5e1;
-  }
-
-  .empty-state h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #0f172a;
-    margin-bottom: 0.25rem;
-  }
-
-  .empty-state p {
-    color: #94a3b8;
-  }
-
   .no-results {
     grid-column: 1 / -1;
     text-align: center;
-    padding: 3rem 1rem;
+    padding: 2rem 1rem;
     color: #64748b;
   }
 
   .no-results i {
-    font-size: 2.5rem;
+    font-size: 2rem;
     display: block;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     color: #94a3b8;
-  }
-
-  .no-results h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: #0f172a;
-    margin-bottom: 0.25rem;
   }
 
   .no-results p {
@@ -394,6 +362,13 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
       const category = categoryFilter ? categoryFilter.value : 'all';
       const sort = sortFilter ? sortFilter.value : 'relevance';
 
+      // If no search query and no category filter, show nothing
+      if (!query && category === 'all') {
+        resultsGrid.innerHTML = '';
+        resultsCount.textContent = '';
+        return;
+      }
+
       let results = [...categoriesData];
 
       // Filter by search query
@@ -442,25 +417,11 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     function renderResults(results, query) {
       if (!resultsGrid || !resultsCount) return;
 
-      // If no search query and no category filter, show empty state
-      if (!query && categoryFilter.value === 'all') {
-        resultsGrid.innerHTML = `
-          <div class="empty-state">
-            <i class="fas fa-search"></i>
-            <h3>Start typing to find solutions</h3>
-            <p>Search for trading, productivity, AI tools, and more...</p>
-          </div>
-        `;
-        resultsCount.textContent = '';
-        return;
-      }
-
       if (results.length === 0) {
         resultsGrid.innerHTML = `
           <div class="no-results">
             <i class="fas fa-search"></i>
-            <h3>No results found</h3>
-            <p>Try adjusting your search or filters</p>
+            <p>No results found. Try adjusting your search.</p>
           </div>
         `;
         resultsCount.textContent = '0 results found';
@@ -495,7 +456,8 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
       }).join('');
     }
 
-    // Initial render - show empty state, not all categories
-    renderResults([], '');
+    // Initial render - show nothing
+    resultsGrid.innerHTML = '';
+    resultsCount.textContent = '';
   });
 </script>
