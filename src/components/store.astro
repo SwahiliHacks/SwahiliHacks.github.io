@@ -1,0 +1,295 @@
+---
+// src/pages/store.astro
+// Purpose: Curated online store with trusted external products
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+
+// Store products data
+const storeProducts = [
+  {
+    id: 1,
+    name: 'TradingView Pro Plan',
+    description: 'Professional charting platform for traders and investors.',
+    category: 'Trading',
+    price: '$14.95/mo',
+    image: '/images/store/tradingview.jpg',
+    affiliateUrl: 'https://www.tradingview.com/gopro',
+    rating: 4.8,
+    featured: true
+  },
+  {
+    id: 2,
+    name: 'Shopify Starter Bundle',
+    description: 'Complete e-commerce solution with everything you need to start selling.',
+    category: 'E-commerce',
+    price: '$29/mo',
+    image: '/images/store/shopify.jpg',
+    affiliateUrl: 'https://www.shopify.com/free-trial',
+    rating: 4.7,
+    featured: true
+  },
+  {
+    id: 3,
+    name: 'ChatGPT Plus Subscription',
+    description: 'Advanced AI assistant for writing, coding, and analysis.',
+    category: 'AI Tools',
+    price: '$20/mo',
+    image: '/images/store/chatgpt.jpg',
+    affiliateUrl: 'https://openai.com/chatgpt/plus',
+    rating: 4.9,
+    featured: true
+  },
+  {
+    id: 4,
+    name: 'Notion Personal Pro',
+    description: 'All-in-one workspace for notes, tasks, and collaboration.',
+    category: 'Productivity',
+    price: '$10/mo',
+    image: '/images/store/notion.jpg',
+    affiliateUrl: 'https://www.notion.com/',
+    rating: 4.6,
+    featured: false
+  },
+  {
+    id: 5,
+    name: 'Canva Pro Design Tools',
+    description: 'Professional design tools for creators and marketers.',
+    category: 'Content Creation',
+    price: '$12.99/mo',
+    image: '/images/store/canva.jpg',
+    affiliateUrl: 'https://www.canva.com/pro/',
+    rating: 4.5,
+    featured: false
+  },
+  {
+    id: 6,
+    name: 'Amazon Kindle Books Bundle',
+    description: 'Curated collection of best-selling digital books.',
+    category: 'Digital Products',
+    price: 'From $0.99',
+    image: '/images/store/kindle.jpg',
+    affiliateUrl: 'https://www.amazon.com/kindle-store',
+    rating: 4.4,
+    featured: false
+  }
+];
+---
+
+<BaseLayout
+  title="Online Store - Swahili Hacks"
+  description="Curated products from trusted sources. Find the best tools for trading, productivity, AI, and online business."
+  path="/store/"
+>
+  <main>
+    <!-- Store Hero -->
+    <section class="store-hero">
+      <div class="container">
+        <h1>🛍️ Swahili Hacks Online Store</h1>
+        <p>Curated products from trusted sources. Every product is tested and verified.</p>
+      </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="store-section">
+      <div class="container">
+        <h2>Featured Products</h2>
+        <div class="product-grid">
+          {storeProducts.filter(p => p.featured).map(product => (
+            <div class="product-card featured">
+              <div class="product-badge">🔥 Featured</div>
+              <div class="product-image">
+                <img src={product.image} alt={product.name} />
+              </div>
+              <div class="product-content">
+                <span class="product-category">{product.category}</span>
+                <h3>{product.name}</h3>
+                <p>{product.description}</p>
+                <div class="product-meta">
+                  <span class="product-price">{product.price}</span>
+                  <span class="product-rating">⭐ {product.rating}</span>
+                </div>
+                <a href={product.affiliateUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">
+                  View Product <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- All Products -->
+    <section class="store-section">
+      <div class="container">
+        <h2>All Products</h2>
+        <div class="product-grid">
+          {storeProducts.map(product => (
+            <div class="product-card">
+              <div class="product-image">
+                <img src={product.image} alt={product.name} />
+              </div>
+              <div class="product-content">
+                <span class="product-category">{product.category}</span>
+                <h3>{product.name}</h3>
+                <p>{product.description}</p>
+                <div class="product-meta">
+                  <span class="product-price">{product.price}</span>
+                  <span class="product-rating">⭐ {product.rating}</span>
+                </div>
+                <a href={product.affiliateUrl} target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm">
+                  Get Product <i class="fas fa-arrow-right"></i>
+                </a>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .store-hero {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .store-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .store-hero p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+  }
+
+  .store-section {
+    padding: 4rem 0;
+  }
+
+  .store-section h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 2rem;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .product-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .product-card:hover {
+    border-color: #1C75BC;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    transform: translateY(-4px);
+  }
+
+  .product-card.featured {
+    border-color: #f59e0b;
+    grid-column: span 2;
+  }
+
+  .product-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #f59e0b;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    z-index: 1;
+  }
+
+  .product-image {
+    height: 200px;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .product-content {
+    padding: 1.5rem;
+  }
+
+  .product-category {
+    display: inline-block;
+    padding: 0.15rem 0.6rem;
+    background: #eef2ff;
+    color: #1C75BC;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-content h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-content p {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 1rem;
+  }
+
+  .product-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .product-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1C75BC;
+  }
+
+  .product-rating {
+    font-size: 0.9rem;
+    color: #f59e0b;
+  }
+
+  .btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .product-card.featured {
+      grid-column: span 1;
+    }
+  }
+</style>
