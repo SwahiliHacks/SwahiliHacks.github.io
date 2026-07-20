@@ -19,6 +19,7 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
       class="search-input" 
       placeholder={placeholder}
       aria-label="Search"
+      autocomplete="off"
     />
     <button class="search-clear" id="search-clear" aria-label="Clear search">
       <i class="fas fa-times"></i>
@@ -31,7 +32,7 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
       <select id="category-filter" class="filter-select">
         <option value="all">All Categories</option>
         {categories.map((category) => (
-          <option value={category.id}>{category.data.nav_label}</option>
+          <option key={category.id} value={category.id}>{category.data.nav_label}</option>
         ))}
       </select>
     </div>
@@ -58,6 +59,9 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
   </div>
 </div>
 
+<!-- Pass categories data to JavaScript via data attribute -->
+<div id="categories-data" style="display: none;" data-categories={JSON.stringify(categories)}></div>
+
 <style>
   .search-container {
     max-width: 1200px;
@@ -69,21 +73,23 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     position: relative;
     display: flex;
     align-items: center;
-    background: #f8fafc;
+    background: #ffffff;
     border: 2px solid #e2e8f0;
     border-radius: 12px;
     transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
   }
 
   .search-input-wrapper:focus-within {
     border-color: #1C75BC;
-    box-shadow: 0 0 0 3px rgba(28, 117, 188, 0.1);
+    box-shadow: 0 0 0 4px rgba(28, 117, 188, 0.1), 0 2px 8px rgba(0, 0, 0, 0.06);
   }
 
   .search-icon {
     position: absolute;
     left: 1rem;
     color: #94a3b8;
+    font-size: 1rem;
   }
 
   .search-input {
@@ -109,6 +115,7 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     cursor: pointer;
     display: none;
     padding: 0.25rem;
+    font-size: 1rem;
   }
 
   .search-clear.visible {
@@ -148,6 +155,7 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     color: #0f172a;
     outline: none;
     transition: all 0.3s ease;
+    cursor: pointer;
   }
 
   .filter-select:focus {
@@ -215,6 +223,7 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     font-size: 1.1rem;
     font-weight: 600;
     margin-bottom: 0.25rem;
+    color: #0f172a;
   }
 
   .result-item p {
@@ -239,6 +248,31 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     border-radius: 2px;
   }
 
+  .no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    color: #64748b;
+  }
+
+  .no-results i {
+    font-size: 2.5rem;
+    display: block;
+    margin-bottom: 1rem;
+    color: #94a3b8;
+  }
+
+  .no-results h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+  }
+
+  .no-results p {
+    color: #94a3b8;
+  }
+
   /* Responsive */
   @media (max-width: 768px) {
     .search-filters {
@@ -257,11 +291,44 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     .results-grid {
       grid-template-columns: 1fr;
     }
+
+    .filter-toggle {
+      display: flex;
+    }
+
+    .search-filters {
+      display: none;
+    }
+
+    .search-filters.active {
+      display: flex;
+    }
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
+    // Get categories data from the hidden div
+    const dataDiv = document.getElementById('categories-data');
+    let categoriesData = [];
+    
+    if (dataDiv) {
+      try {
+        const dataAttr = dataDiv.getAttribute('data-categories');
+        if (dataAttr) {
+          categoriesData = JSON.parse(dataAttr);
+        }
+      } catch (e) {
+        console.error('Failed to parse categories data:', e);
+      }
+    }
+
+    // If no data, try to fetch from the page
+    if (!categoriesData || categoriesData.length === 0) {
+      // Try to get from window or fallback
+      console.log('No categories data found, using fallback empty array');
+    }
+
     const searchInput = document.getElementById('search-input');
     const searchClear = document.getElementById('search-clear');
     const categoryFilter = document.getElementById('category-filter');
@@ -271,45 +338,55 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     const filterToggle = document.getElementById('filter-toggle');
     const filterGroups = document.querySelector('.search-filters');
 
-    // Get all categories data
-    const categoriesData = JSON.parse(document.getElementById('categories-data')?.textContent || '[]');
+    // Log for debugging
+    console.log('Categories data loaded:', categoriesData.length);
 
     // Show/hide clear button
-    searchInput.addEventListener('input', function() {
-      searchClear.classList.toggle('visible', this.value.length > 0);
-      performSearch();
-    });
+    if (searchInput && searchClear) {
+      searchInput.addEventListener('input', function() {
+        searchClear.classList.toggle('visible', this.value.length > 0);
+        performSearch();
+      });
 
-    searchClear.addEventListener('click', function() {
-      searchInput.value = '';
-      searchClear.classList.remove('visible');
-      performSearch();
-    });
+      searchClear.addEventListener('click', function() {
+        searchInput.value = '';
+        searchClear.classList.remove('visible');
+        performSearch();
+      });
+    }
 
-    categoryFilter.addEventListener('change', performSearch);
-    sortFilter.addEventListener('change', performSearch);
+    if (categoryFilter) {
+      categoryFilter.addEventListener('change', performSearch);
+    }
+
+    if (sortFilter) {
+      sortFilter.addEventListener('change', performSearch);
+    }
 
     // Toggle filters on mobile
-    filterToggle.addEventListener('click', function() {
-      const isVisible = filterGroups.style.display !== 'none';
-      filterGroups.style.display = isVisible ? 'none' : 'flex';
-      this.classList.toggle('active');
-    });
+    if (filterToggle && filterGroups) {
+      filterToggle.addEventListener('click', function() {
+        filterGroups.classList.toggle('active');
+        this.classList.toggle('active');
+      });
+    }
 
     function performSearch() {
-      const query = searchInput.value.toLowerCase().trim();
-      const category = categoryFilter.value;
-      const sort = sortFilter.value;
+      if (!searchInput || !resultsGrid || !resultsCount) return;
 
-      let results = categoriesData;
+      const query = searchInput.value.toLowerCase().trim();
+      const category = categoryFilter ? categoryFilter.value : 'all';
+      const sort = sortFilter ? sortFilter.value : 'relevance';
+
+      let results = [...categoriesData];
 
       // Filter by search query
       if (query) {
         results = results.filter(item => {
-          const title = item.data.nav_label?.toLowerCase() || '';
-          const teaser = item.data.card_teaser?.toLowerCase() || '';
-          const bullets = item.data.card_bullets?.join(' ').toLowerCase() || '';
-          const intro = item.data.intro?.toLowerCase() || '';
+          const title = item.data?.nav_label?.toLowerCase() || '';
+          const teaser = item.data?.card_teaser?.toLowerCase() || '';
+          const bullets = item.data?.card_bullets?.join(' ').toLowerCase() || '';
+          const intro = item.data?.intro?.toLowerCase() || '';
           return title.includes(query) || 
                  teaser.includes(query) || 
                  bullets.includes(query) || 
@@ -332,21 +409,27 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     function sortResults(results, sort) {
       switch(sort) {
         case 'popular':
-          return results.sort((a, b) => (b.data.stats?.[0]?.number || 0) - (a.data.stats?.[0]?.number || 0));
+          return [...results].sort((a, b) => {
+            const aNum = parseInt(a.data?.stats?.[0]?.number) || 0;
+            const bNum = parseInt(b.data?.stats?.[0]?.number) || 0;
+            return bNum - aNum;
+          });
         case 'newest':
-          return results.sort((a, b) => (b.id || '').localeCompare(a.id || ''));
+          return [...results].sort((a, b) => (b.id || '').localeCompare(a.id || ''));
         case 'rating':
-          return results.sort((a, b) => (b.data.rating_stars || 0) - (a.data.rating_stars || 0));
+          return [...results].sort((a, b) => (b.data?.rating_stars || 0) - (a.data?.rating_stars || 0));
         default: // relevance
           return results;
       }
     }
 
     function renderResults(results, query) {
+      if (!resultsGrid || !resultsCount) return;
+
       if (results.length === 0) {
         resultsGrid.innerHTML = `
-          <div class="no-results" style="grid-column: 1/-1; text-align: center; padding: 3rem; color: #64748b;">
-            <i class="fas fa-search" style="font-size: 2rem; display: block; margin-bottom: 1rem;"></i>
+          <div class="no-results">
+            <i class="fas fa-search"></i>
             <h3>No results found</h3>
             <p>Try adjusting your search or filters</p>
           </div>
@@ -358,9 +441,9 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
       resultsCount.textContent = `${results.length} result${results.length > 1 ? 's' : ''} found`;
 
       resultsGrid.innerHTML = results.map(item => {
-        const title = item.data.nav_label || item.id;
-        const teaser = item.data.card_teaser || '';
-        const icon = item.data.icon || 'fas fa-tag';
+        const title = item.data?.nav_label || item.id;
+        const teaser = item.data?.card_teaser || '';
+        const icon = item.data?.icon || 'fas fa-tag';
         const slug = item.id;
 
         // Highlight matching text
@@ -377,13 +460,13 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
             <div class="icon"><i class="${icon}"></i></div>
             <h3>${displayTitle}</h3>
             <p>${displayTeaser}</p>
-            <span class="badge">${item.data.type || 'platform'}</span>
+            <span class="badge">${item.data?.type || 'platform'}</span>
           </a>
         `;
       }).join('');
     }
 
-    // Initial render
+    // Initial render - show all categories
     performSearch();
   });
 </script>
