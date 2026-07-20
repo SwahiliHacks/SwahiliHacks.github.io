@@ -9,6 +9,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ToolCard from '../components/ToolCard.astro';
+import SearchBar from '../components/SearchBar.astro';  // ✅ Import must be here, in the frontmatter
 
 const categories = await getCollection('categories');
 
@@ -86,28 +87,13 @@ const orderedCategories = ORDER
         </div>
       </div>
     </section>
-     ---
-// ... existing imports
-import SearchBar from '../components/SearchBar.astro';
-// ... rest of imports
----
 
-<BaseLayout ...>
-  <!-- ... Header ... -->
-  
-  <main>
-    <!-- ... Hero Section ... -->
-    
     <!-- Search Section -->
     <section class="search-section">
       <div class="container">
         <SearchBar categories={categories} />
       </div>
     </section>
-    
-    <!-- ... rest of page ... -->
-  </main>
-</BaseLayout>
 
     <!-- Categories Section -->
     <section class="categories-section" id="categories">
@@ -319,6 +305,17 @@ import SearchBar from '../components/SearchBar.astro';
   .btn-secondary:hover {
     background: rgba(255, 255, 255, 0.05);
     border-color: rgba(255, 255, 255, 0.4);
+  }
+  
+  /* ===== SEARCH SECTION ===== */
+  .search-section {
+    padding: 2rem 0;
+    background: #f8fafc;
+  }
+
+  .search-section .container {
+    max-width: 1200px;
+    margin: 0 auto;
   }
   
   /* ===== CATEGORIES SECTION ===== */
