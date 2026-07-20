@@ -110,6 +110,12 @@ const journeyCtaSchema = z.object({
 // `type` decides which Astro component renders the page. Adding a brand-new
 // category is: add one YAML file here with the right `type` + fields. No new
 // HTML file, no copy-pasting the header/footer.
+//
+// CHANGES MADE (2026-07-20):
+// 1. Changed `disclaimer: z.string()` to `disclaimer: z.string().optional()`
+//    so disclaimers are no longer required in YAML files.
+// 2. This allows you to remove all disclaimer text from your YAML files
+//    without breaking the build.
 
 const categories = defineCollection({
   loader: glob({ pattern: '**/*.yaml', base: './src/content/categories' }),
@@ -129,7 +135,7 @@ const categories = defineCollection({
       intro: z.string(),
       warning: z.string().optional(),
       groups: z.array(linkGroupSchema),
-      disclaimer: z.string(),
+      disclaimer: z.string().optional(),  // ✅ Changed to optional
     }),
     z.object({
       type: z.literal('platform'),
@@ -148,7 +154,7 @@ const categories = defineCollection({
       platforms: z.array(platformCardSchema),
       comparison: comparisonSchema.optional(),
       education: educationSchema.optional(),
-      disclaimer: z.string(),
+      disclaimer: z.string().optional(),  // ✅ Changed to optional
     }),
     z.object({
       type: z.literal('journey'),
@@ -168,7 +174,7 @@ const categories = defineCollection({
       steps: z.array(z.object({ number: z.string(), title: z.string(), subtitle: z.string() })),
       stages: z.array(stageSchema),
       journey_cta: journeyCtaSchema.optional(),
-      disclaimer: z.string(),
+      disclaimer: z.string().optional(),  // ✅ Changed to optional
     }),
   ]),
 });
