@@ -8,13 +8,10 @@
 // editing this file, unless you're changing something for the whole site
 // (e.g. the profile photo or name).
 
-// UPDATES MADE (2026-07-19):
-// 1. Enhanced profile image with larger size and better accessibility
-// 2. Removed any affiliate-related text
-// 3. Improved visual hierarchy with better typography
-// 4. Added animated hover effects
-// 5. Enhanced stats section with better styling
-// 6. Improved accessibility with aria labels and semantic HTML
+// UPDATES MADE (2026-07-20):
+// 1. Removed all emojis (👨‍🔬, ✨, ⚡)
+// 2. Replaced green (#22c55e) with primary blue (#1C75BC)
+// 3. Professional clean design
 
 interface Stat {
   number: string;
@@ -27,7 +24,7 @@ interface Props {
 }
 
 const { trustTag, stats } = Astro.props;
-const defaultTrustTag = '⚡ Trusted by 50,000+ entrepreneurs worldwide';
+const defaultTrustTag = 'Trusted by 50,000+ professionals worldwide';
 const displayTrustTag = trustTag || defaultTrustTag;
 ---
 
@@ -56,11 +53,9 @@ const displayTrustTag = trustTag || defaultTrustTag;
             </a>
           </h2>
           <p class="expert-tag">
-            <span class="emoji-badge">👨‍🔬</span> 
             Curated by a <strong>Chemical &amp; Process Engineer</strong>
           </p>
           <p class="trust-tag">
-            <span class="trust-icon">✨</span> 
             {displayTrustTag}
           </p>
         </div>
@@ -94,7 +89,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
     width: 180px !important;
     height: 180px !important;
     border-radius: 50%;
-    border: 6px solid var(--primary, #1C75BC);
+    border: 6px solid #1C75BC;
     object-fit: cover;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -105,7 +100,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
 
   .profile-img:hover {
     transform: scale(1.05) rotate(-2deg);
-    border-color: var(--accent, #22c55e);
+    border-color: #145a8a;
     box-shadow: 0 15px 45px rgba(28, 117, 188, 0.4);
   }
 
@@ -153,7 +148,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
   }
 
   .profile-text h2:hover {
-    color: var(--accent, #22c55e);
+    color: #1C75BC;
   }
 
   .profile-text h2 a {
@@ -161,11 +156,11 @@ const displayTrustTag = trustTag || defaultTrustTag;
   }
 
   .profile-text h2 a:hover {
-    color: var(--accent, #22c55e);
+    color: #1C75BC;
   }
 
   .expert-tag {
-    color: var(--accent, #22c55e);
+    color: #1C75BC;
     font-size: 1.2rem !important;
     margin-bottom: 0.25rem;
     font-weight: 500;
@@ -174,26 +169,18 @@ const displayTrustTag = trustTag || defaultTrustTag;
     gap: 0.5rem;
   }
 
-  .expert-tag .emoji-badge {
-    font-size: 1.3rem;
-  }
-
   .expert-tag strong {
     color: white;
     font-weight: 600;
   }
 
   .trust-tag {
-    color: var(--gray-light, #e2e8f0);
+    color: #e2e8f0;
     font-size: 1rem !important;
     opacity: 0.9;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-  }
-
-  .trust-tag .trust-icon {
-    font-size: 1.1rem;
   }
 
   /* Stats enhancements */
@@ -225,7 +212,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
     display: block;
     font-size: 2.2rem !important;
     font-weight: 700;
-    color: var(--accent, #22c55e);
+    color: #1C75BC;
     font-family: 'Poppins', sans-serif;
     line-height: 1.2;
     transition: transform 0.3s ease;
@@ -237,7 +224,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
 
   .stat-label {
     font-size: 0.9rem !important;
-    color: var(--gray-light, #e2e8f0);
+    color: #e2e8f0;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-weight: 400;
