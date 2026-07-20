@@ -19,8 +19,8 @@ const { entry } = Astro.props;
   {
     entry.warning && (
       <div class="warning-note">
-        <i class="fas fa-exclamation-triangle" />
-        <strong>Warning:</strong> {entry.warning}
+        <i class="fas fa-exclamation-triangle" style="color: #f59e0b;" />
+        <strong>Note:</strong> {entry.warning}
       </div>
     )
   }
@@ -49,7 +49,7 @@ const { entry } = Astro.props;
               <ul>
                 {platform.features.map((feature) => (
                   <li>
-                    <i class="fas fa-check" /> {feature}
+                    <i class="fas fa-check" style="color: #1C75BC;" /> {feature}
                   </li>
                 ))}
               </ul>
@@ -61,7 +61,7 @@ const { entry } = Astro.props;
               <h4>Platform Access:</h4>
               <div class="link-grid">
                 {platform.links.map((link) => (
-                  <a href={link.url} target="_blank" rel="noopener noreferrer sponsored" class="platform-link">
+                  <a href={link.url} target="_blank" rel="noopener noreferrer" class="platform-link">
                     <i class={link.icon || 'fas fa-external-link-alt'} />
                     <div>
                       <strong>{link.name}</strong>
@@ -85,8 +85,8 @@ const { entry } = Astro.props;
               </div>
             )}
             {platform.cta_url && (
-              <a href={platform.cta_url} target="_blank" rel="noopener noreferrer sponsored" class="btn primary-btn">
-                {platform.cta_text} <i class="fas fa-rocket" />
+              <a href={platform.cta_url} target="_blank" rel="noopener noreferrer" class="btn primary-btn">
+                {platform.cta_text} <i class="fas fa-arrow-right" />
               </a>
             )}
           </div>
@@ -115,7 +115,7 @@ const { entry } = Astro.props;
                 {row.map((cell, i) => (
                   i === 0
                     ? <td><strong>{cell.text}</strong></td>
-                    : <td class={cell.highlight ? 'green' : undefined}>{cell.text}</td>
+                    : <td class={cell.highlight ? 'highlight-cell' : undefined}>{cell.text}</td>
                 ))}
               </tr>
             ))}
@@ -138,7 +138,7 @@ const { entry } = Astro.props;
             {resource.description && <p>{resource.description}</p>}
             {resource.link_url && (
               <a href={resource.link_url} target="_blank" rel="noopener noreferrer" class="resource-link">
-                {resource.link_text} <i class="fas fa-play-circle" />
+                {resource.link_text} <i class="fas fa-arrow-right" />
               </a>
             )}
           </div>
@@ -148,7 +148,14 @@ const { entry } = Astro.props;
   )
 }
 
-<div class="disclaimer professional-disclaimer">
-  <i class="fas fa-info-circle"></i>
-  {entry.disclaimer}
-</div>
+<style>
+  .highlight-cell {
+    color: #1C75BC;
+    font-weight: 600;
+  }
+  
+  .green {
+    color: #1C75BC;
+    font-weight: 600;
+  }
+</style>
