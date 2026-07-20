@@ -248,10 +248,35 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     border-radius: 2px;
   }
 
+  .empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #64748b;
+  }
+
+  .empty-state i {
+    font-size: 3rem;
+    display: block;
+    margin-bottom: 1rem;
+    color: #cbd5e1;
+  }
+
+  .empty-state h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.25rem;
+  }
+
+  .empty-state p {
+    color: #94a3b8;
+  }
+
   .no-results {
     grid-column: 1 / -1;
     text-align: center;
-    padding: 3rem;
+    padding: 3rem 1rem;
     color: #64748b;
   }
 
@@ -323,12 +348,6 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
       }
     }
 
-    // If no data, try to fetch from the page
-    if (!categoriesData || categoriesData.length === 0) {
-      // Try to get from window or fallback
-      console.log('No categories data found, using fallback empty array');
-    }
-
     const searchInput = document.getElementById('search-input');
     const searchClear = document.getElementById('search-clear');
     const categoryFilter = document.getElementById('category-filter');
@@ -337,9 +356,6 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     const resultsCount = document.getElementById('results-count');
     const filterToggle = document.getElementById('filter-toggle');
     const filterGroups = document.querySelector('.search-filters');
-
-    // Log for debugging
-    console.log('Categories data loaded:', categoriesData.length);
 
     // Show/hide clear button
     if (searchInput && searchClear) {
@@ -426,6 +442,19 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
     function renderResults(results, query) {
       if (!resultsGrid || !resultsCount) return;
 
+      // If no search query and no category filter, show empty state
+      if (!query && categoryFilter.value === 'all') {
+        resultsGrid.innerHTML = `
+          <div class="empty-state">
+            <i class="fas fa-search"></i>
+            <h3>Start typing to find solutions</h3>
+            <p>Search for trading, productivity, AI tools, and more...</p>
+          </div>
+        `;
+        resultsCount.textContent = '';
+        return;
+      }
+
       if (results.length === 0) {
         resultsGrid.innerHTML = `
           <div class="no-results">
@@ -466,7 +495,7 @@ const { placeholder = 'Search solutions, tools, or problems...', categories = []
       }).join('');
     }
 
-    // Initial render - show all categories
-    performSearch();
+    // Initial render - show empty state, not all categories
+    renderResults([], '');
   });
 </script>
