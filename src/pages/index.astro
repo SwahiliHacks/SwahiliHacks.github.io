@@ -13,11 +13,20 @@ import ToolCard from '../components/ToolCard.astro';
 const categories = await getCollection('categories');
 
 // Preserve the original homepage ordering
+// UPDATED: New filenames after renaming
 const ORDER = [
-  'trading', 'productivity', 'online-income',
-  'trading-automation', 'learning-courses', 'affiliate-platforms',
-  'ai-tools', 'content-creation', 'ecommerce',
-  'finance-management', 'remote-work', 'digital-services',
+  'wealth-investment',
+  'productivity-workflow-systems',
+  'online-income-opportunities',
+  'automated-wealth-systems',
+  'career-growth-skills-development',
+  'digital-income-monetization',
+  'ai-intelligent-automation',
+  'content-creation-digital-media',
+  'ecommerce-online-business',
+  'personal-finance-money-management',
+  'remote-work-distributed-teams',
+  'freelancing-professional-services',
 ];
 const orderedCategories = ORDER
   .map((slug) => categories.find((c) => c.id === slug))
