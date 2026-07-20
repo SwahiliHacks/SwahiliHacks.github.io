@@ -37,7 +37,7 @@ const { entry } = Astro.props;
   {
     entry.motivation && (
       <div class="motivation-note">
-        <i class="fas fa-rocket" />
+        <i class="fas fa-bullseye"></i>
         <strong>Ready to begin?</strong> {entry.motivation.replace(/^Ready to begin\?\s*/, '')}
       </div>
     )
@@ -75,7 +75,7 @@ const { entry } = Astro.props;
                   <ul>
                     {card.features.map((feature) => (
                       <li>
-                        <i class="fas fa-check" /> {feature}
+                        <i class="fas fa-check" style="color: #1C75BC;"></i> {feature}
                       </li>
                     ))}
                   </ul>
@@ -96,7 +96,7 @@ const { entry } = Astro.props;
                   <h4>Get Started:</h4>
                   <div class="link-grid">
                     {card.links.map((link) => (
-                      <a href={link.url} target="_blank" rel="noopener noreferrer sponsored" class="platform-link">
+                      <a href={link.url} target="_blank" rel="noopener noreferrer" class="platform-link">
                         <i class={link.icon || 'fas fa-external-link-alt'} />
                         <div>
                           <strong>{link.name}</strong>
@@ -111,13 +111,13 @@ const { entry } = Astro.props;
               <div class="platform-footer">
                 {card.next_step && (
                   <div class="next-step">
-                    <i class="fas fa-arrow-right" />
+                    <i class="fas fa-arrow-right" style="color: #1C75BC;"></i>
                     <span>{card.next_step}</span>
                   </div>
                 )}
                 {card.cta_url && (
-                  <a href={card.cta_url} target="_blank" rel="noopener noreferrer sponsored" class="btn primary-btn">
-                    {card.cta_text} <i class="fas fa-play-circle" />
+                  <a href={card.cta_url} target="_blank" rel="noopener noreferrer" class="btn primary-btn">
+                    {card.cta_text} <i class="fas fa-arrow-right"></i>
                   </a>
                 )}
               </div>
@@ -134,7 +134,7 @@ const { entry } = Astro.props;
     <section class="journey-cta">
       <div class="cta-content">
         <h2>
-          <i class="fas fa-trophy" /> {entry.journey_cta.heading}
+          <i class="fas fa-star" style="color: #f59e0b;"></i> {entry.journey_cta.heading}
         </h2>
         {entry.journey_cta.text && <p>{entry.journey_cta.text}</p>}
 
@@ -162,7 +162,7 @@ const { entry } = Astro.props;
         {entry.journey_cta.testimonial && (
           <div class="social-proof">
             <p>
-              <i class="fas fa-quote-left" /> {entry.journey_cta.testimonial.quote} <i class="fas fa-quote-right" />
+              <i class="fas fa-quote-left" style="color: #1C75BC;"></i> {entry.journey_cta.testimonial.quote} <i class="fas fa-quote-right" style="color: #1C75BC;"></i>
             </p>
             <div class="testimonial-author">
               {entry.journey_cta.testimonial.author && <strong>— {entry.journey_cta.testimonial.author}</strong>}
@@ -174,11 +174,6 @@ const { entry } = Astro.props;
     </section>
   )
 }
-
-<div class="disclaimer professional-disclaimer">
-  <i class="fas fa-info-circle"></i>
-  {entry.disclaimer}
-</div>
 
 <script>
   // Interactive Progress Tracker
