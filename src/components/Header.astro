@@ -1,7 +1,7 @@
 ---
 // Header.astro
 //
-// Purpose: the profile block + stats bar at the top of every page.
+// Purpose: the profile block + stats bar + navigation at the top of every page.
 // Why it exists: was copy-pasted at the top of all 14 HTML files before.
 // What happens if removed: pages lose the brand header entirely.
 // How to modify safely: change props per-page (trustTag, stats) rather than
@@ -13,6 +13,7 @@
 // 2. Replaced green (#22c55e) with primary blue (#1C75BC)
 // 3. Professional clean design
 // 4. Fixed header alignment for desktop, tablet and mobile - all centered
+// 5. Added navigation links: Home, Store, Bookshelf, About
 
 interface Stat {
   number: string;
@@ -74,6 +75,16 @@ const displayTrustTag = trustTag || defaultTrustTag;
         }
       </div>
     </div>
+
+    <!-- Navigation Links -->
+    <nav class="header-nav" aria-label="Main navigation">
+      <ul class="nav-list">
+        <li><a href="/" class="nav-link">Home</a></li>
+        <li><a href="/store/" class="nav-link">Store</a></li>
+        <li><a href="/bookshelf/" class="nav-link">Bookshelf</a></li>
+        <li><a href="/about/" class="nav-link">About</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
 
@@ -82,7 +93,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
   .professional-header {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     color: white;
-    padding: 2rem 0;
+    padding: 2rem 0 1rem 0;
     position: relative;
     overflow: hidden;
   }
@@ -284,6 +295,64 @@ const displayTrustTag = trustTag || defaultTrustTag;
     opacity: 0.8;
   }
 
+  /* ===== NAVIGATION ===== */
+  .header-nav {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+  }
+
+  .nav-link {
+    color: #94a3b8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  .nav-link:hover {
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #1C75BC;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .nav-link:hover::after {
+    width: 60%;
+  }
+
+  .nav-link.active {
+    color: #ffffff;
+  }
+
+  .nav-link.active::after {
+    width: 60%;
+  }
+
   /* ===== RESPONSIVE: TABLET & MOBILE ===== */
   @media (max-width: 768px) {
     .profile-img {
@@ -328,6 +397,15 @@ const displayTrustTag = trustTag || defaultTrustTag;
 
     .stat-label {
       font-size: 0.8rem !important;
+    }
+
+    .nav-list {
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      font-size: 0.85rem;
+      padding: 0.3rem 0.6rem;
     }
 
     @keyframes profileGlow {
@@ -384,6 +462,15 @@ const displayTrustTag = trustTag || defaultTrustTag;
 
     .stat-label {
       font-size: 0.7rem !important;
+    }
+
+    .nav-list {
+      gap: 0.8rem;
+    }
+
+    .nav-link {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
     }
   }
 </style>
