@@ -1,0 +1,423 @@
+---
+// about.astro
+//
+// Purpose: About page - Who we are, our mission, and why trust us.
+// This page explains the value proposition of Swahili Hacks.
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<BaseLayout
+  title="About - Swahili Hacks"
+  description="Learn about Swahili Hacks - Curated by a Chemical & Process Engineer. We provide verified tools for trading, productivity, AI, and online income."
+  path="/about/"
+>
+  <main>
+    <!-- Hero Section -->
+    <section class="about-hero">
+      <div class="container">
+        <h1>About Swahili Hacks</h1>
+        <p class="subtitle">Curated by an engineer. Built for professionals.</p>
+      </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="about-content">
+      <div class="container">
+        <div class="about-grid">
+          <!-- Who We Are -->
+          <div class="about-card">
+            <div class="about-icon">
+              <i class="fas fa-user-graduate"></i>
+            </div>
+            <h2>Who We Are</h2>
+            <p>
+              Swahili Hacks is a curated platform designed to help professionals 
+              navigate the digital economy. Founded by a <strong>Chemical & Process Engineer</strong>, 
+              we apply analytical rigor to every recommendation we make.
+            </p>
+            <p>
+              Our team is passionate about helping entrepreneurs, freelancers, 
+              and professionals find the right tools to succeed in trading, 
+              productivity, online income, and business growth.
+            </p>
+          </div>
+
+          <!-- Our Mission -->
+          <div class="about-card">
+            <div class="about-icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h2>Our Mission</h2>
+            <p>
+              We provide carefully vetted tools, platforms, and resources that 
+              we have personally tested and verified. Our goal is to help you:
+            </p>
+            <ul class="mission-list">
+              <li>
+                <i class="fas fa-check" style="color: #1C75BC;"></i>
+                Build wealth through smart investments
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #1C75BC;"></i>
+                Generate multiple streams of online income
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #1C75BC;"></i>
+                Master productivity and workflow systems
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #1C75BC;"></i>
+                Stay ahead with AI and automation
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #1C75BC;"></i>
+                Build a successful remote career
+              </li>
+            </ul>
+          </div>
+
+          <!-- Why Trust Us -->
+          <div class="about-card">
+            <div class="about-icon">
+              <i class="fas fa-shield-alt"></i>
+            </div>
+            <h2>Why Trust Us</h2>
+            <p>
+              As a Chemical & Process Engineer, I bring analytical rigor and 
+              systematic thinking to everything we recommend. Every tool on 
+              this site has been:
+            </p>
+            <ul class="trust-list">
+              <li>
+                <i class="fas fa-check" style="color: #1C75BC;"></i>
+                Personally tested and verified
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #1C75BC;"></i>
+                Analyzed for value and reliability
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #1C75BC;"></i>
+                Compared against alternatives
+              </li>
+              <li>
+                <i class="fas fa-check" style="color: #1C75BC;"></i>
+                Curated for maximum results
+              </li>
+            </ul>
+          </div>
+
+          <!-- Our Categories -->
+          <div class="about-card">
+            <div class="about-icon">
+              <i class="fas fa-th-large"></i>
+            </div>
+            <h2>What We Cover</h2>
+            <p>
+              We've organized solutions into 12 professional categories to 
+              help you find exactly what you need:
+            </p>
+            <ul class="categories-list">
+              <li>Wealth & Investment</li>
+              <li>Automated Wealth Systems</li>
+              <li>Digital Income & Monetization</li>
+              <li>Freelancing & Professional Services</li>
+              <li>E-commerce & Online Business</li>
+              <li>AI & Intelligent Automation</li>
+              <li>Content Creation & Digital Media</li>
+              <li>Productivity & Workflow Systems</li>
+              <li>Remote Work & Distributed Teams</li>
+              <li>Career Growth & Skills Development</li>
+              <li>Personal Finance & Money Management</li>
+              <li>Online Income Opportunities</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Contact Section -->
+        <div class="about-contact">
+          <h2>Connect With Us</h2>
+          <p>
+            Have questions or suggestions? We'd love to hear from you!
+          </p>
+          <div class="contact-grid">
+            <div class="contact-item">
+              <i class="fas fa-envelope" style="color: #1C75BC;"></i>
+              <div>
+                <strong>Email</strong>
+                <a href="mailto:swahilihacks@gmail.com">swahilihacks@gmail.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone" style="color: #1C75BC;"></i>
+              <div>
+                <strong>Phone</strong>
+                <a href="tel:+255653828162">+255 653 828 162</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+              <div>
+                <strong>WhatsApp</strong>
+                <a href="https://wa.me/255653828162" target="_blank" rel="noopener noreferrer">Chat on WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Back to Home -->
+        <div class="back-home">
+          <a href="/" class="btn-primary">
+            <i class="fas fa-arrow-left"></i> Back to Home
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  /* About Page Styles */
+  .about-hero {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .about-hero h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: white;
+  }
+
+  .about-hero .subtitle {
+    font-size: 1.2rem;
+    color: #94a3b8;
+  }
+
+  .about-content {
+    padding: 4rem 0;
+    background: #ffffff;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .about-card {
+    background: #f8fafc;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+  }
+
+  .about-card:hover {
+    border-color: #1C75BC;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+    transform: translateY(-4px);
+  }
+
+  .about-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #1C75BC;
+  }
+
+  .about-card h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #0f172a;
+    margin-bottom: 0.75rem;
+  }
+
+  .about-card p {
+    color: #475569;
+    line-height: 1.7;
+    margin-bottom: 1rem;
+  }
+
+  .mission-list,
+  .trust-list,
+  .categories-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .mission-list li,
+  .trust-list li,
+  .categories-list li {
+    padding: 0.4rem 0;
+    color: #334155;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .mission-list li i,
+  .trust-list li i {
+    width: 1.2rem;
+  }
+
+  .categories-list li {
+    padding-left: 0.5rem;
+  }
+
+  .categories-list li::before {
+    content: '•';
+    color: #1C75BC;
+    font-weight: 700;
+    margin-right: 0.5rem;
+  }
+
+  .about-contact {
+    background: #f8fafc;
+    padding: 3rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 2rem;
+    border: 1px solid #e2e8f0;
+  }
+
+  .about-contact h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #0f172a;
+    margin-bottom: 0.5rem;
+  }
+
+  .about-contact > p {
+    color: #64748b;
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+  }
+
+  .contact-item:hover {
+    border-color: #1C75BC;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  }
+
+  .contact-item i {
+    font-size: 1.5rem;
+    width: 2.5rem;
+  }
+
+  .contact-item strong {
+    display: block;
+    font-size: 0.85rem;
+    color: #64748b;
+  }
+
+  .contact-item a {
+    color: #0f172a;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .contact-item a:hover {
+    color: #1C75BC;
+  }
+
+  .back-home {
+    text-align: center;
+    padding-top: 2rem;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #1C75BC;
+    color: white;
+    padding: 0.8rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    background: #145a8a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(28, 117, 188, 0.3);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .about-hero h1 {
+      font-size: 2.2rem;
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-contact {
+      padding: 2rem 1.5rem;
+    }
+
+    .contact-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .about-hero .subtitle {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about-hero {
+      padding: 3rem 0;
+    }
+
+    .about-hero h1 {
+      font-size: 1.8rem;
+    }
+
+    .about-card {
+      padding: 1.5rem;
+    }
+
+    .about-contact {
+      padding: 1.5rem 1rem;
+    }
+
+    .about-contact h2 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
