@@ -2,24 +2,6 @@
 // Header.astro
 //
 // Purpose: the profile block + stats bar + navigation at the top of every page.
-// Why it exists: was copy-pasted at the top of all 14 HTML files before.
-// What happens if removed: pages lose the brand header entirely.
-// How to modify safely: change props per-page (trustTag, stats) rather than
-// editing this file, unless you're changing something for the whole site
-// (e.g. the profile photo or name).
-
-// UPDATES MADE (2026-07-20):
-// 1. Removed all emojis
-// 2. Replaced green with primary blue
-// 3. Professional clean design
-// 4. Fixed header alignment - all centered
-// 5. Added navigation with prominent Store & Bookshelf cards
-// 6. Removed About from hero (already in header)
-
-// UPDATES MADE (2026-07-22):
-// 1. Integrated Navigation component into header
-// 2. Navigation now shows below stats section
-// 3. Clean separation between brand and navigation
 
 import Navigation from './Navigation.astro';
 
@@ -94,9 +76,9 @@ const displayTrustTag = trustTag || defaultTrustTag;
   .professional-header {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     color: white;
-    padding: 2rem 0 1.5rem 0;
+    padding: 2rem 0 0 0;
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to visible for dropdowns */
   }
 
   .professional-header::before {
@@ -328,6 +310,10 @@ const displayTrustTag = trustTag || defaultTrustTag;
 
   /* ===== RESPONSIVE: MOBILE ===== */
   @media (max-width: 768px) {
+    .professional-header {
+      padding: 1.5rem 0 0 0;
+    }
+
     .profile-img {
       width: 150px !important;
       height: 150px !important;
