@@ -1,6 +1,6 @@
 ---
 // src/components/Navigation.astro
-// Purpose: Clean navigation bar with dropdowns
+// Purpose: Clean navigation bar with dropdowns - Fixed z-index and positioning
 
 const currentPath = Astro.url.pathname;
 
@@ -109,13 +109,12 @@ const navItems = [
 
 <style>
   .main-nav {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    padding: 0.8rem 2rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+    background: transparent; /* Transparent to show header gradient behind */
+    padding: 0.8rem 0;
+    position: relative; /* Changed from sticky to relative */
+    z-index: 9999; /* High z-index for dropdowns */
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 0.5rem;
   }
 
   .nav-container {
@@ -124,6 +123,7 @@ const navItems = [
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0 20px;
   }
 
   /* Logo */
@@ -143,7 +143,7 @@ const navItems = [
   }
 
   .logo-text:hover {
-    color: #22c55e;
+    color: #1C75BC;
   }
 
   .logo-tagline {
@@ -202,7 +202,7 @@ const navItems = [
     transform: rotate(180deg);
   }
 
-  /* Dropdown Menu */
+  /* Dropdown Menu - Fixed z-index */
   .dropdown-menu {
     display: none;
     position: absolute;
@@ -216,7 +216,7 @@ const navItems = [
     list-style: none;
     margin: 0.25rem 0 0 0;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    z-index: 9999;
+    z-index: 99999; /* Very high z-index to appear above everything */
   }
 
   .nav-item:hover .dropdown-menu {
@@ -233,8 +233,8 @@ const navItems = [
   }
 
   .dropdown-link:hover {
-    background: rgba(34, 197, 94, 0.1);
-    color: #22c55e;
+    background: rgba(28, 117, 188, 0.15);
+    color: #1C75BC;
   }
 
   /* Mobile Toggle */
@@ -270,7 +270,7 @@ const navItems = [
   /* Responsive */
   @media (max-width: 1024px) {
     .main-nav {
-      padding: 0.75rem 1rem;
+      padding: 0.5rem 0;
     }
 
     .nav-list {
@@ -285,7 +285,8 @@ const navItems = [
 
   @media (max-width: 768px) {
     .main-nav {
-      padding: 0.6rem 1rem;
+      padding: 0.4rem 0;
+      margin-top: 0.3rem;
     }
 
     .nav-toggle {
@@ -303,7 +304,7 @@ const navItems = [
       padding: 1rem;
       gap: 0.5rem;
       border-top: 1px solid rgba(255, 255, 255, 0.05);
-      z-index: 9999;
+      z-index: 99999;
       max-height: 80vh;
       overflow-y: auto;
     }
@@ -356,7 +357,7 @@ const navItems = [
 
   @media (max-width: 480px) {
     .main-nav {
-      padding: 0.4rem 0.75rem;
+      padding: 0.3rem 0;
     }
 
     .nav-link {
