@@ -1,0 +1,235 @@
+---
+// src/pages/shop.astro
+// Purpose: Shop landing page with 9 category cards
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+
+const shopCategories = [
+  {
+    slug: 'electronics',
+    name: 'Electronics & Gadgets',
+    icon: '📱',
+    description: 'Smartphones, laptops, accessories, audio',
+    productCount: 25,
+    color: '#3b82f6'
+  },
+  {
+    slug: 'home-kitchen',
+    name: 'Home & Kitchen',
+    icon: '🏠',
+    description: 'Appliances, cookware, furniture',
+    productCount: 18,
+    color: '#f59e0b'
+  },
+  {
+    slug: 'solar-energy',
+    name: 'Solar & Energy',
+    icon: '☀️',
+    description: 'Solar panels, batteries, inverters, lights',
+    productCount: 15,
+    color: '#22c55e'
+  },
+  {
+    slug: 'agriculture',
+    name: 'Agriculture',
+    icon: '🌾',
+    description: 'Water pumps, irrigation, tools, seeds',
+    productCount: 12,
+    color: '#84cc16'
+  },
+  {
+    slug: 'fashion-wear',
+    name: 'Fashion & Wear',
+    icon: '👕',
+    description: 'Clothing, shoes, accessories, watches',
+    productCount: 20,
+    color: '#ec4899'
+  },
+  {
+    slug: 'health-fitness',
+    name: 'Health & Fitness',
+    icon: '💪',
+    description: 'Gym equipment, supplements, health monitors',
+    productCount: 10,
+    color: '#ef4444'
+  },
+  {
+    slug: 'beauty-care',
+    name: 'Beauty & Personal Care',
+    icon: '💄',
+    description: 'Skincare, makeup, hair care, grooming',
+    productCount: 14,
+    color: '#f472b6'
+  },
+  {
+    slug: 'automotive',
+    name: 'Automotive & Motorcycle',
+    icon: '🚗',
+    description: 'Car accessories, helmets, gear, parts',
+    productCount: 11,
+    color: '#64748b'
+  },
+  {
+    slug: 'office-stationery',
+    name: 'Office & Stationery',
+    icon: '📝',
+    description: 'Chairs, desks, stationery, printers',
+    productCount: 8,
+    color: '#8b5cf6'
+  }
+];
+---
+
+<BaseLayout
+  title="Shop - Swahili Hacks"
+  description="Curated products from trusted sources. Find electronics, solar, agriculture, fashion, and more."
+  path="/shop/"
+>
+  <!-- Shop Hero -->
+  <section class="shop-hero">
+    <div class="container">
+      <h1>🛍️ Shop Products</h1>
+      <p>Curated products from trusted sources. Find what you need for home, work, and life.</p>
+    </div>
+  </section>
+
+  <!-- Category Grid -->
+  <section class="shop-section">
+    <div class="container">
+      <div class="category-grid">
+        {shopCategories.map((cat) => (
+          <a href={`/shop/${cat.slug}/`} class="category-card" style={`--card-color: ${cat.color}`}>
+            <div class="category-icon">{cat.icon}</div>
+            <h3>{cat.name}</h3>
+            <p>{cat.description}</p>
+            <div class="category-footer">
+              <span class="product-count">{cat.productCount} Products</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .shop-hero {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .shop-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .shop-hero p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+  }
+
+  .shop-section {
+    padding: 4rem 0;
+    background: #f8fafc;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .category-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #0f172a;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    border-color: var(--card-color);
+  }
+
+  .category-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .category-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .category-card p {
+    font-size: 0.9rem;
+    color: #64748b;
+    flex: 1;
+  }
+
+  .category-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f1f5f9;
+  }
+
+  .product-count {
+    font-size: 0.8rem;
+    color: #94a3b8;
+  }
+
+  .arrow {
+    color: var(--card-color);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .category-card:hover .arrow {
+    transform: translateX(6px);
+  }
+
+  @media (max-width: 768px) {
+    .shop-hero h1 {
+      font-size: 2rem;
+    }
+
+    .category-grid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .shop-hero h1 {
+      font-size: 1.6rem;
+    }
+
+    .category-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
