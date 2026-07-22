@@ -40,15 +40,20 @@ const displayTrustTag = trustTag || defaultTrustTag;
     <div class="brand-info">
       <div class="profile-section">
         <div class="profile-image-wrapper">
-          <img 
-            src="/images/profile.jpg.png" 
-            alt="Swahili Hacks - Chemical and Process Engineer" 
-            class="profile-img"
-            width="500"
-            height="500"
-            loading="eager"
-            decoding="async"
-          />
+          <!-- Use a circular cropped version or add a background mask -->
+          <div class="profile-img-container">
+            <img 
+              src="/images/profile.jpg.png" 
+              alt="Swahili Hacks - Chemical and Process Engineer" 
+              class="profile-img"
+              width="500"
+              height="500"
+              loading="eager"
+              decoding="async"
+            />
+            <!-- This overlay ensures any background is hidden -->
+            <div class="img-overlay"></div>
+          </div>
           <div class="profile-ring"></div>
         </div>
         
@@ -92,7 +97,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
     color: white;
     padding: 2rem 0 0 0;
     position: relative;
-    overflow: visible; /* Changed from hidden to visible for dropdowns */
+    overflow: visible;
     min-height: 400px;
   }
 
@@ -250,23 +255,49 @@ const displayTrustTag = trustTag || defaultTrustTag;
     flex-shrink: 0;
   }
 
-  .profile-img {
-    width: 180px !important;
-    height: 180px !important;
+  /* Profile Image Container - Ensures circular clipping */
+  .profile-img-container {
+    position: relative;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
-    border: 6px solid #1C75BC;
-    object-fit: cover;
+    overflow: hidden;
+    background: transparent !important;
+    z-index: 2;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .profile-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover;
     display: block;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
     z-index: 2;
     background: transparent !important;
   }
 
-  .profile-img:hover {
+  /* Overlay to hide any background artifacts */
+  .img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 6px solid #1C75BC;
+    box-sizing: border-box;
+    pointer-events: none;
+    z-index: 3;
+    box-shadow: inset 0 0 30px rgba(28, 117, 188, 0.1);
+  }
+
+  .profile-img-container:hover .profile-img {
     transform: scale(1.05) rotate(-2deg);
-    border-color: #145a8a;
+  }
+
+  .profile-img-container:hover {
     box-shadow: 0 15px 45px rgba(28, 117, 188, 0.4);
   }
 
@@ -426,9 +457,9 @@ const displayTrustTag = trustTag || defaultTrustTag;
       font-size: 1.8rem !important;
     }
 
-    .profile-img {
-      width: 160px !important;
-      height: 160px !important;
+    .profile-img-container {
+      width: 160px;
+      height: 160px;
     }
 
     .profile-text h2 {
@@ -448,10 +479,9 @@ const displayTrustTag = trustTag || defaultTrustTag;
       min-height: 350px;
     }
 
-    .profile-img {
-      width: 150px !important;
-      height: 150px !important;
-      border-width: 5px !important;
+    .profile-img-container {
+      width: 150px;
+      height: 150px;
     }
 
     .profile-ring {
@@ -492,7 +522,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
       font-size: 0.8rem !important;
     }
 
-    /* PARTICLES ON MOBILE - Keep but smaller and more subtle */
     .particle {
       font-size: 1.8rem !important;
       opacity: 0.05 !important;
@@ -500,7 +529,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
 
     .particle-1, .particle-2, .particle-3, .particle-4, .particle-5,
     .particle-6, .particle-7, .particle-8, .particle-9, .particle-10 {
-      display: block !important; /* Show all particles on mobile */
+      display: block !important;
     }
 
     @keyframes profileGlow {
@@ -520,10 +549,9 @@ const displayTrustTag = trustTag || defaultTrustTag;
       min-height: 300px;
     }
 
-    .profile-img {
-      width: 130px !important;
-      height: 130px !important;
-      border-width: 4px !important;
+    .profile-img-container {
+      width: 130px;
+      height: 130px;
     }
 
     .profile-ring {
@@ -565,7 +593,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
       font-size: 0.7rem !important;
     }
 
-    /* PARTICLES ON SMALL MOBILE - Keep visible */
     .particle {
       font-size: 1.2rem !important;
       opacity: 0.04 !important;
@@ -576,7 +603,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
       display: block !important;
     }
 
-    /* Adjust particle positions for small screens */
     .particle-1 { top: 5%; left: 3%; }
     .particle-2 { top: 10%; right: 3%; }
     .particle-3 { bottom: 40%; left: 5%; }
