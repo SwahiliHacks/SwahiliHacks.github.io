@@ -1,6 +1,6 @@
 ---
 // src/components/Navigation.astro
-// Purpose: Clean navigation bar with dropdowns - BLUE accents
+// Purpose: Clean navigation bar with dropdowns - Mobile & Tablet responsive
 
 const currentPath = Astro.url.pathname;
 
@@ -35,6 +35,446 @@ const navItems = [
       { label: 'Health & Fitness', url: '/shop/health-fitness/' },
       { label: 'Beauty & Personal Care', url: '/shop/beauty-care/' },
       { label: 'Automotive & Motorcycle', url: '/shop/automotive/' },
+      { label: 'Office & Stationery', url: '/shop/office-stationery/' },
+    ]
+  },
+  {
+    label: 'Bookshelf',
+    url: '/bookshelf/',
+    dropdown: [
+      { label: 'Trading & Investing', url: '/bookshelf/trading-investing/' },
+      { label: 'Finance & Wealth', url: '/bookshelf/finance-wealth/' },
+      { label: 'Personal Development', url: '/bookshelf/personal-development/' },
+      { label: 'Entrepreneurship', url: '/bookshelf/entrepreneurship/' },
+      { label: 'Productivity', url: '/bookshelf/productivity/' },
+      { label: 'AI & Technology', url: '/bookshelf/ai-technology/' },
+      { label: 'Writing & Communication', url: '/bookshelf/writing-communication/' },
+    ]
+  },
+  { label: 'About', url: '/about/', dropdown: [] },
+  { label: 'Contact', url: '/contact/', dropdown: [] },
+];
+---
+
+<nav class="main-nav">
+  <div class="nav-container">
+    <!-- Logo -->
+    <a href="/" class="nav-logo">
+      <span class="logo-text">Swahili Hacks</span>
+      <span class="logo-tagline">Solutions</span>
+    </a>
+
+    <!-- Mobile Toggle -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Navigation Links -->
+    <ul class="nav-list" id="navList">
+      {navItems.map((item) => (
+        <li class:list={[
+          'nav-item',
+          { 'has-dropdown': item.dropdown.length > 0 },
+          { 'active': currentPath === item.url }
+        ]}>
+          {item.dropdown.length > 0 ? (
+            // For items with dropdown, use a button/span to handle click
+            <div class="nav-link-wrapper">
+              <a 
+                href={item.url} 
+                class="nav-link"
+                aria-expanded="false"
+                data-dropdown-toggle
+              >
+                {item.label}
+                <span class="nav-arrow">▼</span>
+              </a>
+              <ul class="dropdown-menu">
+                {item.dropdown.map((sub) => (
+                  <li>
+                    <a href={sub.url} class="dropdown-link">
+                      {sub.label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : (
+            <a 
+              href={item.url} 
+              class="nav-link"
+            >
+              {item.label}
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+  </div>
+</nav>
+
+<style>
+  .main-nav {
+    background: transparent;
+    padding: 0.8rem 0;
+    position: relative;
+    z-index: 9999;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    margin-top: 0.5rem;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+  }
+
+  /* Logo */
+  .nav-logo {
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+  }
+
+  .logo-text:hover {
+    color: #1C75BC;
+  }
+
+  .logo-tagline {
+    font-size: 0.6rem;
+    color: #1C75BC;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.8;
+  }
+
+  /* Navigation List */
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  .nav-link-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem 1rem;
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: inherit;
+  }
+
+  .nav-link:hover {
+    color: white;
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .nav-item.active .nav-link {
+    color: white;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-arrow {
+    font-size: 0.6rem;
+    margin-left: 0.15rem;
+    transition: transform 0.3s ease;
+    color: #1C75BC;
+  }
+
+  .nav-item:hover .nav-arrow,
+  .nav-item.active-dropdown .nav-arrow {
+    transform: rotate(180deg);
+  }
+
+  /* Dropdown Menu */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: #1e293b;
+    padding: 0.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+    list-style: none;
+    margin: 0.25rem 0 0 0;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    z-index: 99999;
+  }
+
+  /* Show dropdown on hover (desktop) */
+  @media (min-width: 769px) {
+    .nav-item:hover .dropdown-menu {
+      display: block;
+    }
+  }
+
+  /* Show dropdown when active class is toggled (mobile/tablet) */
+  .nav-item.active-dropdown .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: 0.5rem 1.25rem;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+  }
+
+  .dropdown-link:hover {
+    background: rgba(28, 117, 188, 0.15);
+    color: #1C75BC;
+  }
+
+  /* Mobile Toggle */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
+  .nav-toggle span {
+    width: 25px;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+  }
+
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .main-nav {
+      padding: 0.5rem 0;
+    }
+
+    .nav-list {
+      gap: 0.25rem;
+    }
+
+    .nav-link {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-nav {
+      padding: 0.4rem 0;
+      margin-top: 0.3rem;
+    }
+
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-list {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #0f172a;
+      padding: 1rem;
+      gap: 0.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      z-index: 99999;
+      max-height: 80vh;
+      overflow-y: auto;
+    }
+
+    .nav-list.open {
+      display: flex;
+    }
+
+    .nav-item {
+      width: 100%;
+    }
+
+    .nav-link {
+      width: 100%;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+    }
+
+    .nav-link-wrapper {
+      width: 100%;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .dropdown-menu {
+      position: static;
+      background: transparent;
+      box-shadow: none;
+      padding: 0 0 0 1.5rem;
+      border: none;
+      margin: 0;
+      display: none;
+      width: 100%;
+    }
+
+    .nav-item.active-dropdown .dropdown-menu {
+      display: block;
+    }
+
+    .dropdown-link {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .logo-text {
+      font-size: 1.2rem;
+    }
+
+    .logo-tagline {
+      font-size: 0.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main-nav {
+      padding: 0.3rem 0;
+    }
+
+    .nav-link {
+      font-size: 0.8rem;
+      padding: 0.5rem 0.6rem;
+    }
+
+    .dropdown-link {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.75rem;
+    }
+
+    .logo-text {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Mobile menu toggle
+    const toggle = document.getElementById('navToggle');
+    const list = document.getElementById('navList');
+
+    if (toggle && list) {
+      toggle.addEventListener('click', function() {
+        list.classList.toggle('open');
+        toggle.classList.toggle('active');
+      });
+    }
+
+    // Dropdown toggles on mobile/tablet
+    const dropdownToggles = document.querySelectorAll('[data-dropdown-toggle]');
+
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', function(e) {
+        const isMobile = window.innerWidth <= 768;
+        // Only handle click on mobile/tablet
+        if (isMobile) {
+          e.preventDefault(); // Prevent navigation
+          const parent = this.closest('.nav-item');
+          if (parent) {
+            // Close other open dropdowns
+            document.querySelectorAll('.nav-item.active-dropdown').forEach(item => {
+              if (item !== parent) {
+                item.classList.remove('active-dropdown');
+                const arrow = item.querySelector('.nav-arrow');
+                if (arrow) {
+                  arrow.style.transform = 'rotate(0deg)';
+                }
+              }
+            });
+            // Toggle this dropdown
+            parent.classList.toggle('active-dropdown');
+            const arrow = this.querySelector('.nav-arrow');
+            if (arrow) {
+              arrow.style.transform = parent.classList.contains('active-dropdown') ? 'rotate(180deg)' : 'rotate(0deg)';
+            }
+          }
+        }
+      });
+    });
+
+    // Close dropdowns when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('.nav-item')) {
+        document.querySelectorAll('.nav-item.active-dropdown').forEach(item => {
+          item.classList.remove('active-dropdown');
+          const arrow = item.querySelector('.nav-arrow');
+          if (arrow) {
+            arrow.style.transform = 'rotate(0deg)';
+          }
+        });
+      }
+    });
+
+    // Close mobile menu on link click (optional)
+    document.querySelectorAll('.nav-link, .dropdown-link').forEach(link => {
+      link.addEventListener('click', function() {
+        if (window.innerWidth <= 768 && list.classList.contains('open')) {
+          list.classList.remove('open');
+          toggle.classList.remove('active');
+        }
+      });
+    });
+  });
+</script>      { label: 'Automotive & Motorcycle', url: '/shop/automotive/' },
       { label: 'Office & Stationery', url: '/shop/office-stationery/' },
     ]
   },
