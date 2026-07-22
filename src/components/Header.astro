@@ -1,4 +1,26 @@
 ---
+// Header.astro
+//
+// Purpose: the profile block + stats bar + navigation at the top of every page.
+// Why it exists: was copy-pasted at the top of all 14 HTML files before.
+// What happens if removed: pages lose the brand header entirely.
+// How to modify safely: change props per-page (trustTag, stats) rather than
+// editing this file, unless you're changing something for the whole site
+// (e.g. the profile photo or name).
+
+// UPDATES MADE (2026-07-20):
+// 1. Removed all emojis
+// 2. Replaced green with primary blue
+// 3. Professional clean design
+// 4. Fixed header alignment - all centered
+// 5. Added navigation with prominent Store & Bookshelf cards
+// 6. Removed About from hero (already in header)
+
+// UPDATES MADE (2026-07-22):
+// 1. Integrated Navigation component into header
+// 2. Navigation now shows below stats section
+// 3. Clean separation between brand and navigation
+
 import Navigation from './Navigation.astro';
 
 interface Stat {
@@ -62,18 +84,19 @@ const displayTrustTag = trustTag || defaultTrustTag;
       </div>
     </div>
 
-    <!-- Navigation -->
+    <!-- Navigation - Full width below stats -->
     <Navigation />
   </div>
 </header>
 
 <style>
+  /* ===== HEADER CONTAINER ===== */
   .professional-header {
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     color: white;
-    padding: 2rem 0 0 0;
+    padding: 2rem 0 1.5rem 0;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .professional-header::before {
@@ -94,6 +117,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
     z-index: 1;
   }
 
+  /* ===== BRAND INFO - CENTERED ===== */
   .brand-info {
     display: flex;
     flex-direction: column;
@@ -103,6 +127,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
     gap: 2rem;
   }
 
+  /* ===== PROFILE SECTION - CENTERED ===== */
   .profile-section {
     display: flex;
     flex-direction: column;
@@ -155,8 +180,12 @@ const displayTrustTag = trustTag || defaultTrustTag;
   }
 
   @keyframes profileGlow {
-    0%, 100% { box-shadow: 0 0 20px rgba(28, 117, 188, 0.15); }
-    50% { box-shadow: 0 0 40px rgba(28, 117, 188, 0.3); }
+    0%, 100% { 
+      box-shadow: 0 0 20px rgba(28, 117, 188, 0.15);
+    }
+    50% { 
+      box-shadow: 0 0 40px rgba(28, 117, 188, 0.3);
+    }
   }
 
   .profile-image-wrapper {
@@ -212,6 +241,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
     flex-wrap: wrap;
   }
 
+  /* ===== STATS SECTION - CENTERED ===== */
   .header-stats {
     display: flex;
     justify-content: center;
@@ -266,40 +296,44 @@ const displayTrustTag = trustTag || defaultTrustTag;
     opacity: 0.8;
   }
 
-  /* ===== RESPONSIVE ===== */
+  /* ===== RESPONSIVE: TABLET ===== */
   @media (max-width: 1024px) and (min-width: 769px) {
     .brand-info {
       gap: 1.5rem;
     }
+
     .header-stats {
       gap: 1.5rem;
     }
+
     .stat {
       min-width: 70px;
       padding: 0.5rem 0.75rem;
       max-width: 120px;
     }
+
     .stat-number {
       font-size: 1.8rem !important;
     }
+
     .profile-img {
       width: 160px !important;
       height: 160px !important;
     }
+
     .profile-text h2 {
       font-size: 2.2rem !important;
     }
   }
 
+  /* ===== RESPONSIVE: MOBILE ===== */
   @media (max-width: 768px) {
-    .professional-header {
-      padding: 1.5rem 0 0 0;
-    }
     .profile-img {
       width: 150px !important;
       height: 150px !important;
       border-width: 5px !important;
     }
+
     .profile-ring {
       top: -6px;
       left: -6px;
@@ -307,41 +341,55 @@ const displayTrustTag = trustTag || defaultTrustTag;
       bottom: -6px;
       border-width: 2px;
     }
+
     .profile-text h2 {
       font-size: 2rem !important;
     }
+
     .expert-tag {
       font-size: 1rem !important;
     }
+
     .trust-tag {
       font-size: 0.95rem !important;
     }
+
     .header-stats {
       gap: 1.5rem;
     }
+
     .stat {
       min-width: 60px;
       padding: 0.75rem 1rem;
       max-width: 120px;
     }
+
     .stat-number {
       font-size: 1.5rem !important;
     }
+
     .stat-label {
       font-size: 0.8rem !important;
     }
+
     @keyframes profileGlow {
-      0%, 100% { box-shadow: 0 0 15px rgba(28, 117, 188, 0.1); }
-      50% { box-shadow: 0 0 25px rgba(28, 117, 188, 0.2); }
+      0%, 100% { 
+        box-shadow: 0 0 15px rgba(28, 117, 188, 0.1);
+      }
+      50% { 
+        box-shadow: 0 0 25px rgba(28, 117, 188, 0.2);
+      }
     }
   }
 
+  /* ===== SMALL MOBILE ===== */
   @media (max-width: 480px) {
     .profile-img {
       width: 130px !important;
       height: 130px !important;
       border-width: 4px !important;
     }
+
     .profile-ring {
       top: -5px;
       left: -5px;
@@ -350,26 +398,33 @@ const displayTrustTag = trustTag || defaultTrustTag;
       border-width: 2px;
       animation-duration: 30s;
     }
+
     .profile-text h2 {
       font-size: 1.8rem !important;
     }
+
     .expert-tag {
       font-size: 0.95rem !important;
     }
+
     .trust-tag {
       font-size: 0.85rem !important;
     }
+
     .header-stats {
       gap: 1rem;
     }
+
     .stat {
       min-width: 50px;
       padding: 0.5rem 0.75rem;
       max-width: 100px;
     }
+
     .stat-number {
       font-size: 1.3rem !important;
     }
+
     .stat-label {
       font-size: 0.7rem !important;
     }
