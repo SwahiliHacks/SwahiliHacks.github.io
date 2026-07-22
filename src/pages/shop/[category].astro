@@ -1,0 +1,280 @@
+---
+// src/pages/shop/[category].astro
+// Purpose: Dynamic sub-category page for shop
+
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Footer from '../../components/Footer.astro';
+
+export async function getStaticPaths() {
+  const categories = [
+    'electronics',
+    'home-kitchen',
+    'solar-energy',
+    'agriculture',
+    'fashion-wear',
+    'health-fitness',
+    'beauty-care',
+    'automotive',
+    'office-stationery'
+  ];
+  
+  return categories.map((category) => ({
+    params: { category },
+    props: { category }
+  }));
+}
+
+const { category } = Astro.props;
+
+const categoryData = {
+  'electronics': {
+    title: 'Electronics & Gadgets',
+    icon: '📱',
+    description: 'Find the best smartphones, laptops, and electronics.',
+    color: '#3b82f6',
+    products: [
+      { name: 'Samsung Galaxy A15', price: '₦250,000', link: '#', image: '/images/store/samsung-a15.jpg' },
+      { name: 'Tecno Spark 20 Pro', price: '₦180,000', link: '#', image: '/images/store/tecno-spark20.jpg' },
+      { name: 'HP Laptop 15s', price: '₦450,000', link: '#', image: '/images/store/hp-laptop.jpg' },
+      { name: 'Apple AirPods Pro', price: '₦120,000', link: '#', image: '/images/store/airpods.jpg' },
+      { name: 'Samsung 43" TV', price: '₦380,000', link: '#', image: '/images/store/samsung-tv.jpg' },
+    ]
+  },
+  'solar-energy': {
+    title: 'Solar & Energy',
+    icon: '☀️',
+    description: 'Find the best solar panels, batteries, and energy solutions.',
+    color: '#22c55e',
+    products: [
+      { name: '300W Solar Panel', price: '₦280,000', link: '#', image: '/images/store/solar-panel.jpg' },
+      { name: 'Solar Battery 200Ah', price: '₦450,000', link: '#', image: '/images/store/solar-battery.jpg' },
+      { name: 'Solar Inverter 3kVA', price: '₦350,000', link: '#', image: '/images/store/solar-inverter.jpg' },
+      { name: 'Solar Street Light', price: '₦120,000', link: '#', image: '/images/store/solar-light.jpg' },
+      { name: 'Portable Power Station', price: '₦180,000', link: '#', image: '/images/store/power-station.jpg' },
+    ]
+  },
+  'agriculture': {
+    title: 'Agriculture',
+    icon: '🌾',
+    description: 'Find the best farming equipment and agricultural tools.',
+    color: '#84cc16',
+    products: [
+      { name: 'Solar Water Pump', price: '₦320,000', link: '#', image: '/images/store/solar-pump.jpg' },
+      { name: 'Drip Irrigation Kit', price: '₦150,000', link: '#', image: '/images/store/irrigation-kit.jpg' },
+      { name: 'Knapsack Sprayer', price: '₦45,000', link: '#', image: '/images/store/sprayer.jpg' },
+      { name: 'Fertilizer 50kg', price: '₦35,000', link: '#', image: '/images/store/fertilizer.jpg' },
+    ]
+  },
+  // ... add more categories as needed
+};
+
+const data = categoryData[category];
+const displayName = category.replace(/-/g, ' ');
+---
+
+<BaseLayout
+  title={`${data.title} - Swahili Hacks Shop`}
+  description={data.description}
+  path={`/shop/${category}/`}
+>
+  <!-- Category Hero -->
+  <section class="category-hero" style={`--bg-color: ${data.color}`}>
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="/shop/">Shop</a> / <span>{data.title}</span>
+      </div>
+      <div class="category-title">
+        <span class="category-icon">{data.icon}</span>
+        <h1>{data.title}</h1>
+      </div>
+      <p>{data.description}</p>
+    </div>
+  </section>
+
+  <!-- Products Grid -->
+  <section class="products-section">
+    <div class="container">
+      <div class="products-grid">
+        {data.products.map((product) => (
+          <div class="product-card">
+            <div class="product-image">
+              <img src={product.image} alt={product.name} />
+            </div>
+            <div class="product-info">
+              <h3>{product.name}</h3>
+              <span class="price">{product.price}</span>
+              <a 
+                href={product.link} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="btn-affiliate"
+              >
+                View on Jumia →
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .category-hero {
+    padding: 2rem 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+  }
+
+  .breadcrumb {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+  }
+
+  .breadcrumb a {
+    color: #94a3b8;
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    color: white;
+  }
+
+  .breadcrumb span {
+    color: white;
+  }
+
+  .category-title {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .category-icon {
+    font-size: 2.5rem;
+  }
+
+  .category-hero h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: white;
+    margin: 0;
+  }
+
+  .category-hero p {
+    color: #94a3b8;
+    font-size: 1.05rem;
+    margin-top: 0.5rem;
+  }
+
+  .products-section {
+    padding: 4rem 0;
+    background: #f8fafc;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+    transition: all 0.3s ease;
+  }
+
+  .product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+    border-color: var(--bg-color, #1C75BC);
+  }
+
+  .product-image {
+    height: 180px;
+    background: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+
+  .product-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  .product-info {
+    padding: 1.25rem;
+  }
+
+  .product-info h3 {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .price {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1C75BC;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .btn-affiliate {
+    display: inline-block;
+    padding: 0.5rem 1.25rem;
+    background: #1C75BC;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-affiliate:hover {
+    background: #145a8a;
+  }
+
+  @media (max-width: 768px) {
+    .category-hero h1 {
+      font-size: 1.8rem;
+    }
+
+    .products-grid {
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    }
+
+    .category-title {
+      flex-direction: column;
+      text-align: center;
+      gap: 0.5rem;
+    }
+
+    .breadcrumb {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .products-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
