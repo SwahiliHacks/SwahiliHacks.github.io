@@ -5,6 +5,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Footer from '../components/Footer.astro';
 
+// Book Categories for Filter
+const bookCategories = [
+  { slug: 'all', name: 'All Books', icon: 'fa-solid fa-book' },
+  { slug: 'trading-investing', name: 'Trading & Investing', icon: 'fa-solid fa-chart-line' },
+  { slug: 'finance-wealth', name: 'Finance & Wealth', icon: 'fa-solid fa-coins' },
+  { slug: 'personal-development', name: 'Personal Development', icon: 'fa-solid fa-brain' },
+  { slug: 'entrepreneurship', name: 'Entrepreneurship', icon: 'fa-solid fa-briefcase' },
+  { slug: 'productivity', name: 'Productivity', icon: 'fa-solid fa-bolt' },
+  { slug: 'ai-technology', name: 'AI & Technology', icon: 'fa-solid fa-robot' },
+  { slug: 'writing-communication', name: 'Writing & Communication', icon: 'fa-solid fa-pen-fancy' },
+];
+
 // Books data - includes affiliate links to trusted sources
 const books = [
   {
@@ -15,8 +27,9 @@ const books = [
     category: 'Personal Development',
     price: '$14.99',
     cover: '/images/books/atomic-habits.jpg',
-    affiliateUrl: 'https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299',
+    affiliateUrl: 'https://www.amazon.com/Atomic-Habits-Proven-Build-Break/dp/0735211299?tag=swahilihacks-20',
     rating: 4.9,
+    reviews: 45678,
     featured: true
   },
   {
@@ -24,11 +37,12 @@ const books = [
     title: 'The Psychology of Money',
     author: 'Morgan Housel',
     description: 'Timeless lessons on wealth, greed, and happiness.',
-    category: 'Finance & Investing',
+    category: 'Finance & Wealth',
     price: '$12.99',
     cover: '/images/books/psychology-money.jpg',
-    affiliateUrl: 'https://www.amazon.com/Psychology-Money-Timeless-Lessons-Happiness/dp/0857197681',
+    affiliateUrl: 'https://www.amazon.com/Psychology-Money-Timeless-Lessons-Happiness/dp/0857197681?tag=swahilihacks-20',
     rating: 4.8,
+    reviews: 12345,
     featured: true
   },
   {
@@ -36,11 +50,12 @@ const books = [
     title: 'Technical Analysis of the Financial Markets',
     author: 'John J. Murphy',
     description: 'A Comprehensive Guide to Trading Methods and Applications.',
-    category: 'Trading Education',
+    category: 'Trading & Investing',
     price: '$29.99',
     cover: '/images/books/technical-analysis.jpg',
-    affiliateUrl: 'https://www.amazon.com/Technical-Analysis-Financial-Markets-Comprehensive/dp/0735200661',
+    affiliateUrl: 'https://www.amazon.com/Technical-Analysis-Financial-Markets-Comprehensive/dp/0735200661?tag=swahilihacks-20',
     rating: 4.6,
+    reviews: 4523,
     featured: false
   },
   {
@@ -51,8 +66,9 @@ const books = [
     category: 'Productivity',
     price: '$11.99',
     cover: '/images/books/deep-work.jpg',
-    affiliateUrl: 'https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692',
+    affiliateUrl: 'https://www.amazon.com/Deep-Work-Focused-Success-Distracted/dp/1455586692?tag=swahilihacks-20',
     rating: 4.7,
+    reviews: 23456,
     featured: false
   },
   {
@@ -63,8 +79,9 @@ const books = [
     category: 'Entrepreneurship',
     price: '$12.99',
     cover: '/images/books/4-hour-workweek.jpg',
-    affiliateUrl: 'https://www.amazon.com/4-Hour-Work-Week-Escape-Live-Anywhere/dp/0307465357',
+    affiliateUrl: 'https://www.amazon.com/4-Hour-Work-Week-Escape-Live-Anywhere/dp/0307465357?tag=swahilihacks-20',
     rating: 4.4,
+    reviews: 23456,
     featured: false
   },
   {
@@ -72,11 +89,12 @@ const books = [
     title: 'Rich Dad Poor Dad',
     author: 'Robert T. Kiyosaki',
     description: 'What the Rich Teach Their Kids About Money That the Poor and Middle Class Do Not!',
-    category: 'Finance & Investing',
+    category: 'Finance & Wealth',
     price: '$9.99',
     cover: '/images/books/rich-dad-poor-dad.jpg',
-    affiliateUrl: 'https://www.amazon.com/Rich-Dad-Poor-Dad-Teach/dp/1612680194',
+    affiliateUrl: 'https://www.amazon.com/Rich-Dad-Poor-Dad-Teach/dp/1612680194?tag=swahilihacks-20',
     rating: 4.5,
+    reviews: 56789,
     featured: false
   },
   {
@@ -84,11 +102,12 @@ const books = [
     title: 'The Art of Social Media',
     author: 'Guy Kawasaki',
     description: 'Power Tips for Power Users.',
-    category: 'Digital Marketing',
+    category: 'Writing & Communication',
     price: '$13.99',
     cover: '/images/books/art-social-media.jpg',
-    affiliateUrl: 'https://www.amazon.com/Art-Social-Media-Power-Users/dp/1591848078',
+    affiliateUrl: 'https://www.amazon.com/Art-Social-Media-Power-Users/dp/1591848078?tag=swahilihacks-20',
     rating: 4.3,
+    reviews: 5678,
     featured: false
   },
   {
@@ -96,14 +115,79 @@ const books = [
     title: 'Data Science for Business',
     author: 'Foster Provost',
     description: 'What You Need to Know about Data Mining and Data-Analytic Thinking.',
-    category: 'Data Science',
+    category: 'AI & Technology',
     price: '$24.99',
     cover: '/images/books/data-science-business.jpg',
-    affiliateUrl: 'https://www.amazon.com/Data-Science-Business-Data-Analytic-Thinking/dp/1449361323',
+    affiliateUrl: 'https://www.amazon.com/Data-Science-Business-Data-Analytic-Thinking/dp/1449361323?tag=swahilihacks-20',
     rating: 4.4,
+    reviews: 3456,
+    featured: false
+  },
+  {
+    id: 9,
+    title: 'The Intelligent Investor',
+    author: 'Benjamin Graham',
+    description: 'The definitive book on value investing. Warren Buffett calls it "by far the best book on investing ever written."',
+    category: 'Trading & Investing',
+    price: '$18.99',
+    cover: '/images/books/intelligent-investor.jpg',
+    affiliateUrl: 'https://www.amazon.com/dp/0060555661?tag=swahilihacks-20',
+    rating: 4.7,
+    reviews: 8234,
+    featured: false
+  },
+  {
+    id: 10,
+    title: 'Market Wizards',
+    author: 'Jack D. Schwager',
+    description: 'Interviews with top traders revealing their strategies and mindset.',
+    category: 'Trading & Investing',
+    price: '$16.99',
+    cover: '/images/books/market-wizards.jpg',
+    affiliateUrl: 'https://www.amazon.com/dp/0887306101?tag=swahilihacks-20',
+    rating: 4.6,
+    reviews: 3214,
+    featured: false
+  },
+  {
+    id: 11,
+    title: 'The 7 Habits of Highly Effective People',
+    author: 'Stephen R. Covey',
+    description: 'The classic book on personal effectiveness. Seven principles that will transform your life and career.',
+    category: 'Personal Development',
+    price: '$15.99',
+    cover: '/images/books/7-habits.jpg',
+    affiliateUrl: 'https://www.amazon.com/dp/0743269519?tag=swahilihacks-20',
+    rating: 4.8,
+    reviews: 34567,
+    featured: false
+  },
+  {
+    id: 12,
+    title: 'The Lean Startup',
+    author: 'Eric Ries',
+    description: 'How constant innovation creates radically successful businesses.',
+    category: 'Entrepreneurship',
+    price: '$16.99',
+    cover: '/images/books/lean-startup.jpg',
+    affiliateUrl: 'https://www.amazon.com/dp/0307887898?tag=swahilihacks-20',
+    rating: 4.6,
+    reviews: 18765,
     featured: false
   }
 ];
+
+// Helper function to render stars
+function renderStars(rating: number) {
+  const fullStars = Math.floor(rating);
+  const halfStar = rating % 1 >= 0.5 ? 1 : 0;
+  const emptyStars = 5 - fullStars - halfStar;
+  let stars = '';
+  for (let i = 0; i < fullStars; i++) stars += '⭐';
+  if (halfStar) stars += '⭐';
+  for (let i = 0; i < emptyStars; i++) stars += '☆';
+  return stars;
+}
 ---
 
 <BaseLayout
@@ -111,97 +195,137 @@ const books = [
   description="Curated books from trusted sources. Find the best books on trading, productivity, finance, and personal development."
   path="/bookshelf/"
 >
-  <main>
-    <!-- Bookshelf Hero -->
-    <section class="bookshelf-hero">
-      <div class="container">
-        <h1>📚 Swahili Hacks Bookshelf</h1>
-        <p>Curated books from trusted sources. Every book is handpicked for value and quality.</p>
-      </div>
-    </section>
+  <!-- Bookshelf Hero -->
+  <section class="bookshelf-hero">
+    <div class="container">
+      <h1>Bookshelf</h1>
+      <p>Curated books from trusted sources. Every book is handpicked for value and quality.</p>
+    </div>
+  </section>
 
-    <!-- Featured Books -->
-    <section class="bookshelf-section">
-      <div class="container">
-        <h2>Featured Books</h2>
-        <div class="book-grid">
-          {books.filter(b => b.featured).map(book => (
-            <div class="book-card featured">
-              <div class="book-badge">⭐ Featured</div>
-              <div class="book-cover">
-                <img src={book.cover} alt={book.title} />
+  <!-- Category Filter -->
+  <section class="filter-section">
+    <div class="container">
+      <div class="filter-bar">
+        <label for="category-filter">Filter by Category:</label>
+        <select id="category-filter" class="filter-select">
+          {bookCategories.map((cat) => (
+            <option value={cat.slug}>{cat.name}</option>
+          ))}
+        </select>
+        <span class="book-count" id="book-count">{books.length} Books</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Books -->
+  <section class="bookshelf-section featured-section">
+    <div class="container">
+      <h2>Featured Books</h2>
+      <div class="book-grid featured-grid">
+        {books.filter(b => b.featured).map(book => (
+          <div class="book-card featured" data-category={book.category}>
+            <div class="book-badge">Featured</div>
+            <div class="book-cover">
+              <img src={book.cover} alt={book.title} loading="lazy" />
+            </div>
+            <div class="book-content">
+              <span class="book-category">{book.category}</span>
+              <h3>{book.title}</h3>
+              <p class="book-author">by {book.author}</p>
+              <p class="book-description">{book.description}</p>
+              <div class="book-meta">
+                <span class="book-rating">
+                  {renderStars(book.rating)} {book.rating}
+                </span>
+                <span class="book-reviews">({book.reviews} reviews)</span>
               </div>
-              <div class="book-content">
-                <span class="book-category">{book.category}</span>
-                <h3>{book.title}</h3>
-                <p class="book-author">by {book.author}</p>
-                <p class="book-description">{book.description}</p>
-                <div class="book-meta">
-                  <span class="book-price">{book.price}</span>
-                  <span class="book-rating">⭐ {book.rating}</span>
-                </div>
-                <a href={book.affiliateUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">
+              <div class="book-footer">
+                <span class="book-price">{book.price}</span>
+                <a 
+                  href={book.affiliateUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="btn-primary btn-sm"
+                  data-affiliate
+                  data-product={book.title}
+                  data-network="Amazon"
+                >
                   View Book <i class="fas fa-arrow-right"></i>
                 </a>
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- All Books -->
-    <section class="bookshelf-section">
-      <div class="container">
-        <h2>All Books</h2>
-        <div class="book-grid">
-          {books.map(book => (
-            <div class="book-card">
-              <div class="book-cover">
-                <img src={book.cover} alt={book.title} />
+  <!-- All Books -->
+  <section class="bookshelf-section">
+    <div class="container">
+      <h2>All Books</h2>
+      <div class="book-grid" id="book-grid">
+        {books.filter(b => !b.featured).map(book => (
+          <div class="book-card" data-category={book.category}>
+            <div class="book-cover">
+              <img src={book.cover} alt={book.title} loading="lazy" />
+            </div>
+            <div class="book-content">
+              <span class="book-category">{book.category}</span>
+              <h3>{book.title}</h3>
+              <p class="book-author">by {book.author}</p>
+              <p class="book-description">{book.description}</p>
+              <div class="book-meta">
+                <span class="book-rating">
+                  {renderStars(book.rating)} {book.rating}
+                </span>
+                <span class="book-reviews">({book.reviews} reviews)</span>
               </div>
-              <div class="book-content">
-                <span class="book-category">{book.category}</span>
-                <h3>{book.title}</h3>
-                <p class="book-author">by {book.author}</p>
-                <p class="book-description">{book.description}</p>
-                <div class="book-meta">
-                  <span class="book-price">{book.price}</span>
-                  <span class="book-rating">⭐ {book.rating}</span>
-                </div>
-                <a href={book.affiliateUrl} target="_blank" rel="noopener noreferrer" class="btn-primary btn-sm">
+              <div class="book-footer">
+                <span class="book-price">{book.price}</span>
+                <a 
+                  href={book.affiliateUrl} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  class="btn-primary btn-sm"
+                  data-affiliate
+                  data-product={book.title}
+                  data-network="Amazon"
+                >
                   Buy Now <i class="fas fa-arrow-right"></i>
                 </a>
               </div>
             </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Upload Your Book Section -->
-    <section class="upload-section">
-      <div class="container">
-        <div class="upload-content">
-          <h2>📝 Have a Book to Share?</h2>
-          <p>We welcome book recommendations from our community. If you have a book you'd like to feature on our bookshelf, reach out to us!</p>
-          <div class="upload-actions">
-            <a href="mailto:swahilihacks@gmail.com?subject=Book%20Recommendation" class="btn-primary">
-              <i class="fas fa-envelope"></i> Suggest a Book
-            </a>
-            <a href="https://www.amazon.com/kindle-store" target="_blank" rel="noopener noreferrer" class="btn-secondary">
-              <i class="fas fa-external-link-alt"></i> Browse Kindle Store
-            </a>
           </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Suggest a Book Section -->
+  <section class="suggest-section">
+    <div class="container">
+      <div class="suggest-content">
+        <h2>Suggest a Book</h2>
+        <p>Know a book that should be on our shelf? Send us your recommendation and help others discover great books.</p>
+        <div class="suggest-actions">
+          <a href="mailto:swahilihacks@gmail.com?subject=Book%20Suggestion" class="btn-primary">
+            <i class="fas fa-envelope"></i> Suggest a Book
+          </a>
+          <a href="https://www.amazon.com/kindle-store" target="_blank" rel="noopener noreferrer" class="btn-secondary">
+            <i class="fas fa-external-link-alt"></i> Browse Kindle Store
+          </a>
         </div>
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
   <Footer />
 </BaseLayout>
 
 <style>
+  /* ===== HERO SECTION ===== */
   .bookshelf-hero {
     padding: 3rem 0;
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -221,6 +345,50 @@ const books = [
     font-size: 1.1rem;
   }
 
+  /* ===== FILTER SECTION ===== */
+  .filter-section {
+    padding: 1.5rem 0;
+    background: #f8fafc;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  .filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-bar label {
+    font-weight: 600;
+    color: #0f172a;
+    font-size: 0.95rem;
+  }
+
+  .filter-select {
+    padding: 0.5rem 1.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    background: white;
+    font-size: 0.95rem;
+    color: #0f172a;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+
+  .filter-select:focus {
+    border-color: #1C75BC;
+    box-shadow: 0 0 0 3px rgba(28, 117, 188, 0.1);
+  }
+
+  .book-count {
+    margin-left: auto;
+    color: #64748b;
+    font-size: 0.9rem;
+  }
+
+  /* ===== BOOKSHELF SECTION ===== */
   .bookshelf-section {
     padding: 4rem 0;
   }
@@ -232,12 +400,28 @@ const books = [
     margin-bottom: 2rem;
   }
 
+  .featured-section {
+    background: #f8fafc;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  /* ===== BOOK GRID ===== */
   .book-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
     gap: 2rem;
   }
 
+  .featured-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+
+  /* ===== BOOK CARD ===== */
   .book-card {
     background: white;
     border: 1px solid #e2e8f0;
@@ -245,6 +429,8 @@ const books = [
     overflow: hidden;
     transition: all 0.3s ease;
     position: relative;
+    display: flex;
+    flex-direction: column;
   }
 
   .book-card:hover {
@@ -255,7 +441,7 @@ const books = [
 
   .book-card.featured {
     border-color: #f59e0b;
-    grid-column: span 2;
+    grid-column: span 1;
   }
 
   .book-badge {
@@ -272,12 +458,13 @@ const books = [
   }
 
   .book-cover {
-    height: 220px;
+    height: 200px;
     background: #f8fafc;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 1rem;
+    flex-shrink: 0;
   }
 
   .book-cover img {
@@ -288,6 +475,9 @@ const books = [
 
   .book-content {
     padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   .book-category {
@@ -299,6 +489,7 @@ const books = [
     font-size: 0.7rem;
     font-weight: 600;
     margin-bottom: 0.5rem;
+    align-self: flex-start;
   }
 
   .book-content h3 {
@@ -316,19 +507,40 @@ const books = [
 
   .book-description {
     font-size: 0.9rem;
-    color: #64748b;
-    margin-bottom: 1rem;
+    color: #475569;
+    margin-bottom: 0.75rem;
+    flex: 1;
     display: -webkit-box;
-    -webkit-line-clamp: 2;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
   .book-meta {
     display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .book-rating {
+    color: #f59e0b;
+    font-weight: 600;
+  }
+
+  .book-reviews {
+    font-size: 0.8rem;
+    color: #94a3b8;
+  }
+
+  .book-footer {
+    display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f1f5f9;
+    margin-top: auto;
   }
 
   .book-price {
@@ -337,14 +549,30 @@ const books = [
     color: #1C75BC;
   }
 
-  .book-rating {
-    font-size: 0.9rem;
-    color: #f59e0b;
+  .btn-sm {
+    padding: 0.4rem 1.2rem;
+    font-size: 0.85rem;
+    white-space: nowrap;
   }
 
-  .btn-sm {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+  .btn-primary {
+    background: #1C75BC;
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-primary:hover {
+    background: #145a8a;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(28, 117, 188, 0.3);
   }
 
   .btn-secondary {
@@ -364,43 +592,67 @@ const books = [
     color: white;
   }
 
-  .upload-section {
+  /* ===== SUGGEST SECTION ===== */
+  .suggest-section {
     padding: 4rem 0;
     background: #f8fafc;
   }
 
-  .upload-content {
+  .suggest-content {
     max-width: 700px;
     margin: 0 auto;
     text-align: center;
   }
 
-  .upload-content h2 {
+  .suggest-content h2 {
     font-size: 2rem;
     font-weight: 700;
     color: #0f172a;
     margin-bottom: 0.5rem;
   }
 
-  .upload-content p {
+  .suggest-content p {
     color: #64748b;
     font-size: 1.05rem;
     margin-bottom: 2rem;
   }
 
-  .upload-actions {
+  .suggest-actions {
     display: flex;
     gap: 1rem;
     justify-content: center;
     flex-wrap: wrap;
   }
 
+  /* ===== RESPONSIVE ===== */
   @media (max-width: 768px) {
+    .bookshelf-hero h1 {
+      font-size: 2rem;
+    }
+
+    .book-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .featured-grid {
+      grid-template-columns: 1fr;
+    }
+
     .book-card.featured {
       grid-column: span 1;
     }
 
-    .upload-actions {
+    .filter-bar {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .book-count {
+      margin-left: 0;
+      text-align: center;
+    }
+
+    .suggest-actions {
       flex-direction: column;
       align-items: center;
     }
@@ -409,5 +661,70 @@ const books = [
       width: 100%;
       text-align: center;
     }
+
+    .book-footer {
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: stretch;
+    }
+
+    .book-price {
+      text-align: center;
+    }
+
+    .btn-sm {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .bookshelf-hero h1 {
+      font-size: 1.6rem;
+    }
+
+    .bookshelf-hero p {
+      font-size: 0.95rem;
+    }
+
+    .book-content h3 {
+      font-size: 1rem;
+    }
+
+    .book-description {
+      font-size: 0.85rem;
+    }
   }
 </style>
+
+<!-- ============================================================
+  📊 FILTER JAVASCRIPT
+  ============================================================ -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const filterSelect = document.getElementById('category-filter');
+    const bookCards = document.querySelectorAll('.book-card');
+    const bookCount = document.getElementById('book-count');
+
+    if (filterSelect) {
+      filterSelect.addEventListener('change', function() {
+        const selectedCategory = this.value;
+        let visibleCount = 0;
+
+        bookCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          if (selectedCategory === 'all' || cardCategory === selectedCategory) {
+            card.style.display = 'flex';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+
+        if (bookCount) {
+          bookCount.textContent = visibleCount + ' Books';
+        }
+      });
+    }
+  });
+</script>
