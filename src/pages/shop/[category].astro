@@ -29,7 +29,7 @@ const { category } = Astro.props;
 const categoryData = {
   'electronics': {
     title: 'Electronics & Gadgets',
-    icon: '📱',
+    icon: 'fa-solid fa-laptop',
     description: 'Find the best smartphones, laptops, and electronics.',
     color: '#3b82f6',
     products: [
@@ -40,9 +40,22 @@ const categoryData = {
       { name: 'Samsung 43" TV', price: '₦380,000', link: '#', image: '/images/store/samsung-tv.jpg' },
     ]
   },
+  'home-kitchen': {
+    title: 'Home & Kitchen',
+    icon: 'fa-solid fa-house',
+    description: 'Find the best appliances, cookware, and furniture.',
+    color: '#f59e0b',
+    products: [
+      { name: 'Refrigerator 200L', price: '₦320,000', link: '#', image: '/images/store/fridge.jpg' },
+      { name: 'Air Conditioner 1.5HP', price: '₦280,000', link: '#', image: '/images/store/ac.jpg' },
+      { name: 'Washing Machine', price: '₦250,000', link: '#', image: '/images/store/washing-machine.jpg' },
+      { name: 'Air Fryer', price: '₦85,000', link: '#', image: '/images/store/air-fryer.jpg' },
+      { name: 'Microwave Oven', price: '₦120,000', link: '#', image: '/images/store/microwave.jpg' },
+    ]
+  },
   'solar-energy': {
     title: 'Solar & Energy',
-    icon: '☀️',
+    icon: 'fa-solid fa-sun',
     description: 'Find the best solar panels, batteries, and energy solutions.',
     color: '#22c55e',
     products: [
@@ -55,7 +68,7 @@ const categoryData = {
   },
   'agriculture': {
     title: 'Agriculture',
-    icon: '🌾',
+    icon: 'fa-solid fa-seedling',
     description: 'Find the best farming equipment and agricultural tools.',
     color: '#84cc16',
     products: [
@@ -65,7 +78,64 @@ const categoryData = {
       { name: 'Fertilizer 50kg', price: '₦35,000', link: '#', image: '/images/store/fertilizer.jpg' },
     ]
   },
-  // ... add more categories as needed
+  'fashion-wear': {
+    title: 'Fashion & Wear',
+    icon: 'fa-solid fa-tshirt',
+    description: 'Find the best clothing, shoes, and accessories.',
+    color: '#ec4899',
+    products: [
+      { name: 'Men\'s Casual Shirt', price: '₦15,000', link: '#', image: '/images/store/shirt.jpg' },
+      { name: 'Women\'s Dress', price: '₦25,000', link: '#', image: '/images/store/dress.jpg' },
+      { name: 'Sneakers', price: '₦35,000', link: '#', image: '/images/store/sneakers.jpg' },
+      { name: 'Wrist Watch', price: '₦20,000', link: '#', image: '/images/store/watch.jpg' },
+    ]
+  },
+  'health-fitness': {
+    title: 'Health & Fitness',
+    icon: 'fa-solid fa-heart-pulse',
+    description: 'Find the best gym equipment and health monitors.',
+    color: '#ef4444',
+    products: [
+      { name: 'Exercise Bike', price: '₦280,000', link: '#', image: '/images/store/exercise-bike.jpg' },
+      { name: 'Dumbbell Set', price: '₦45,000', link: '#', image: '/images/store/dumbbells.jpg' },
+      { name: 'Yoga Mat', price: '₦8,000', link: '#', image: '/images/store/yoga-mat.jpg' },
+      { name: 'Blood Pressure Monitor', price: '₦15,000', link: '#', image: '/images/store/bp-monitor.jpg' },
+    ]
+  },
+  'beauty-care': {
+    title: 'Beauty & Personal Care',
+    icon: 'fa-solid fa-spa',
+    description: 'Find the best skincare, makeup, and grooming products.',
+    color: '#f472b6',
+    products: [
+      { name: 'Skincare Set', price: '₦25,000', link: '#', image: '/images/store/skincare.jpg' },
+      { name: 'Hair Dryer', price: '₦12,000', link: '#', image: '/images/store/hair-dryer.jpg' },
+      { name: 'Electric Shaver', price: '₦18,000', link: '#', image: '/images/store/shaver.jpg' },
+    ]
+  },
+  'automotive': {
+    title: 'Automotive & Motorcycle',
+    icon: 'fa-solid fa-car',
+    description: 'Find the best car and motorcycle accessories.',
+    color: '#64748b',
+    products: [
+      { name: 'Dash Camera', price: '₦30,000', link: '#', image: '/images/store/dash-cam.jpg' },
+      { name: 'Motorcycle Helmet', price: '₦25,000', link: '#', image: '/images/store/helmet.jpg' },
+      { name: 'Car Phone Holder', price: '₦5,000', link: '#', image: '/images/store/phone-holder.jpg' },
+      { name: 'Car Vacuum Cleaner', price: '₦12,000', link: '#', image: '/images/store/car-vacuum.jpg' },
+    ]
+  },
+  'office-stationery': {
+    title: 'Office & Stationery',
+    icon: 'fa-solid fa-pen-ruler',
+    description: 'Find the best office furniture and stationery.',
+    color: '#8b5cf6',
+    products: [
+      { name: 'Office Chair', price: '₦85,000', link: '#', image: '/images/store/office-chair.jpg' },
+      { name: 'Laptop Stand', price: '₦15,000', link: '#', image: '/images/store/laptop-stand.jpg' },
+      { name: 'Label Printer', price: '₦45,000', link: '#', image: '/images/store/label-printer.jpg' },
+    ]
+  }
 };
 
 const data = categoryData[category];
@@ -84,7 +154,7 @@ const displayName = category.replace(/-/g, ' ');
         <a href="/shop/">Shop</a> / <span>{data.title}</span>
       </div>
       <div class="category-title">
-        <span class="category-icon">{data.icon}</span>
+        <span class="category-icon"><i class={data.icon}></i></span>
         <h1>{data.title}</h1>
       </div>
       <p>{data.description}</p>
@@ -154,6 +224,11 @@ const displayName = category.replace(/-/g, ' ');
   }
 
   .category-icon {
+    font-size: 2.5rem;
+    color: var(--bg-color, #1C75BC);
+  }
+
+  .category-icon i {
     font-size: 2.5rem;
   }
 
