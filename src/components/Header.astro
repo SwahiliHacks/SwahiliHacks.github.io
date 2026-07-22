@@ -1,432 +1,412 @@
 ---
-// Header.astro
-//
-// Purpose: the profile block + stats bar + navigation at the top of every page.
-// Why it exists: was copy-pasted at the top of all 14 HTML files before.
-// What happens if removed: pages lose the brand header entirely.
-// How to modify safely: change props per-page (trustTag, stats) rather than
-// editing this file, unless you're changing something for the whole site
-// (e.g. the profile photo or name).
+// src/components/Navigation.astro
+// Purpose: Main navigation with dropdown menus
 
-// UPDATES MADE (2026-07-20):
-// 1. Removed all emojis
-// 2. Replaced green with primary blue
-// 3. Professional clean design
-// 4. Fixed header alignment - all centered
-// 5. Added navigation with prominent Store & Bookshelf cards
-// 6. Removed About from hero (already in header)
+const currentPath = Astro.url.pathname;
 
-// UPDATES MADE (2026-07-22):
-// 1. Integrated Navigation component into header
-// 2. Navigation now shows below stats section
-// 3. Clean separation between brand and navigation
-
-import Navigation from './Navigation.astro';
-
-interface Stat {
-  number: string;
-  label: string;
-}
-
-interface Props {
-  trustTag: string;
-  stats: Stat[];
-}
-
-const { trustTag, stats } = Astro.props;
-const defaultTrustTag = 'Trusted by 50,000+ professionals worldwide';
-const displayTrustTag = trustTag || defaultTrustTag;
+// Navigation data
+const navItems = [
+  {
+    label: 'Solutions',
+    url: '/solutions/',
+    dropdown: [
+      { label: 'Wealth & Investment', url: '/wealth-investment/' },
+      { label: 'Automated Wealth Systems', url: '/automated-wealth-systems/' },
+      { label: 'Digital Income & Monetization', url: '/digital-income-monetization/' },
+      { label: 'Freelancing & Professional Services', url: '/freelancing-professional-services/' },
+      { label: 'E-commerce & Online Business', url: '/ecommerce-online-business/' },
+      { label: 'AI & Intelligent Automation', url: '/ai-intelligent-automation/' },
+      { label: 'Content Creation & Digital Media', url: '/content-creation-digital-media/' },
+      { label: 'Productivity & Workflow Systems', url: '/productivity-workflow-systems/' },
+      { label: 'Remote Work & Distributed Teams', url: '/remote-work-distributed-teams/' },
+      { label: 'Career Growth & Skills Development', url: '/career-growth-skills-development/' },
+      { label: 'Personal Finance & Money Management', url: '/personal-finance-money-management/' },
+      { label: 'Online Income Opportunities', url: '/online-income-opportunities/' },
+    ]
+  },
+  {
+    label: 'Shop',
+    url: '/shop/',
+    dropdown: [
+      { label: 'Electronics & Gadgets', url: '/shop/electronics/' },
+      { label: 'Home & Kitchen', url: '/shop/home-kitchen/' },
+      { label: 'Solar & Energy', url: '/shop/solar-energy/' },
+      { label: 'Agriculture', url: '/shop/agriculture/' },
+      { label: 'Fashion & Wear', url: '/shop/fashion-wear/' },
+      { label: 'Health & Fitness', url: '/shop/health-fitness/' },
+      { label: 'Beauty & Personal Care', url: '/shop/beauty-care/' },
+      { label: 'Automotive & Motorcycle', url: '/shop/automotive/' },
+      { label: 'Office & Stationery', url: '/shop/office-stationery/' },
+    ]
+  },
+  {
+    label: 'Digital',
+    url: '/digital/',
+    dropdown: [
+      { label: 'Web Hosting & Domains', url: '/digital/hosting-domains/' },
+      { label: 'VPN & Cybersecurity', url: '/digital/vpn-security/' },
+      { label: 'AI Tools', url: '/digital/ai-tools/' },
+      { label: 'Trading Platforms', url: '/digital/trading-platforms/' },
+      { label: 'Online Courses', url: '/digital/online-courses/' },
+      { label: 'Marketing & Productivity', url: '/digital/marketing-tools/' },
+    ]
+  },
+  {
+    label: 'Bookshelf',
+    url: '/bookshelf/',
+    dropdown: [
+      { label: 'Trading & Investing', url: '/bookshelf/trading-investing/' },
+      { label: 'Finance & Wealth', url: '/bookshelf/finance-wealth/' },
+      { label: 'Personal Development', url: '/bookshelf/personal-development/' },
+      { label: 'Entrepreneurship', url: '/bookshelf/entrepreneurship/' },
+      { label: 'Productivity', url: '/bookshelf/productivity/' },
+      { label: 'AI & Technology', url: '/bookshelf/ai-technology/' },
+      { label: 'Writing & Communication', url: '/bookshelf/writing-communication/' },
+    ]
+  },
+  { label: 'About', url: '/about/', dropdown: [] },
+  { label: 'Contact', url: '/contact/', dropdown: [] },
+];
 ---
 
-<header class="professional-header">
-  <div class="header-content">
-    <!-- Profile Section -->
-    <div class="brand-info">
-      <div class="profile-section">
-        <div class="profile-image-wrapper">
-          <img 
-            src="/images/profile.jpg.png" 
-            alt="Swahili Hacks - Chemical and Process Engineer" 
-            class="profile-img"
-            width="500"
-            height="500"
-            loading="eager"
-            decoding="async"
-          />
-          <div class="profile-ring"></div>
-        </div>
-        
-        <div class="profile-text">
-          <h2>
-            <a href="/" style="color: inherit; text-decoration: none;" aria-label="Swahili Hacks Home">
-              Swahili Hacks
-            </a>
-          </h2>
-          <p class="expert-tag">
-            Curated by a <strong>Chemical &amp; Process Engineer</strong>
-          </p>
-          <p class="trust-tag">
-            {displayTrustTag}
-          </p>
-        </div>
-      </div>
+<nav class="main-nav" aria-label="Main navigation">
+  <div class="nav-container">
+    <!-- Logo -->
+    <a href="/" class="nav-logo">
+      <span class="logo-text">Swahili Hacks</span>
+      <span class="logo-tagline">Solutions</span>
+    </a>
 
-      <!-- Stats Section -->
-      <div class="header-stats" role="list" aria-label="Key statistics">
-        {
-          stats.map((stat, index) => (
-            <div class="stat" role="listitem" key={index}>
-              <span class="stat-number">{stat.number}</span>
-              <span class="stat-label">{stat.label}</span>
-            </div>
-          ))
-        }
-      </div>
-    </div>
+    <!-- Mobile Toggle -->
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
 
-    <!-- Navigation - Full width below stats -->
-    <Navigation />
+    <!-- Navigation Links -->
+    <ul class="nav-list" id="navList">
+      {navItems.map((item) => (
+        <li class:list={[
+          'nav-item',
+          { 'has-dropdown': item.dropdown.length > 0 },
+          { 'active': currentPath === item.url }
+        ]}>
+          <a 
+            href={item.url} 
+            class="nav-link"
+            aria-expanded="false"
+          >
+            {item.label}
+            {item.dropdown.length > 0 && (
+              <span class="nav-arrow">▼</span>
+            )}
+          </a>
+          
+          {item.dropdown.length > 0 && (
+            <ul class="dropdown-menu">
+              {item.dropdown.map((sub) => (
+                <li>
+                  <a href={sub.url} class="dropdown-link">
+                    {sub.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          )}
+        </li>
+      ))}
+    </ul>
   </div>
-</header>
+</nav>
 
 <style>
-  /* ===== HEADER CONTAINER ===== */
-  .professional-header {
-    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-    color: white;
-    padding: 2rem 0 1.5rem 0;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .professional-header::before {
-    content: '';
-    position: absolute;
+  /* ===== MAIN NAV ===== */
+  .main-nav {
+    background: #0f172a;
+    padding: 0.75rem 2rem;
+    position: sticky;
     top: 0;
-    right: 0;
-    width: 300px;
-    height: 300px;
-    background: radial-gradient(circle, rgba(28, 117, 188, 0.1) 0%, transparent 70%);
+    z-index: 10000;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
   }
 
-  .header-content {
+  .nav-container {
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
-    position: relative;
-    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
-  /* ===== BRAND INFO - CENTERED ===== */
-  .brand-info {
+  .nav-logo {
+    text-decoration: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    gap: 2rem;
-  }
-
-  /* ===== PROFILE SECTION - CENTERED ===== */
-  .profile-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1.5rem;
-  }
-
-  .profile-image-wrapper {
-    position: relative;
-    display: inline-block;
     flex-shrink: 0;
   }
 
-  .profile-img {
-    width: 180px !important;
-    height: 180px !important;
-    border-radius: 50%;
-    border: 6px solid #1C75BC;
-    object-fit: cover;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    display: block;
+  .logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: white;
+  }
+
+  .logo-tagline {
+    font-size: 0.6rem;
+    color: #1C75BC;
+    letter-spacing: 1px;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+
+  .nav-item {
     position: relative;
-    z-index: 2;
   }
 
-  .profile-img:hover {
-    transform: scale(1.05) rotate(-2deg);
-    border-color: #145a8a;
-    box-shadow: 0 15px 45px rgba(28, 117, 188, 0.4);
-  }
-
-  .profile-ring {
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-    border-radius: 50%;
-    border: 3px solid rgba(28, 117, 188, 0.15);
-    animation: ringSpin 20s linear infinite;
-    z-index: 1;
-    pointer-events: none;
-  }
-
-  @keyframes ringSpin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-  }
-
-  @keyframes profileGlow {
-    0%, 100% { 
-      box-shadow: 0 0 20px rgba(28, 117, 188, 0.15);
-    }
-    50% { 
-      box-shadow: 0 0 40px rgba(28, 117, 188, 0.3);
-    }
-  }
-
-  .profile-image-wrapper {
-    animation: profileGlow 4s ease-in-out infinite;
-  }
-
-  .profile-text h2 {
-    color: white;
-    font-size: 2.5rem !important;
-    margin-bottom: 0.5rem;
-    font-weight: 700;
-    letter-spacing: -0.5px;
-    transition: color 0.3s ease;
-  }
-
-  .profile-text h2:hover {
-    color: #1C75BC;
-  }
-
-  .profile-text h2 a {
-    transition: color 0.3s ease;
-  }
-
-  .profile-text h2 a:hover {
-    color: #1C75BC;
-  }
-
-  .expert-tag {
-    color: #1C75BC;
-    font-size: 1.2rem !important;
-    margin-bottom: 0.25rem;
-    font-weight: 500;
+  .nav-link {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  .expert-tag strong {
-    color: white;
-    font-weight: 600;
-  }
-
-  .trust-tag {
-    color: #e2e8f0;
-    font-size: 1rem !important;
-    opacity: 0.9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    flex-wrap: wrap;
-  }
-
-  /* ===== STATS SECTION - CENTERED ===== */
-  .header-stats {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 2.5rem;
-    flex-wrap: wrap;
-    width: 100%;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .stat {
-    text-align: center;
+    gap: 0.25rem;
     padding: 0.5rem 1rem;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255, 255, 255, 0.05);
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 6px;
     transition: all 0.3s ease;
-    min-width: 80px;
-    flex: 1 0 auto;
-    max-width: 150px;
   }
 
-  .stat:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-3px);
-    border-color: rgba(28, 117, 188, 0.3);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+  .nav-link:hover {
+    color: white;
+    background: rgba(255,255,255,0.05);
   }
 
-  .stat-number {
-    display: block;
-    font-size: 2.2rem !important;
-    font-weight: 700;
-    color: #1C75BC;
-    font-family: 'Poppins', sans-serif;
-    line-height: 1.2;
+  .nav-item.active .nav-link {
+    color: white;
+    background: rgba(255,255,255,0.05);
+  }
+
+  .nav-arrow {
+    font-size: 0.6rem;
+    margin-left: 0.15rem;
     transition: transform 0.3s ease;
   }
 
-  .stat:hover .stat-number {
-    transform: scale(1.05);
+  .nav-item:hover .nav-arrow {
+    transform: rotate(180deg);
   }
 
-  .stat-label {
-    font-size: 0.9rem !important;
-    color: #e2e8f0;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 400;
-    opacity: 0.8;
+  /* ===== DROPDOWN MENU ===== */
+  .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 220px;
+    background: #1e293b;
+    padding: 0.5rem 0;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+    list-style: none;
+    margin: 0.25rem 0 0 0;
+    border: 1px solid rgba(255,255,255,0.05);
+    z-index: 99999;
+  }
+
+  .nav-item:hover .dropdown-menu {
+    display: block;
+  }
+
+  .dropdown-link {
+    display: block;
+    padding: 0.5rem 1.25rem;
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+  }
+
+  .dropdown-link:hover {
+    background: rgba(28, 117, 188, 0.15);
+    color: white;
+  }
+
+  /* ===== MOBILE TOGGLE ===== */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
+  .nav-toggle span {
+    width: 25px;
+    height: 2px;
+    background: white;
+    transition: all 0.3s ease;
+  }
+
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
   }
 
   /* ===== RESPONSIVE: TABLET ===== */
-  @media (max-width: 1024px) and (min-width: 769px) {
-    .brand-info {
-      gap: 1.5rem;
+  @media (max-width: 1024px) {
+    .main-nav {
+      padding: 0.75rem 1rem;
     }
 
-    .header-stats {
-      gap: 1.5rem;
+    .nav-list {
+      gap: 0.25rem;
     }
 
-    .stat {
-      min-width: 70px;
-      padding: 0.5rem 0.75rem;
-      max-width: 120px;
-    }
-
-    .stat-number {
-      font-size: 1.8rem !important;
-    }
-
-    .profile-img {
-      width: 160px !important;
-      height: 160px !important;
-    }
-
-    .profile-text h2 {
-      font-size: 2.2rem !important;
+    .nav-link {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.85rem;
     }
   }
 
   /* ===== RESPONSIVE: MOBILE ===== */
   @media (max-width: 768px) {
-    .profile-img {
-      width: 150px !important;
-      height: 150px !important;
-      border-width: 5px !important;
+    .main-nav {
+      padding: 0.5rem 1rem;
     }
 
-    .profile-ring {
-      top: -6px;
-      left: -6px;
-      right: -6px;
-      bottom: -6px;
-      border-width: 2px;
+    .nav-toggle {
+      display: flex;
     }
 
-    .profile-text h2 {
-      font-size: 2rem !important;
+    .nav-list {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: #0f172a;
+      padding: 1rem;
+      gap: 0.5rem;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      z-index: 99999;
+      max-height: 80vh;
+      overflow-y: auto;
     }
 
-    .expert-tag {
-      font-size: 1rem !important;
+    .nav-list.open {
+      display: flex;
     }
 
-    .trust-tag {
-      font-size: 0.95rem !important;
+    .nav-item {
+      width: 100%;
     }
 
-    .header-stats {
-      gap: 1.5rem;
-    }
-
-    .stat {
-      min-width: 60px;
+    .nav-link {
+      width: 100%;
+      justify-content: space-between;
       padding: 0.75rem 1rem;
-      max-width: 120px;
     }
 
-    .stat-number {
-      font-size: 1.5rem !important;
+    .dropdown-menu {
+      position: static;
+      background: transparent;
+      box-shadow: none;
+      padding: 0 0 0 1.5rem;
+      border: none;
+      margin: 0;
+      display: none;
     }
 
-    .stat-label {
-      font-size: 0.8rem !important;
+    .nav-item.active .dropdown-menu {
+      display: block;
     }
 
-    @keyframes profileGlow {
-      0%, 100% { 
-        box-shadow: 0 0 15px rgba(28, 117, 188, 0.1);
-      }
-      50% { 
-        box-shadow: 0 0 25px rgba(28, 117, 188, 0.2);
-      }
+    .nav-item:hover .dropdown-menu {
+      display: none;
+    }
+
+    .dropdown-link {
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+    }
+
+    .logo-text {
+      font-size: 1.2rem;
+    }
+
+    .logo-tagline {
+      font-size: 0.5rem;
     }
   }
 
   /* ===== SMALL MOBILE ===== */
   @media (max-width: 480px) {
-    .profile-img {
-      width: 130px !important;
-      height: 130px !important;
-      border-width: 4px !important;
+    .main-nav {
+      padding: 0.4rem 0.75rem;
     }
 
-    .profile-ring {
-      top: -5px;
-      left: -5px;
-      right: -5px;
-      bottom: -5px;
-      border-width: 2px;
-      animation-duration: 30s;
+    .nav-link {
+      font-size: 0.8rem;
+      padding: 0.6rem 0.75rem;
     }
 
-    .profile-text h2 {
-      font-size: 1.8rem !important;
+    .dropdown-link {
+      font-size: 0.8rem;
+      padding: 0.4rem 0.75rem;
     }
 
-    .expert-tag {
-      font-size: 0.95rem !important;
-    }
-
-    .trust-tag {
-      font-size: 0.85rem !important;
-    }
-
-    .header-stats {
-      gap: 1rem;
-    }
-
-    .stat {
-      min-width: 50px;
-      padding: 0.5rem 0.75rem;
-      max-width: 100px;
-    }
-
-    .stat-number {
-      font-size: 1.3rem !important;
-    }
-
-    .stat-label {
-      font-size: 0.7rem !important;
+    .logo-text {
+      font-size: 1rem;
     }
   }
 </style>
+
+<script>
+  // Mobile navigation toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.getElementById('navToggle');
+    const list = document.getElementById('navList');
+
+    if (toggle && list) {
+      toggle.addEventListener('click', function() {
+        list.classList.toggle('open');
+        toggle.classList.toggle('active');
+      });
+
+      // Close dropdowns on mobile click
+      const navItems = document.querySelectorAll('.nav-item.has-dropdown');
+      navItems.forEach(item => {
+        const link = item.querySelector('.nav-link');
+        if (link) {
+          link.addEventListener('click', function(e) {
+            if (window.innerWidth <= 768) {
+              e.preventDefault();
+              const parent = this.closest('.nav-item');
+              if (parent) {
+                parent.classList.toggle('active');
+              }
+            }
+          });
+        }
+      });
+    }
+  });
+</script>
