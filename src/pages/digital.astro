@@ -1,0 +1,230 @@
+---
+// src/pages/digital.astro
+// Purpose: Digital products landing page with 6 category cards
+
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Footer from '../components/Footer.astro';
+
+const digitalCategories = [
+  {
+    slug: 'hosting-domains',
+    name: 'Web Hosting & Domains',
+    icon: '🌐',
+    description: 'Bluehost, Hostinger, Namecheap, WordPress',
+    productCount: 8,
+    color: '#3b82f6',
+    commission: 'High'
+  },
+  {
+    slug: 'vpn-security',
+    name: 'VPN & Cybersecurity',
+    icon: '🔒',
+    description: 'NordVPN, ExpressVPN, Antivirus, Password managers',
+    productCount: 6,
+    color: '#22c55e',
+    commission: 'High'
+  },
+  {
+    slug: 'ai-tools',
+    name: 'AI Tools',
+    icon: '🤖',
+    description: 'ChatGPT Plus, Jasper, Midjourney, Synthesia',
+    productCount: 7,
+    color: '#8b5cf6',
+    commission: 'Recurring'
+  },
+  {
+    slug: 'trading-platforms',
+    name: 'Trading Platforms',
+    icon: '📊',
+    description: 'TradingView, MT4, Binance, Exness, Bybit',
+    productCount: 8,
+    color: '#f59e0b',
+    commission: 'High'
+  },
+  {
+    slug: 'online-courses',
+    name: 'Online Courses',
+    icon: '🎓',
+    description: 'Coursera, Udemy, Codecademy, LinkedIn Learning',
+    productCount: 6,
+    color: '#ec4899',
+    commission: 'High'
+  },
+  {
+    slug: 'marketing-tools',
+    name: 'Marketing & Productivity',
+    icon: '📈',
+    description: 'Canva, Notion, Slack, Mailchimp, Zapier',
+    productCount: 10,
+    color: '#06b6d4',
+    commission: 'Recurring'
+  }
+];
+---
+
+<BaseLayout
+  title="Digital Products - Swahili Hacks"
+  description="Curated digital tools and services. Find hosting, VPN, AI tools, trading platforms, and more."
+  path="/digital/"
+>
+  <!-- Digital Hero -->
+  <section class="digital-hero">
+    <div class="container">
+      <h1>💻 Digital Products & Services</h1>
+      <p>Curated online tools and services from trusted providers.</p>
+    </div>
+  </section>
+
+  <!-- Category Grid -->
+  <section class="digital-section">
+    <div class="container">
+      <div class="category-grid">
+        {digitalCategories.map((cat) => (
+          <a href={`/digital/${cat.slug}/`} class="category-card" style={`--card-color: ${cat.color}`}>
+            <div class="category-icon">{cat.icon}</div>
+            <h3>{cat.name}</h3>
+            <p>{cat.description}</p>
+            <div class="category-footer">
+              <span class="product-count">{cat.productCount} Products</span>
+              <span class="commission-badge">{cat.commission}</span>
+              <span class="arrow">→</span>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .digital-hero {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .digital-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .digital-hero p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+  }
+
+  .digital-section {
+    padding: 4rem 0;
+    background: #f8fafc;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .category-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #0f172a;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .category-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+    border-color: var(--card-color);
+  }
+
+  .category-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .category-card h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .category-card p {
+    font-size: 0.9rem;
+    color: #64748b;
+    flex: 1;
+  }
+
+  .category-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid #f1f5f9;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .product-count {
+    font-size: 0.8rem;
+    color: #94a3b8;
+  }
+
+  .commission-badge {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    background: #dcfce7;
+    color: #166534;
+    font-weight: 600;
+  }
+
+  .arrow {
+    color: var(--card-color);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+    margin-left: auto;
+  }
+
+  .category-card:hover .arrow {
+    transform: translateX(6px);
+  }
+
+  @media (max-width: 768px) {
+    .digital-hero h1 {
+      font-size: 2rem;
+    }
+
+    .category-grid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .digital-hero h1 {
+      font-size: 1.6rem;
+    }
+
+    .category-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
