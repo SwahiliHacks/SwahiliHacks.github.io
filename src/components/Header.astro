@@ -2,6 +2,26 @@
 // Header.astro
 //
 // Purpose: the profile block + stats bar + navigation at the top of every page.
+// Why it exists: was copy-pasted at the top of all 14 HTML files before.
+// What happens if removed: pages lose the brand header entirely.
+// How to modify safely: change props per-page (trustTag, stats) rather than
+// editing this file, unless you're changing something for the whole site
+// (e.g. the profile photo or name).
+
+// UPDATES MADE (2026-07-20):
+// 1. Removed all emojis
+// 2. Replaced green with primary blue
+// 3. Professional clean design
+// 4. Fixed header alignment - all centered
+// 5. Added navigation with prominent Store & Bookshelf cards
+// 6. Removed About from hero (already in header)
+
+// UPDATES MADE (2026-07-22):
+// 1. Integrated Navigation component into header
+// 2. Navigation now shows below stats section
+// 3. Clean separation between brand and navigation
+
+import Navigation from './Navigation.astro';
 
 interface Stat {
   number: string;
@@ -20,8 +40,8 @@ const displayTrustTag = trustTag || defaultTrustTag;
 
 <header class="professional-header">
   <div class="header-content">
+    <!-- Profile Section -->
     <div class="brand-info">
-      <!-- Profile Section -->
       <div class="profile-section">
         <div class="profile-image-wrapper">
           <img 
@@ -64,40 +84,8 @@ const displayTrustTag = trustTag || defaultTrustTag;
       </div>
     </div>
 
-    <!-- Navigation - Prominent Store & Bookshelf Cards -->
-    <nav class="header-nav" aria-label="Main navigation">
-      <ul class="nav-list">
-        <!-- Home - Small -->
-        <li>
-          <a href="/" class="nav-link nav-link-home">Home</a>
-        </li>
-
-        <!-- Store - Prominent Card -->
-        <li>
-          <a href="/store/" class="nav-link nav-link-card nav-link-store">
-            <span class="nav-card-icon">🛍️</span>
-            <span class="nav-card-title">Store</span>
-            <span class="nav-card-subtitle">Curated Products</span>
-            <span class="nav-card-arrow">→</span>
-          </a>
-        </li>
-
-        <!-- Bookshelf - Prominent Card -->
-        <li>
-          <a href="/bookshelf/" class="nav-link nav-link-card nav-link-bookshelf">
-            <span class="nav-card-icon">📚</span>
-            <span class="nav-card-title">Bookshelf</span>
-            <span class="nav-card-subtitle">Curated Books</span>
-            <span class="nav-card-arrow">→</span>
-          </a>
-        </li>
-
-        <!-- About - Small -->
-        <li>
-          <a href="/about/" class="nav-link nav-link-about">About</a>
-        </li>
-      </ul>
-    </nav>
+    <!-- Navigation - Full width below stats -->
+    <Navigation />
   </div>
 </header>
 
@@ -108,7 +96,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
     color: white;
     padding: 2rem 0 1.5rem 0;
     position: relative;
-    overflow: visible;
+    overflow: hidden;
   }
 
   .professional-header::before {
@@ -308,205 +296,38 @@ const displayTrustTag = trustTag || defaultTrustTag;
     opacity: 0.8;
   }
 
-  /* ===== NAVIGATION ===== */
-  .header-nav {
-    margin-top: 2rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-  }
-
-  .nav-list {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 1.5rem;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    flex-wrap: wrap;
-  }
-
-  /* ===== Regular Nav Links (Home & About) ===== */
-  .nav-link-home,
-  .nav-link-about {
-    color: #94a3b8;
-    text-decoration: none;
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 0.4rem 0.8rem;
-    border-radius: 6px;
-    transition: all 0.3s ease;
-    position: relative;
-  }
-
-  .nav-link-home:hover,
-  .nav-link-about:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.05);
-  }
-
-  .nav-link-home::after,
-  .nav-link-about::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 0;
-    height: 2px;
-    background: #1C75BC;
-    transition: all 0.3s ease;
-    transform: translateX(-50%);
-  }
-
-  .nav-link-home:hover::after,
-  .nav-link-about:hover::after {
-    width: 60%;
-  }
-
-  /* ===== Prominent Card Links (Store & Bookshelf) ===== */
-  .nav-link-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    color: white;
-    padding: 1rem 1.8rem;
-    border-radius: 16px;
-    min-width: 140px;
-    min-height: 100px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    position: relative;
-    overflow: hidden;
-    border: 2px solid rgba(255, 255, 255, 0.08);
-    background: rgba(255, 255, 255, 0.03);
-    backdrop-filter: blur(10px);
-  }
-
-  .nav-link-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(28, 117, 188, 0.1) 0%, transparent 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-
-  .nav-link-card:hover {
-    transform: translateY(-6px) scale(1.02);
-    box-shadow: 0 12px 40px rgba(28, 117, 188, 0.25);
-    border-color: #1C75BC;
-  }
-
-  .nav-link-card:hover::before {
-    opacity: 1;
-  }
-
-  .nav-card-icon {
-    font-size: 2rem;
-    display: block;
-    margin-bottom: 0.25rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .nav-card-title {
-    font-size: 1.2rem;
-    font-weight: 700;
-    color: white;
-    position: relative;
-    z-index: 1;
-  }
-
-  .nav-card-subtitle {
-    font-size: 0.7rem;
-    color: #94a3b8;
-    font-weight: 400;
-    margin-top: 0.1rem;
-    position: relative;
-    z-index: 1;
-  }
-
-  .nav-card-arrow {
-    position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
-    font-size: 0.9rem;
-    color: #94a3b8;
-    opacity: 0;
-    transform: translateX(-8px);
-    transition: all 0.3s ease;
-    z-index: 1;
-  }
-
-  .nav-link-card:hover .nav-card-arrow {
-    opacity: 1;
-    transform: translateX(0);
-    color: #1C75BC;
-  }
-
-  /* Store specific colors */
-  .nav-link-store {
-    background: rgba(28, 117, 188, 0.08);
-    border-color: rgba(28, 117, 188, 0.2);
-  }
-
-  .nav-link-store:hover {
-    border-color: #1C75BC;
-    background: rgba(28, 117, 188, 0.15);
-  }
-
-  /* Bookshelf specific colors */
-  .nav-link-bookshelf {
-    background: rgba(245, 158, 11, 0.06);
-    border-color: rgba(245, 158, 11, 0.15);
-  }
-
-  .nav-link-bookshelf:hover {
-    border-color: #f59e0b;
-    background: rgba(245, 158, 11, 0.12);
-  }
-
-  .nav-link-bookshelf:hover .nav-card-arrow {
-    color: #f59e0b;
-  }
-
   /* ===== RESPONSIVE: TABLET ===== */
   @media (max-width: 1024px) and (min-width: 769px) {
-    .nav-list {
-      gap: 1.2rem;
+    .brand-info {
+      gap: 1.5rem;
     }
 
-    .nav-link-card {
-      min-width: 120px;
-      min-height: 85px;
-      padding: 0.8rem 1.2rem;
+    .header-stats {
+      gap: 1.5rem;
     }
 
-    .nav-card-icon {
-      font-size: 1.6rem;
+    .stat {
+      min-width: 70px;
+      padding: 0.5rem 0.75rem;
+      max-width: 120px;
     }
 
-    .nav-card-title {
-      font-size: 1rem;
+    .stat-number {
+      font-size: 1.8rem !important;
     }
 
-    .nav-link-home,
-    .nav-link-about {
-      font-size: 0.85rem;
-      padding: 0.3rem 0.6rem;
+    .profile-img {
+      width: 160px !important;
+      height: 160px !important;
+    }
+
+    .profile-text h2 {
+      font-size: 2.2rem !important;
     }
   }
 
   /* ===== RESPONSIVE: MOBILE ===== */
   @media (max-width: 768px) {
-    .professional-header {
-      padding: 1.5rem 0 1rem 0;
-    }
-
     .profile-img {
       width: 150px !important;
       height: 150px !important;
@@ -551,38 +372,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
       font-size: 0.8rem !important;
     }
 
-    .nav-list {
-      gap: 1rem;
-    }
-
-    .nav-link-card {
-      min-width: 100px;
-      min-height: 75px;
-      padding: 0.6rem 1rem;
-    }
-
-    .nav-card-icon {
-      font-size: 1.4rem;
-    }
-
-    .nav-card-title {
-      font-size: 0.9rem;
-    }
-
-    .nav-card-subtitle {
-      font-size: 0.6rem;
-    }
-
-    .nav-link-home,
-    .nav-link-about {
-      font-size: 0.8rem;
-      padding: 0.3rem 0.5rem;
-    }
-
-    .nav-card-arrow {
-      display: none;
-    }
-
     @keyframes profileGlow {
       0%, 100% { 
         box-shadow: 0 0 15px rgba(28, 117, 188, 0.1);
@@ -595,10 +384,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
 
   /* ===== SMALL MOBILE ===== */
   @media (max-width: 480px) {
-    .professional-header {
-      padding: 1rem 0 0.75rem 0;
-    }
-
     .profile-img {
       width: 130px !important;
       height: 130px !important;
@@ -642,35 +427,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
 
     .stat-label {
       font-size: 0.7rem !important;
-    }
-
-    .nav-list {
-      gap: 0.6rem;
-    }
-
-    .nav-link-card {
-      min-width: 80px;
-      min-height: 60px;
-      padding: 0.5rem 0.7rem;
-    }
-
-    .nav-card-icon {
-      font-size: 1.2rem;
-      margin-bottom: 0.1rem;
-    }
-
-    .nav-card-title {
-      font-size: 0.75rem;
-    }
-
-    .nav-card-subtitle {
-      display: none;
-    }
-
-    .nav-link-home,
-    .nav-link-about {
-      font-size: 0.7rem;
-      padding: 0.2rem 0.4rem;
     }
   }
 </style>
