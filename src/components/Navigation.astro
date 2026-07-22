@@ -1,6 +1,6 @@
 ---
 // src/components/Navigation.astro
-// Purpose: Clean navigation bar with dropdowns - Fixed z-index and positioning
+// Purpose: Clean navigation bar with dropdowns - BLUE accents
 
 const currentPath = Astro.url.pathname;
 
@@ -109,10 +109,10 @@ const navItems = [
 
 <style>
   .main-nav {
-    background: transparent; /* Transparent to show header gradient behind */
+    background: transparent;
     padding: 0.8rem 0;
-    position: relative; /* Changed from sticky to relative */
-    z-index: 9999; /* High z-index for dropdowns */
+    position: relative;
+    z-index: 9999;
     border-top: 1px solid rgba(255, 255, 255, 0.06);
     margin-top: 0.5rem;
   }
@@ -148,7 +148,7 @@ const navItems = [
 
   .logo-tagline {
     font-size: 0.6rem;
-    color: #22c55e;
+    color: #1C75BC; /* Changed from green to blue */
     letter-spacing: 1px;
     text-transform: uppercase;
     opacity: 0.8;
@@ -195,14 +195,14 @@ const navItems = [
     font-size: 0.6rem;
     margin-left: 0.15rem;
     transition: transform 0.3s ease;
-    color: #22c55e;
+    color: #1C75BC; /* Changed from green to blue */
   }
 
   .nav-item:hover .nav-arrow {
     transform: rotate(180deg);
   }
 
-  /* Dropdown Menu - Fixed z-index */
+  /* Dropdown Menu */
   .dropdown-menu {
     display: none;
     position: absolute;
@@ -216,7 +216,7 @@ const navItems = [
     list-style: none;
     margin: 0.25rem 0 0 0;
     border: 1px solid rgba(255, 255, 255, 0.05);
-    z-index: 99999; /* Very high z-index to appear above everything */
+    z-index: 99999;
   }
 
   .nav-item:hover .dropdown-menu {
