@@ -92,7 +92,18 @@ const displayTrustTag = trustTag || defaultTrustTag;
     color: white;
     padding: 2rem 0 0 0;
     position: relative;
-    overflow: hidden;
+    overflow: visible; /* Changed from hidden to visible for dropdowns */
+    min-height: 400px;
+  }
+
+  .professional-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(28, 117, 188, 0.1) 0%, transparent 70%);
   }
 
   /* ===== ANIMATED BACKGROUND PARTICLES ===== */
@@ -113,6 +124,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
     opacity: 0.08;
     animation: floatParticle 20s ease-in-out infinite;
     filter: blur(1px);
+    will-change: transform;
   }
 
   .particle-1 {
@@ -203,15 +215,39 @@ const displayTrustTag = trustTag || defaultTrustTag;
     }
   }
 
-  /* ===== PROFILE IMAGE - TRANSPARENT ===== */
+  .header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ===== BRAND INFO - CENTERED ===== */
+  .brand-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  /* ===== PROFILE SECTION - CENTERED ===== */
+  .profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
   .profile-image-wrapper {
     position: relative;
     display: inline-block;
     flex-shrink: 0;
-    border-radius: 50%;
-    /* Remove any background that might show square corners */
-    background: transparent !important;
-    /* Ensure the wrapper doesn't have a background */
   }
 
   .profile-img {
@@ -225,7 +261,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
     display: block;
     position: relative;
     z-index: 2;
-    /* Ensure image background is transparent */
     background: transparent !important;
   }
 
@@ -235,7 +270,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
     box-shadow: 0 15px 45px rgba(28, 117, 188, 0.4);
   }
 
-  /* Decorative rotating ring */
   .profile-ring {
     position: absolute;
     top: -8px;
@@ -247,7 +281,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
     animation: ringSpin 20s linear infinite;
     z-index: 1;
     pointer-events: none;
-    /* Ensure ring doesn't have background */
     background: transparent !important;
   }
 
@@ -256,7 +289,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
     to { transform: rotate(360deg); }
   }
 
-  /* Pulse glow animation */
   @keyframes profileGlow {
     0%, 100% { 
       box-shadow: 0 0 20px rgba(28, 117, 188, 0.15);
@@ -270,7 +302,6 @@ const displayTrustTag = trustTag || defaultTrustTag;
     animation: profileGlow 4s ease-in-out infinite;
   }
 
-  /* ===== PROFILE TEXT ===== */
   .profile-text h2 {
     color: white;
     font-size: 2.5rem !important;
@@ -320,7 +351,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
     flex-wrap: wrap;
   }
 
-  /* ===== STATS SECTION ===== */
+  /* ===== STATS SECTION - CENTERED ===== */
   .header-stats {
     display: flex;
     justify-content: center;
@@ -375,7 +406,7 @@ const displayTrustTag = trustTag || defaultTrustTag;
     opacity: 0.8;
   }
 
-  /* ===== RESPONSIVE ===== */
+  /* ===== RESPONSIVE: TABLET ===== */
   @media (max-width: 1024px) and (min-width: 769px) {
     .brand-info {
       gap: 1.5rem;
@@ -406,12 +437,15 @@ const displayTrustTag = trustTag || defaultTrustTag;
 
     .particle {
       font-size: 1.8rem !important;
+      opacity: 0.06 !important;
     }
   }
 
+  /* ===== RESPONSIVE: MOBILE (768px and below) ===== */
   @media (max-width: 768px) {
     .professional-header {
       padding: 1.5rem 0 0 0;
+      min-height: 350px;
     }
 
     .profile-img {
@@ -458,13 +492,15 @@ const displayTrustTag = trustTag || defaultTrustTag;
       font-size: 0.8rem !important;
     }
 
+    /* PARTICLES ON MOBILE - Keep but smaller and more subtle */
     .particle {
-      font-size: 1.5rem !important;
+      font-size: 1.8rem !important;
       opacity: 0.05 !important;
     }
 
-    .particle-1, .particle-3, .particle-6, .particle-8 {
-      display: none;
+    .particle-1, .particle-2, .particle-3, .particle-4, .particle-5,
+    .particle-6, .particle-7, .particle-8, .particle-9, .particle-10 {
+      display: block !important; /* Show all particles on mobile */
     }
 
     @keyframes profileGlow {
@@ -477,7 +513,13 @@ const displayTrustTag = trustTag || defaultTrustTag;
     }
   }
 
+  /* ===== SMALL MOBILE (480px and below) ===== */
   @media (max-width: 480px) {
+    .professional-header {
+      padding: 1rem 0 0 0;
+      min-height: 300px;
+    }
+
     .profile-img {
       width: 130px !important;
       height: 130px !important;
@@ -523,13 +565,27 @@ const displayTrustTag = trustTag || defaultTrustTag;
       font-size: 0.7rem !important;
     }
 
+    /* PARTICLES ON SMALL MOBILE - Keep visible */
     .particle {
       font-size: 1.2rem !important;
-      opacity: 0.03 !important;
+      opacity: 0.04 !important;
     }
 
-    .particle-2, .particle-4, .particle-5, .particle-7, .particle-9, .particle-10 {
-      display: none;
+    .particle-1, .particle-2, .particle-3, .particle-4, .particle-5,
+    .particle-6, .particle-7, .particle-8, .particle-9, .particle-10 {
+      display: block !important;
     }
+
+    /* Adjust particle positions for small screens */
+    .particle-1 { top: 5%; left: 3%; }
+    .particle-2 { top: 10%; right: 3%; }
+    .particle-3 { bottom: 40%; left: 5%; }
+    .particle-4 { top: 50%; right: 3%; }
+    .particle-5 { top: 3%; left: 40%; }
+    .particle-6 { bottom: 30%; right: 8%; }
+    .particle-7 { top: 30%; left: 2%; }
+    .particle-8 { bottom: 15%; left: 30%; }
+    .particle-9 { top: 65%; left: 10%; }
+    .particle-10 { top: 8%; right: 20%; }
   }
 </style>
