@@ -9,7 +9,7 @@ const shopCategories = [
   {
     slug: 'electronics',
     name: 'Electronics & Gadgets',
-    icon: '📱',
+    icon: 'fa-solid fa-laptop',
     description: 'Smartphones, laptops, accessories, audio',
     productCount: 25,
     color: '#3b82f6'
@@ -17,7 +17,7 @@ const shopCategories = [
   {
     slug: 'home-kitchen',
     name: 'Home & Kitchen',
-    icon: '🏠',
+    icon: 'fa-solid fa-house',
     description: 'Appliances, cookware, furniture',
     productCount: 18,
     color: '#f59e0b'
@@ -25,7 +25,7 @@ const shopCategories = [
   {
     slug: 'solar-energy',
     name: 'Solar & Energy',
-    icon: '☀️',
+    icon: 'fa-solid fa-sun',
     description: 'Solar panels, batteries, inverters, lights',
     productCount: 15,
     color: '#22c55e'
@@ -33,7 +33,7 @@ const shopCategories = [
   {
     slug: 'agriculture',
     name: 'Agriculture',
-    icon: '🌾',
+    icon: 'fa-solid fa-seedling',
     description: 'Water pumps, irrigation, tools, seeds',
     productCount: 12,
     color: '#84cc16'
@@ -41,7 +41,7 @@ const shopCategories = [
   {
     slug: 'fashion-wear',
     name: 'Fashion & Wear',
-    icon: '👕',
+    icon: 'fa-solid fa-tshirt',
     description: 'Clothing, shoes, accessories, watches',
     productCount: 20,
     color: '#ec4899'
@@ -49,7 +49,7 @@ const shopCategories = [
   {
     slug: 'health-fitness',
     name: 'Health & Fitness',
-    icon: '💪',
+    icon: 'fa-solid fa-heart-pulse',
     description: 'Gym equipment, supplements, health monitors',
     productCount: 10,
     color: '#ef4444'
@@ -57,7 +57,7 @@ const shopCategories = [
   {
     slug: 'beauty-care',
     name: 'Beauty & Personal Care',
-    icon: '💄',
+    icon: 'fa-solid fa-spa',
     description: 'Skincare, makeup, hair care, grooming',
     productCount: 14,
     color: '#f472b6'
@@ -65,7 +65,7 @@ const shopCategories = [
   {
     slug: 'automotive',
     name: 'Automotive & Motorcycle',
-    icon: '🚗',
+    icon: 'fa-solid fa-car',
     description: 'Car accessories, helmets, gear, parts',
     productCount: 11,
     color: '#64748b'
@@ -73,7 +73,7 @@ const shopCategories = [
   {
     slug: 'office-stationery',
     name: 'Office & Stationery',
-    icon: '📝',
+    icon: 'fa-solid fa-pen-ruler',
     description: 'Chairs, desks, stationery, printers',
     productCount: 8,
     color: '#8b5cf6'
@@ -89,7 +89,7 @@ const shopCategories = [
   <!-- Shop Hero -->
   <section class="shop-hero">
     <div class="container">
-      <h1>🛍️ Shop Products</h1>
+      <h1>Shop Products</h1>
       <p>Curated products from trusted sources. Find what you need for home, work, and life.</p>
     </div>
   </section>
@@ -100,7 +100,9 @@ const shopCategories = [
       <div class="category-grid">
         {shopCategories.map((cat) => (
           <a href={`/shop/${cat.slug}/`} class="category-card" style={`--card-color: ${cat.color}`}>
-            <div class="category-icon">{cat.icon}</div>
+            <div class="category-icon">
+              <i class={cat.icon}></i>
+            </div>
             <h3>{cat.name}</h3>
             <p>{cat.description}</p>
             <div class="category-footer">
@@ -175,6 +177,11 @@ const shopCategories = [
   .category-icon {
     font-size: 2.5rem;
     margin-bottom: 0.75rem;
+    color: var(--card-color);
+  }
+
+  .category-icon i {
+    font-size: 2.5rem;
   }
 
   .category-card h3 {
