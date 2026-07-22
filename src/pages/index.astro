@@ -9,12 +9,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ToolCard from '../components/ToolCard.astro';
-import SearchBar from '../components/SearchBar.astro';  // ✅ Import must be here, in the frontmatter
+import SearchBar from '../components/SearchBar.astro';
 
 const categories = await getCollection('categories');
 
 // Preserve the original homepage ordering
-// UPDATED: New filenames after renaming
 const ORDER = [
   'wealth-investment',
   'productivity-workflow-systems',
@@ -29,9 +28,148 @@ const ORDER = [
   'remote-work-distributed-teams',
   'freelancing-professional-services',
 ];
+
 const orderedCategories = ORDER
   .map((slug) => categories.find((c) => c.id === slug))
   .filter((c): c is NonNullable<typeof c> => Boolean(c));
+
+// ============================================================
+// SHOP CATEGORIES DATA
+// ============================================================
+const shopCategories = [
+  {
+    slug: 'electronics',
+    name: 'Electronics & Gadgets',
+    icon: 'fa-solid fa-laptop',
+    description: 'Smartphones, laptops, accessories, audio',
+    productCount: 25,
+    color: '#3b82f6'
+  },
+  {
+    slug: 'home-kitchen',
+    name: 'Home & Kitchen',
+    icon: 'fa-solid fa-house',
+    description: 'Appliances, cookware, furniture',
+    productCount: 18,
+    color: '#f59e0b'
+  },
+  {
+    slug: 'solar-energy',
+    name: 'Solar & Energy',
+    icon: 'fa-solid fa-sun',
+    description: 'Solar panels, batteries, inverters, lights',
+    productCount: 15,
+    color: '#22c55e'
+  },
+  {
+    slug: 'agriculture',
+    name: 'Agriculture',
+    icon: 'fa-solid fa-seedling',
+    description: 'Water pumps, irrigation, tools, seeds',
+    productCount: 12,
+    color: '#84cc16'
+  },
+  {
+    slug: 'fashion-wear',
+    name: 'Fashion & Wear',
+    icon: 'fa-solid fa-tshirt',
+    description: 'Clothing, shoes, accessories, watches',
+    productCount: 20,
+    color: '#ec4899'
+  },
+  {
+    slug: 'health-fitness',
+    name: 'Health & Fitness',
+    icon: 'fa-solid fa-heart-pulse',
+    description: 'Gym equipment, supplements, health monitors',
+    productCount: 10,
+    color: '#ef4444'
+  },
+  {
+    slug: 'beauty-care',
+    name: 'Beauty & Personal Care',
+    icon: 'fa-solid fa-spa',
+    description: 'Skincare, makeup, hair care, grooming',
+    productCount: 14,
+    color: '#f472b6'
+  },
+  {
+    slug: 'automotive',
+    name: 'Automotive & Motorcycle',
+    icon: 'fa-solid fa-car',
+    description: 'Car accessories, helmets, gear, parts',
+    productCount: 11,
+    color: '#64748b'
+  },
+  {
+    slug: 'office-stationery',
+    name: 'Office & Stationery',
+    icon: 'fa-solid fa-pen-ruler',
+    description: 'Chairs, desks, stationery, printers',
+    productCount: 8,
+    color: '#8b5cf6'
+  }
+];
+
+// ============================================================
+// DIGITAL CATEGORIES DATA
+// ============================================================
+const digitalCategories = [
+  {
+    slug: 'hosting-domains',
+    name: 'Web Hosting & Domains',
+    icon: 'fa-solid fa-globe',
+    description: 'Bluehost, Hostinger, Namecheap, WordPress',
+    productCount: 8,
+    color: '#3b82f6',
+    commission: 'High'
+  },
+  {
+    slug: 'vpn-security',
+    name: 'VPN & Cybersecurity',
+    icon: 'fa-solid fa-shield-halved',
+    description: 'NordVPN, ExpressVPN, Antivirus, Password managers',
+    productCount: 6,
+    color: '#22c55e',
+    commission: 'High'
+  },
+  {
+    slug: 'ai-tools',
+    name: 'AI Tools',
+    icon: 'fa-solid fa-brain',
+    description: 'ChatGPT Plus, Jasper, Midjourney, Synthesia',
+    productCount: 7,
+    color: '#8b5cf6',
+    commission: 'Recurring'
+  },
+  {
+    slug: 'trading-platforms',
+    name: 'Trading Platforms',
+    icon: 'fa-solid fa-chart-line',
+    description: 'TradingView, MT4, Binance, Exness, Bybit',
+    productCount: 8,
+    color: '#f59e0b',
+    commission: 'High'
+  },
+  {
+    slug: 'online-courses',
+    name: 'Online Courses',
+    icon: 'fa-solid fa-graduation-cap',
+    description: 'Coursera, Udemy, Codecademy, LinkedIn Learning',
+    productCount: 6,
+    color: '#ec4899',
+    commission: 'High'
+  },
+  {
+    slug: 'marketing-tools',
+    name: 'Marketing & Productivity',
+    icon: 'fa-solid fa-rocket',
+    description: 'Canva, Notion, Slack, Mailchimp, Zapier',
+    productCount: 10,
+    color: '#06b6d4',
+    commission: 'Recurring'
+  }
+];
 ---
 
 <BaseLayout
@@ -94,7 +232,7 @@ const orderedCategories = ORDER
       </div>
     </section>
 
-    <!-- Categories Section -->
+    <!-- Solutions Categories Section -->
     <section class="categories-section" id="categories">
       <div class="container">
         <div class="section-header">
@@ -120,7 +258,51 @@ const orderedCategories = ORDER
       </div>
     </section>
 
-    <!-- Trust Section - No emojis -->
+    <!-- Shop Section - Preview -->
+    <section class="shop-preview">
+      <div class="container">
+        <div class="section-header">
+          <h2>Shop Products</h2>
+          <p>Find electronics, solar, agriculture, and more.</p>
+          <a href="/shop/" class="view-all">View All →</a>
+        </div>
+        <div class="shop-grid">
+          {shopCategories.slice(0, 4).map((cat) => (
+            <a href={`/shop/${cat.slug}/`} class="shop-card" style={`--card-color: ${cat.color}`}>
+              <div class="shop-icon">
+                <i class={cat.icon}></i>
+              </div>
+              <h3>{cat.name}</h3>
+              <span class="shop-count">{cat.productCount} Products</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Digital Section - Preview -->
+    <section class="digital-preview">
+      <div class="container">
+        <div class="section-header">
+          <h2>Digital Products</h2>
+          <p>Hosting, VPN, AI tools, trading platforms, and more.</p>
+          <a href="/digital/" class="view-all">View All →</a>
+        </div>
+        <div class="digital-grid">
+          {digitalCategories.slice(0, 4).map((cat) => (
+            <a href={`/digital/${cat.slug}/`} class="digital-card" style={`--card-color: ${cat.color}`}>
+              <div class="digital-icon">
+                <i class={cat.icon}></i>
+              </div>
+              <h3>{cat.name}</h3>
+              <span class="digital-count">{cat.productCount} Products</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Section -->
     <section class="trust-section">
       <div class="container">
         <div class="section-header">
@@ -152,7 +334,7 @@ const orderedCategories = ORDER
       </div>
     </section>
 
-    <!-- Newsletter Section - Clean -->
+    <!-- Newsletter Section -->
     <section class="newsletter-section">
       <div class="container newsletter-container">
         <div class="newsletter-content">
@@ -290,22 +472,6 @@ const orderedCategories = ORDER
     box-shadow: 0 8px 25px rgba(28, 117, 188, 0.3);
   }
   
-  .btn-secondary {
-    background: transparent;
-    color: white;
-    padding: 0.8rem 2rem;
-    border-radius: 6px;
-    text-decoration: none;
-    font-weight: 500;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    transition: all 0.3s ease;
-  }
-  
-  .btn-secondary:hover {
-    background: rgba(255, 255, 255, 0.05);
-    border-color: rgba(255, 255, 255, 0.4);
-  }
-  
   /* ===== SEARCH SECTION ===== */
   .search-section {
     padding: 2rem 0;
@@ -351,6 +517,124 @@ const orderedCategories = ORDER
     gap: 1.5rem;
   }
   
+  /* ===== SHOP PREVIEW ===== */
+  .shop-preview {
+    padding: 4rem 2rem;
+    background: white;
+  }
+
+  .shop-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .shop-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #0f172a;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .shop-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    border-color: var(--card-color, #1C75BC);
+  }
+
+  .shop-icon {
+    font-size: 2rem;
+    color: var(--card-color, #1C75BC);
+    margin-bottom: 0.5rem;
+  }
+
+  .shop-icon i {
+    font-size: 2rem;
+  }
+
+  .shop-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .shop-count {
+    font-size: 0.8rem;
+    color: #94a3b8;
+  }
+
+  .view-all {
+    display: inline-block;
+    margin-top: 0.5rem;
+    color: #1C75BC;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .view-all:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== DIGITAL PREVIEW ===== */
+  .digital-preview {
+    padding: 4rem 2rem;
+    background: #f8fafc;
+  }
+
+  .digital-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .digital-card {
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 1.5rem;
+    text-decoration: none;
+    color: #0f172a;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .digital-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    border-color: var(--card-color, #1C75BC);
+  }
+
+  .digital-icon {
+    font-size: 2rem;
+    color: var(--card-color, #1C75BC);
+    margin-bottom: 0.5rem;
+  }
+
+  .digital-icon i {
+    font-size: 2rem;
+  }
+
+  .digital-card h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+  }
+
+  .digital-count {
+    font-size: 0.8rem;
+    color: #94a3b8;
+  }
+
   /* ===== TRUST SECTION ===== */
   .trust-section {
     padding: 4rem 2rem;
@@ -496,6 +780,11 @@ const orderedCategories = ORDER
     .trust-grid {
       grid-template-columns: repeat(2, 1fr);
     }
+
+    .shop-grid,
+    .digital-grid {
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
   }
   
   @media (max-width: 768px) {
@@ -544,6 +833,11 @@ const orderedCategories = ORDER
     .btn-subscribe {
       width: 100%;
     }
+
+    .shop-grid,
+    .digital-grid {
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    }
   }
   
   @media (max-width: 480px) {
@@ -568,6 +862,11 @@ const orderedCategories = ORDER
     .highlight-wrapper::after {
       bottom: 1px;
       height: 2px;
+    }
+
+    .shop-grid,
+    .digital-grid {
+      grid-template-columns: 1fr;
     }
   }
 </style>
